@@ -1,157 +1,548 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>David Xingda Lyu</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#0a0a0a;
-  --text:#f1f1f1;
-  --muted:#cfcfcf;
-  --line:#222;
-  --pill:#333;
-  --pillHover:#666;
-  --icon:#a8a8a8;
-  --iconHover:#eaeaea;
-  --glow: rgba(139,92,246,.25);
-}
+  :root{
+    --bg:#07070b;
+    --bg2:#0b0b13;
+    --text:#f2f2f3;
+    --muted:#b7b7c2;
+    --muted2:#9a9aac;
+    --line:rgba(255,255,255,.10);
+    --line2:rgba(255,255,255,.14);
+    --accent:#8b5cf6;
+    --accent2:#22d3ee;
+    --glow:rgba(139,92,246,.25);
+    --glow2:rgba(34,211,238,.18);
+    --card:rgba(255,255,255,.04);
+    --card2:rgba(255,255,255,.06);
+    --shadow: 0 18px 60px rgba(0,0,0,.55);
+    --r:18px;
+  }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Inter, system-ui, -apple-system;
-  background: var(--bg);
-  color: var(--text);
-}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: Inter, system-ui, -apple-system;
+    color: var(--text);
+    background: radial-gradient(1200px 700px at 20% 10%, rgba(139,92,246,.18), transparent 55%),
+                radial-gradient(1000px 700px at 85% 15%, rgba(34,211,238,.10), transparent 55%),
+                linear-gradient(180deg, var(--bg), var(--bg2));
+    overflow-x:hidden;
+  }
 
-.wrap{max-width:880px;margin:auto;padding:100px 24px}
+  /* Canvas network background */
+  #bg{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    opacity:.9;
+  }
 
-nav{
-  position:fixed;
-  top:0;left:0;right:0;
-  background:rgba(10,10,10,.82);
-  backdrop-filter: blur(10px);
-  border-bottom:1px solid var(--line);
-  z-index:50;
-}
+  /* Cursor glow */
+  .cursor-glow{
+    position:fixed;
+    width:420px;height:420px;
+    border-radius:999px;
+    transform: translate(-50%,-50%);
+    pointer-events:none;
+    z-index:-1;
+    background: radial-gradient(circle at 30% 30%, rgba(139,92,246,.20), transparent 55%),
+                radial-gradient(circle at 70% 60%, rgba(34,211,238,.14), transparent 60%);
+    filter: blur(18px);
+    mix-blend-mode: screen;
+    opacity:.85;
+  }
 
-nav .inner{
-  max-width:880px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 24px;
-  gap:18px;
-}
+  nav{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:50;
+    background: rgba(7,7,11,.68);
+    backdrop-filter: blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .inner{
+    max-width:980px;
+    margin:0 auto;
+    padding:14px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+  }
+  .brand{
+    display:flex; align-items:baseline; gap:10px;
+    font-family: "Space Grotesk", Inter, system-ui;
+    letter-spacing:-.3px;
+  }
+  .brand b{font-weight:600}
+  .brand small{
+    color:var(--muted2);
+    font-size:12.5px;
+    font-family: JetBrains Mono, ui-monospace;
+  }
 
-nav b{font-weight:600; letter-spacing:-.2px}
+  .navlinks{display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end}
+  .navlinks a{
+    color: rgba(242,242,243,.82);
+    text-decoration:none;
+    font-size:13.5px;
+    padding:8px 10px;
+    border-radius:999px;
+    border:1px solid transparent;
+    transition: transform .16s ease, background .16s ease, border-color .16s ease, color .16s ease;
+  }
+  .navlinks a:hover{
+    transform: translateY(-1px);
+    background: rgba(255,255,255,.05);
+    border-color: rgba(255,255,255,.10);
+    color:#fff;
+  }
 
-nav a{
-  color:#bbb;
-  text-decoration:none;
-  margin-left:14px;
-  font-size:14px;
-  transition: color .18s ease;
-}
-nav a:hover{color:#f1f1f1}
+  .wrap{
+    max-width:980px;
+    margin:0 auto;
+    padding:104px 22px 70px;
+  }
 
-.hero{
-  min-height:90vh;
-  display:flex;
-  align-items:center;
-}
+  .hero{
+    min-height: calc(92vh - 104px);
+    display:flex;
+    align-items:center;
+  }
 
-.heroGrid{
-  display:grid;
-  grid-template-columns: 160px 1fr;
-  gap:28px;
-  align-items:center;
-}
+  .heroGrid{
+    width:100%;
+    display:grid;
+    grid-template-columns: 180px 1fr;
+    gap:28px;
+    align-items:center;
+  }
+  @media (max-width: 760px){
+    .heroGrid{grid-template-columns:1fr}
+  }
 
-@media (max-width: 720px){
-  .heroGrid{grid-template-columns:1fr}
-  .avatarWrap{justify-content:flex-start}
-}
+  .avatarCard{
+    border:1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    border-radius: 22px;
+    padding:14px;
+    box-shadow: var(--shadow);
+    position:relative;
+    overflow:hidden;
+    transform: translateZ(0);
+  }
+  .avatarCard::before{
+    content:"";
+    position:absolute; inset:-80px;
+    background:
+      radial-gradient(260px 180px at 20% 20%, rgba(139,92,246,.22), transparent 60%),
+      radial-gradient(260px 200px at 70% 70%, rgba(34,211,238,.16), transparent 60%);
+    filter: blur(8px);
+    opacity:.9;
+  }
+  .avatar{
+    position:relative;
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius: 18px;
+    border:1px solid rgba(255,255,255,.12);
+    background: rgba(0,0,0,.18);
+    overflow:hidden;
+  }
+  .avatar img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .avatarFallback{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family: JetBrains Mono, ui-monospace;
+    color: rgba(242,242,243,.75);
+    letter-spacing:.2px;
+    font-size:12.5px;
+    background:
+      radial-gradient(160px 120px at 30% 30%, rgba(139,92,246,.18), transparent 60%),
+      radial-gradient(180px 140px at 70% 70%, rgba(34,211,238,.12), transparent 60%),
+      rgba(0,0,0,.20);
+  }
+  .avatarMeta{
+    position:relative;
+    margin-top:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    color: var(--muted2);
+    font-size:12px;
+    font-family: JetBrains Mono, ui-monospace;
+  }
+  .statusDot{
+    width:7px;height:7px;border-radius:99px;
+    background: rgba(52,211,153,.9);
+    box-shadow: 0 0 0 4px rgba(52,211,153,.10);
+    display:inline-block;
+    margin-right:8px;
+  }
 
-h1{
-  font-family:"Space Grotesk", Inter, system-ui;
-  font-size:52px;
-  margin:0 0 14px;
-  font-weight:500;
-  letter-spacing:-0.8px;
-}
-p{
-  color:var(--muted);
-  line-height:1.8;
-  font-size:17px;
-  margin:0;
-  max-width: 60ch;
-}
+  h1{
+    font-family:"Space Grotesk", Inter, system-ui;
+    font-size:56px;
+    line-height:1.02;
+    margin:0 0 14px;
+    letter-spacing:-1px;
+    font-weight:500;
+  }
+  @media (max-width: 760px){
+    h1{font-size:44px}
+  }
 
-.metaRow{
-  margin-top:22px;
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
+  .type{
+    display:inline-block;
+    position:relative;
+  }
+  .caret{
+    display:inline-block;
+    width:10px;
+    margin-left:4px;
+    height:1.2em;
+    border-right:2px solid rgba(242,242,243,.55);
+    transform: translateY(3px);
+    animation: blink 1s steps(1,end) infinite;
+  }
+  @keyframes blink{ 50% { border-color: transparent; } }
 
-.pill{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  border:1px solid var(--pill);
-  padding:10px 13px;
-  border-radius:14px;
-  color:white;
-  font-size:14px;
-  font-family:JetBrains Mono;
-  text-decoration:none;
-  background: rgba(255,255,255,0.02);
+  .lead{
+    color: var(--muted);
+    font-size:17px;
+    line-height:1.8;
+    margin:0;
+    max-width: 70ch;
+  }
 
-  transition:
-    transform .16s ease,
-    border-color .16s ease,
-    background .16s ease,
-    box-shadow .16s ease;
-}
+  .chips{
+    margin-top:18px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .chip{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 12px;
+    border-radius: 14px;
+    border:1px solid var(--line);
+    background: rgba(255,255,255,.03);
+    color: rgba(242,242,243,.92);
+    text-decoration:none;
+    font-size:13.5px;
+    font-family: JetBrains Mono, ui-monospace;
+    transition: transform .16s ease, background .16s ease, border-color .16s ease, box-shadow .16s ease;
+    will-change: transform;
+  }
+  .chip:hover{
+    transform: translateY(-3px);
+    background: rgba(255,255,255,.05);
+    border-color: rgba(255,255,255,.18);
+    box-shadow: 0 16px 32px rgba(0,0,0,.45);
+  }
+  .chip svg{
+    width:16px;height:16px;
+    stroke: rgba(242,242,243,.72);
+    opacity:.9;
+    transition: opacity .16s ease, transform .16s ease;
+  }
+  .chip:hover svg{opacity:1; transform: translateY(-.5px)}
 
-.pill .icon{
-  width:16px;height:16px;
-  stroke:var(--icon);
-  transition: stroke .16s ease, transform .16s ease;
-}
+  .subrow{
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    color: var(--muted2);
+    font-size:13px;
+    font-family: JetBrains Mono, ui-monospace;
+  }
+  .subrow .pill{
+    border:1px solid var(--line);
+    background: rgba(255,255,255,.02);
+    padding:8px 10px;
+    border-radius:999px;
+  }
 
-.pill:hover{
-  transform: translateY(-3px);
-  border-color: var(--pillHover);
-  background: rgba(255,255,255,0.04);
-  box-shadow: 0 14px 30px rgba(0,0,0,.45), 0 0 0 1px rgba(139,92,246,.12);
-}
-.pill:hover .icon{
-  stroke: var(--iconHover);
-  transform: translateY(-.5px);
-}
+  /* tiny “AI-ish” hover effect on the big block */
+  .glassy{
+    position:relative;
+    border:1px solid rgba(255,255,255,.08);
+    background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    border-radius: 24px;
+    padding:18px 18px 16px;
+    overflow:hidden;
+  }
+  .glassy::after{
+    content:"";
+    position:absolute;
+    inset:-80px;
+    background:
+      radial-gradient(420px 260px at var(--mx,50%) var(--my,50%), rgba(139,92,246,.14), transparent 60%),
+      radial-gradient(420px 260px at calc(var(--mx,50%) + 10%) calc(var(--my,50%) + 10%), rgba(34,211,238,.09), transparent 62%);
+    opacity:.8;
+    pointer-events:none;
+    transition: opacity .18s ease;
+  }
+  .glassy:hover::after{opacity:1}
 
-/* Avatar */
-.avatarWrap{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
+  .footer{
+    margin-top:34px;
+    border-top:1px solid var(--line);
+    padding-top:16px;
+    color: rgba(242,242,243,.55);
+    font-size:12.5px;
+    font-family: JetBrains Mono, ui-monospace;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+</style>
+</head>
 
-.avatar{
-  width:150px;
-  height:150px;
-  border-radius:50%;
-  object-fit:cover;
-  border:1px solid rgba(255,255,255,.14);
-  box-shadow:
-    0 18px
+<body>
+<canvas id="bg"></canvas>
+<div class="cursor-glow" id="glow"></div>
+
+<nav>
+  <div class="inner">
+    <div class="brand">
+      <b>David Xingda Lyu</b>
+      <small>UW · AI/ML · Agents & RAG</small>
+    </div>
+    <div class="navlinks">
+      <a href="projects.html">Projects</a>
+      <a href="publications.html">Publications</a>
+      <a href="experience.html">Experience</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://github.com/XingdaLyu" target="_blank" rel="noreferrer">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="heroGrid">
+
+      <div class="avatarCard">
+        <div class="avatar" id="avatarBox">
+          <!-- Put your photo in repo root as profile.jpg (or change the src). -->
+          <img id="avatarImg" src="profile.jpg" alt="David Xingda Lyu" onerror="this.style.display='none';document.getElementById('fallback').style.display='flex';">
+          <div class="avatarFallback" id="fallback" style="display:none;">
+            profile.jpg not found<br/>upload to repo root
+          </div>
+        </div>
+        <div class="avatarMeta">
+          <span><span class="statusDot"></span> active</span>
+          <span>Seattle, WA</span>
+        </div>
+      </div>
+
+      <div class="glassy" id="glassy">
+        <h1>
+          <span class="type" id="type"></span><span class="caret"></span>
+        </h1>
+
+        <p class="lead">
+          I’m an undergraduate student at the University of Washington pursuing double degrees in Informatics and Statistics (Data Science).
+          I work on generative AI agents, retrieval-augmented generation, and human-centered decision support under epistemic uncertainty.
+          I’m mentored by PhD researcher Kirandeep Kaur and advised by Prof. Chirag Shah.
+        </p>
+
+        <div class="chips" aria-label="Quick links">
+          <a class="chip" href="mailto:xlyu18@uw.edu">
+            <svg fill="none" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 6l8 6 8-6"/></svg>
+            xlyu18@uw.edu
+          </a>
+
+          <a class="chip" href="https://www.linkedin.com/in/david-xingda-lyu-573ab4300/" target="_blank" rel="noreferrer">
+            <svg fill="none" viewBox="0 0 24 24">
+              <path d="M16 8a6 6 0 016 6v6h-4v-6a2 2 0 00-4 0v6h-4V9h4v2"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            LinkedIn
+          </a>
+
+          <a class="chip" href="https://scholar.google.com/citations?view_op=search_authors&mauthors=xingda+lyu&hl=en&oi=ao" target="_blank" rel="noreferrer">
+            <svg fill="none" viewBox="0 0 24 24"><path d="M12 3l9 4-9 4-9-4 9-4z"/><path d="M3 11v5c0 2 4 4 9 4s9-2 9-4v-5"/></svg>
+            Scholar
+          </a>
+        </div>
+
+        <div class="subrow">
+          <span class="pill">agents</span>
+          <span class="pill">RAG</span>
+          <span class="pill">human-centered</span>
+          <span class="pill">epistemic uncertainty</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer">
+    <span>© <span id="y"></span> David Xingda Lyu</span>
+    <span id="stamp"></span>
+  </div>
+</div>
+
+<script>
+  // ===== Typewriter (clean + not cheesy) =====
+  const text = "Hi, I’m David Xingda Lyu.";
+  const el = document.getElementById("type");
+  let i = 0;
+  (function tick(){
+    el.textContent = text.slice(0, i++);
+    if(i <= text.length) requestAnimationFrame(tick);
+  })();
+
+  // ===== Cursor glow =====
+  const glow = document.getElementById("glow");
+  window.addEventListener("mousemove", (e) => {
+    glow.style.left = e.clientX + "px";
+    glow.style.top  = e.clientY + "px";
+    // also drive glassy gradient center
+    const g = document.getElementById("glassy");
+    if(g){
+      const r = g.getBoundingClientRect();
+      const mx = ((e.clientX - r.left) / r.width) * 100;
+      const my = ((e.clientY - r.top) / r.height) * 100;
+      g.style.setProperty("--mx", mx.toFixed(1) + "%");
+      g.style.setProperty("--my", my.toFixed(1) + "%");
+    }
+  });
+
+  // ===== Footer =====
+  document.getElementById("y").textContent = new Date().getFullYear();
+  document.getElementById("stamp").textContent =
+    "Last updated: " + new Date().toLocaleDateString(undefined, {year:"numeric", month:"short", day:"2-digit"});
+
+  // ===== Neural-ish particle background (subtle) =====
+  const canvas = document.getElementById("bg");
+  const ctx = canvas.getContext("2d", { alpha: true });
+  let W, H, DPR;
+  const N = 80;        // particles
+  const LINK = 130;    // connection distance
+  const PULL = 0.015;  // mouse attraction
+  const particles = [];
+  const mouse = { x: 0, y: 0, active: false };
+
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.width = Math.floor(window.innerWidth * DPR);
+    H = canvas.height = Math.floor(window.innerHeight * DPR);
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  window.addEventListener("resize", resize);
+
+  window.addEventListener("mousemove", (e)=>{
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    mouse.active = true;
+  });
+  window.addEventListener("mouseleave", ()=> mouse.active = false);
+
+  function rand(min, max){ return Math.random() * (max-min) + min; }
+
+  function init(){
+    resize();
+    particles.length = 0;
+    for(let i=0;i<N;i++){
+      particles.push({
+        x: rand(0, window.innerWidth),
+        y: rand(0, window.innerHeight),
+        vx: rand(-0.35, 0.35),
+        vy: rand(-0.35, 0.35),
+        r: rand(1.1, 2.0)
+      });
+    }
+  }
+
+  function step(){
+    ctx.clearRect(0,0,window.innerWidth, window.innerHeight);
+
+    // particles move
+    for(const p of particles){
+      // subtle mouse attraction
+      if(mouse.active){
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const d2 = dx*dx + dy*dy;
+        if(d2 < 220*220){
+          p.vx += dx * PULL / 220;
+          p.vy += dy * PULL / 220;
+        }
+      }
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // wrap edges
+      if(p.x < -20) p.x = window.innerWidth + 20;
+      if(p.x > window.innerWidth + 20) p.x = -20;
+      if(p.y < -20) p.y = window.innerHeight + 20;
+      if(p.y > window.innerHeight + 20) p.y = -20;
+
+      // mild damping
+      p.vx *= 0.99;
+      p.vy *= 0.99;
+    }
+
+    // links
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const a = particles[i], b = particles[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d = Math.hypot(dx, dy);
+        if(d < LINK){
+          const t = 1 - d / LINK;
+          ctx.strokeStyle = `rgba(139,92,246,${0.06 + 0.12*t})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // nodes
+    for(const p of particles){
+      ctx.fillStyle = "rgba(242,242,243,0.55)";
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  init();
+  step();
+</script>
+</body>
+</html>
+
 
 
 
