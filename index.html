@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>你的名字 | 个人主页</title>
+  <meta name="description" content="个人主页：简介、项目、论文、联系方式" />
+  <style>
+    :root { --bg:#0b0f19; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --line:#1f2937; --accent:#8b5cf6; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:linear-gradient(180deg,#070a12, #0b0f19 40%, #070a12); color:var(--text);}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:980px;margin:0 auto;padding:32px 18px 64px}
+    .nav{display:flex;gap:14px;align-items:center;justify-content:space-between;position:sticky;top:0;
+      backdrop-filter: blur(10px); background:rgba(11,15,25,.7); border-bottom:1px solid rgba(31,41,55,.7); padding:14px 0;}
+    .nav .links{display:flex;gap:14px;flex-wrap:wrap}
+    .badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line); padding:8px 12px;border-radius:999px;background:rgba(17,24,39,.6)}
+    .hero{padding:28px 0 10px}
+    h1{font-size:34px;line-height:1.15;margin:10px 0}
+    p{color:var(--muted);line-height:1.6;margin:10px 0}
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:18px}
+    .card{border:1px solid var(--line);border-radius:18px;background:rgba(17,24,39,.7);padding:18px}
+    .card h2{margin:0 0 10px;font-size:18px}
+    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .btn{border:1px solid var(--line);padding:10px 12px;border-radius:12px;background:rgba(17,24,39,.6)}
+    .btn.primary{border-color:rgba(139,92,246,.6);box-shadow:0 0 0 1px rgba(139,92,246,.25) inset}
+    .tag{display:inline-block;border:1px solid var(--line);padding:6px 10px;border-radius:999px;color:var(--muted);margin:6px 6px 0 0;font-size:13px}
+    .item{padding:12px 0;border-top:1px dashed rgba(31,41,55,.8)}
+    .item:first-child{border-top:none;padding-top:0}
+    .item .title{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .item .title b{font-weight:650}
+    .item small{color:var(--muted)}
+    footer{margin-top:26px;color:var(--muted);font-size:13px}
+    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <div class="badge">✨ <b>你的名字</b> <span style="color:var(--muted)">| 个人主页</span></div>
+      <div class="links">
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#publications">Publications</a>
+        <a class="btn" href="#contact">Contact</a>
+        <a class="btn" href="https://github.com/你的用户名" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>你好，我是 <span style="color:var(--accent)">你的名字</span>。</h1>
+      <p>
+        这里写一句你想让别人记住你的话（比如：我做 AI agents / data science / HCI 相关研究与工程）。
+        下面是我的项目、论文和联系方式。
+      </p>
+      <div class="btns">
+        <a class="btn primary" href="你的简历PDF链接" target="_blank" rel="noreferrer">📄 CV / Resume</a>
+        <a class="btn" href="https://linkedin.com/in/你的id" target="_blank" rel="noreferrer">in LinkedIn</a>
+        <a class="btn" href="https://scholar.google.com/" target="_blank" rel="noreferrer">🎓 Google Scholar</a>
+      </div>
+      <div style="margin-top:12px">
+        <span class="tag">AI Agents</span>
+        <span class="tag">RAG</span>
+        <span class="tag">Data Science</span>
+        <span class="tag">HCI</span>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card" id="projects">
+        <h2>Selected Projects</h2>
+
+        <div class="item">
+          <div class="title">
+            <b>Project A — 一句话描述</b>
+            <small>2025</small>
+          </div>
+          <p>两三句话说明你做了什么、亮点是什么、产出是什么（论文/系统/开源/影响）。</p>
+          <div class="btns">
+            <a class="btn" href="项目链接" target="_blank" rel="noreferrer">Demo</a>
+            <a class="btn" href="代码链接" target="_blank" rel="noreferrer">Code</a>
+            <a class="btn" href="论文链接" target="_blank" rel="noreferrer">Paper</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="title">
+            <b>Project B — 一句话描述</b>
+            <small>2024</small>
+          </div>
+          <p>同上。</p>
+          <div class="btns">
+            <a class="btn" href="项目链接" target="_blank" rel="noreferrer">Demo</a>
+            <a class="btn" href="代码链接" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card">
+        <h2>About</h2>
+        <p>
+          这里写你的简短简介：学校/方向/研究兴趣/正在做什么。
+        </p>
+        <div class="item" id="publications">
+          <div class="title"><b>Publications</b></div>
+          <p class="item">
+            <b>Paper Title</b><br/>
+            <small>Venue / Status, Year · <a href="论文链接" target="_blank" rel="noreferrer" style="color:var(--accent)">PDF</a></small>
+          </p>
+          <p class="item">
+            <b>Paper Title</b><br/>
+            <small>Venue / Status, Year · <a href="论文链接" target="_blank" rel="noreferrer" style="color:var(--accent)">PDF</a></small>
+          </p>
+        </div>
+
+        <div class="item" id="contact">
+          <div class="title"><b>Contact</b></div>
+          <p>
+            Email：<a href="mailto:你的邮箱" style="color:var(--accent)">你的邮箱</a><br/>
+            GitHub：<a href="https://github.com/你的用户名" target="_blank" rel="noreferrer" style="color:var(--accent)">你的用户名</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      © <span id="y"></span> 你的名字 · Built with GitHub Pages
+    </footer>
+  </div>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
