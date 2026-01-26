@@ -6,26 +6,40 @@
 <title>David Xingda Lyu</title>
 
 <style>
-body{
-  margin:0;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont;
-  background:
-    radial-gradient(900px 600px at 15% 10%, rgba(139,92,246,.28), transparent 60%),
-    linear-gradient(180deg,#070A12,#0B1020);
-  color:#e5e7eb;
+:root{
+  --bg-main:#0e1116;
+  --bg-soft:#141821;
+  --card:#171c26;
+  --border:#242b3a;
+  --text-main:#e6e8ec;
+  --text-soft:#aeb4c2;
+  --accent:#4f7cff;
 }
 
-.wrap{max-width:1000px;margin:auto;padding:80px 20px}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont;
+  background:
+    radial-gradient(800px 400px at 70% -10%, rgba(79,124,255,.08), transparent 60%),
+    linear-gradient(180deg,#0e1116,#0e1116);
+  color:var(--text-main);
+}
+
+.wrap{
+  max-width:1000px;
+  margin:auto;
+  padding:80px 20px;
+}
 
 nav{
   position:fixed;
   top:0;left:0;right:0;
-  background:rgba(7,10,18,.72);
+  background:rgba(14,17,22,.85);
   backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid var(--border);
 }
 
-nav div{
+nav div, nav .inner{
   max-width:1000px;
   margin:auto;
   display:flex;
@@ -35,60 +49,120 @@ nav div{
 }
 
 nav a{
-  color:#cbd5f5;
+  color:var(--text-soft);
   text-decoration:none;
   margin-left:14px;
   font-size:14px;
 }
 
-nav a:hover{ text-decoration:underline; }
+nav a:hover{
+  color:var(--text-main);
+  text-decoration:underline;
+}
 
 h1{
   font-size:42px;
   margin:0 0 12px;
-  letter-spacing:-0.3px;
+  letter-spacing:-.4px;
+}
+
+h2{
+  font-size:18px;
+  margin:22px 0 10px;
+  color:var(--text-main);
 }
 
 p{
-  color:#a7b0c0;
+  color:var(--text-soft);
   line-height:1.7;
-  font-size:17px;
-  margin:0;
-  max-width:850px;
+  font-size:16.5px;
 }
 
-.hero{min-height:90vh;display:flex;align-items:center}
+.hero{
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+}
 
-.metaRow{
+.metaRow,
+.links,
+.row{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
-  margin-top:18px;
+  margin-top:16px;
 }
 
 .pill{
   display:inline-flex;
   align-items:center;
-  gap:8px;
-  padding:10px 12px;
-  border-radius:12px;
-  border:1px solid rgba(139,92,246,.25);
-  background:rgba(17,24,39,.25);
+  padding:9px 12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--bg-soft);
   text-decoration:none;
-  color:#e5e7eb;
+  color:var(--text-main);
   font-size:14px;
 }
 
 .pill:hover{
-  border-color: rgba(34,211,238,.25);
-  background:rgba(17,24,39,.35);
+  border-color:var(--accent);
 }
+
+.card,
+.box{
+  border:1px solid var(--border);
+  background:var(--card);
+  border-radius:12px;
+  padding:14px;
+}
+
+.item{
+  padding:14px 0;
+  border-top:1px solid var(--border);
+}
+
+.item:first-child{
+  border-top:none;
+}
+
+.title,
+.role{
+  font-weight:600;
+}
+
+.meta{
+  color:var(--text-soft);
+  font-size:14px;
+  margin-top:6px;
+  line-height:1.6;
+}
+
+.tags{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.tag{
+  font-size:12.5px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:var(--bg-soft);
+  color:var(--text-soft);
+}
+
+.note,
+.small,
 .smallNote{
-  margin-top:16px;
-  color:rgba(167,176,192,.85);
+  color:var(--text-soft);
   font-size:13.5px;
+  margin-top:14px;
 }
 </style>
+
 </head>
 
 <body>
