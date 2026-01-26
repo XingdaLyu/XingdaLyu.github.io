@@ -1,35 +1,257 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Experience — David Xingda Lyu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;font-family:system-ui;background:#0a0a0a;color:#f1f1f1}
-.wrap{max-width:900px;margin:auto;padding:120px 24px}
-.role{margin-bottom:36px}
-.org{color:#aaa}
+  :root{
+    --bg:#07070b; --bg2:#0b0b13;
+    --text:#f2f2f3; --muted:#b7b7c2; --muted2:#9a9aac;
+    --line:rgba(255,255,255,.10);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;font-family:Inter,system-ui,-apple-system;color:var(--text);
+    background:
+      radial-gradient(1200px 700px at 20% 10%, rgba(139,92,246,.18), transparent 55%),
+      radial-gradient(1000px 700px at 85% 15%, rgba(34,211,238,.10), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+    overflow-x:hidden;
+  }
+  #bg{position:fixed;inset:0;z-index:-2;opacity:.9}
+  .cursor-glow{
+    position:fixed;width:420px;height:420px;border-radius:999px;transform:translate(-50%,-50%);
+    pointer-events:none;z-index:-1;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(139,92,246,.20), transparent 55%),
+      radial-gradient(circle at 70% 60%, rgba(34,211,238,.14), transparent 60%);
+    filter:blur(18px);mix-blend-mode:screen;opacity:.85;
+  }
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(7,7,11,.68);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .inner{
+    max-width:980px;margin:0 auto;padding:14px 22px;
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+  }
+  .brand{display:flex;align-items:baseline;gap:10px;font-family:"Space Grotesk",Inter,system-ui}
+  .brand b{font-weight:600}
+  .brand small{color:var(--muted2);font-size:12.5px;font-family:"JetBrains Mono",ui-monospace}
+  .navlinks{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+  .navlinks a{
+    color:rgba(242,242,243,.82);text-decoration:none;font-size:13.5px;
+    padding:8px 10px;border-radius:999px;border:1px solid transparent;
+    transition:transform .16s ease, background .16s ease, border-color .16s ease, color .16s ease;
+  }
+  .navlinks a:hover{transform:translateY(-1px);background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.10);color:#fff}
+  .wrap{max-width:980px;margin:0 auto;padding:104px 22px 70px}
+
+  .pageTitle{font-family:"Space Grotesk",Inter,system-ui;font-size:44px;letter-spacing:-.8px;margin:10px 0 12px;font-weight:500}
+  .pageLead{color:var(--muted);line-height:1.8;margin:0 0 22px;max-width:80ch}
+
+  .stack{display:grid;gap:14px}
+  .card{
+    position:relative;border:1px solid rgba(255,255,255,.10);
+    background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    border-radius:22px;padding:18px 18px 16px;overflow:hidden;
+    transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+  }
+  .card::after{
+    content:"";position:absolute;inset:-90px;
+    background:
+      radial-gradient(440px 260px at var(--mx,50%) var(--my,50%), rgba(139,92,246,.14), transparent 62%),
+      radial-gradient(420px 260px at calc(var(--mx,50%) + 12%) calc(var(--my,50%) + 8%), rgba(34,211,238,.10), transparent 62%);
+    opacity:.78;pointer-events:none;transition:opacity .18s ease;
+  }
+  .card:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.32);box-shadow:0 22px 60px rgba(0,0,0,.55)}
+  .card:hover::after{opacity:1}
+
+  .top{position:relative;display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+  .title{margin:0;font-size:18px;font-weight:600;letter-spacing:-.2px;font-family:"Space Grotesk",Inter,system-ui}
+  .meta{color:rgba(242,242,243,.62);font-size:12.5px;font-family:"JetBrains Mono",ui-monospace;white-space:nowrap;margin-top:2px}
+  .desc{position:relative;color:rgba(242,242,243,.78);line-height:1.75;margin:10px 0 0}
+  ul{margin:10px 0 0 18px;color:rgba(242,242,243,.78);line-height:1.75}
+  li{margin:6px 0}
+  .footer{
+    margin-top:30px;border-top:1px solid var(--line);padding-top:14px;
+    color:rgba(242,242,243,.55);font-size:12.5px;font-family:"JetBrains Mono",ui-monospace;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
 </style>
 </head>
+
 <body>
+<canvas id="bg"></canvas>
+<div class="cursor-glow" id="glow"></div>
+
+<nav>
+  <div class="inner">
+    <div class="brand">
+      <b>David Xingda Lyu</b>
+      <small>UW · AI/ML · Agents & RAG</small>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="publications.html">Publications</a>
+      <a href="experience.html">Experience</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
 <div class="wrap">
-<h1>Experience</h1>
+  <h1 class="pageTitle">Experience</h1>
+  <p class="pageLead">
+    Research + professional experience (highlights).
+  </p>
 
-<div class="role">
-<h3>Student Researcher — Carnegie Mellon University</h3>
-<div class="org">Biomedical RAG models, 2024–Present</div>
+  <div class="stack">
+
+    <article class="card">
+      <div class="top">
+        <h2 class="title">Data Analyst Intern — Amazon.com, Inc. (Amazon Transportation Services, ATS Global)</h2>
+        <div class="meta">Seattle, WA · Jun 2025 – Aug 2025</div>
+      </div>
+      <ul>
+        <li>Automated data QA over 300K+ records (Python/SQL), improving usable completeness +26%.</li>
+        <li>Built routing optimization models projecting $5M+ annual savings and +23% utilization; shipped anomaly detection + dashboards adopted by senior ops.</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="top">
+        <h2 class="title">Data Analyst Intern — Baynovation, LLC (Fintech)</h2>
+        <div class="meta">San Jose, CA · Jul 2024 – Sep 2024</div>
+      </div>
+      <ul>
+        <li>Built refinance break-even decision tool with rate scraping/API integration; shipped interactive scenario dashboard.</li>
+        <li>Developed delinquency risk models (GLM/RF/XGBoost) with validated feature pipeline for risk scoring.</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="top">
+        <h2 class="title">Undergraduate Researcher — InfoSeeking Lab, University of Washington</h2>
+        <div class="meta">Nov 2025 – Present</div>
+      </div>
+      <p class="desc">
+        Designing risk-aware proactive agents with evidence-seeking, uncertainty reporting, and behavioral guardrails.
+        <br/><span class="meta">Supervisor: Prof. Chirag Shah · PhD Mentor: Kirandeep Kaur</span>
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="top">
+        <h2 class="title">Project & Team Lead — Multi-Agent Systems Research Project (Tongji University Collaboration)</h2>
+        <div class="meta">Sep 2025 – Present</div>
+      </div>
+      <p class="desc">
+        Initiated and led PosterEdit with a scene-graph + verify–repair loop enforcing layout constraints and preserved reading order.
+        <br/><span class="meta">Supervisor: Prof. Daqiang Zhang</span>
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="top">
+        <h2 class="title">Project & Team Lead — Retrieval-Augmented Generation Research, Carnegie Mellon University</h2>
+        <div class="meta">Nov 2024 – May 2025</div>
+      </div>
+      <p class="desc">
+        Proposed and led P-RAG: retrieval + LoRA adaptation + selective CoT + data augmentation for biomedical & multi-hop QA.
+        <br/><span class="meta">Supervisor: Prof. David P. Woodruff</span>
+      </p>
+    </article>
+
+  </div>
+
+  <div class="footer">
+    <span>© <span id="y"></span> David Xingda Lyu</span>
+    <span id="stamp"></span>
+  </div>
 </div>
 
-<div class="role">
-<h3>Data Analyst Intern — Baynovation LLC</h3>
-<div class="org">Risk modeling, XGBoost, GLM, 2024</div>
-</div>
+<script>
+  const glow=document.getElementById("glow");
+  addEventListener("mousemove",(e)=>{
+    glow.style.left=e.clientX+"px"; glow.style.top=e.clientY+"px";
+    document.querySelectorAll(".card").forEach(c=>{
+      const r=c.getBoundingClientRect();
+      const mx=((e.clientX-r.left)/r.width)*100;
+      const my=((e.clientY-r.top)/r.height)*100;
+      if(mx>=0&&mx<=100&&my>=0&&my<=100){
+        c.style.setProperty("--mx",mx.toFixed(1)+"%");
+        c.style.setProperty("--my",my.toFixed(1)+"%");
+      }
+    });
+  });
+  document.getElementById("y").textContent=new Date().getFullYear();
+  document.getElementById("stamp").textContent="Last updated: "+new Date().toLocaleDateString(undefined,{year:"numeric",month:"short",day:"2-digit"});
 
-<div class="role">
-<h3>Research Fellow — Cambridge Centre for International Research</h3>
-<div class="org">International research projects, 2022</div>
-</div>
+  const canvas=document.getElementById("bg");
+  const ctx=canvas.getContext("2d",{alpha:true});
+  let DPR;
+  const N=74, LINK=130, PULL=0.015;
+  const particles=[];
+  const mouse={x:0,y:0,active:false};
+  const rand=(a,b)=>Math.random()*(b-a)+a;
 
-</div>
+  function resize(){
+    DPR=Math.min(devicePixelRatio||1,2);
+    canvas.width=Math.floor(innerWidth*DPR);
+    canvas.height=Math.floor(innerHeight*DPR);
+    canvas.style.width=innerWidth+"px";
+    canvas.style.height=innerHeight+"px";
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  addEventListener("resize",resize);
+  addEventListener("mousemove",(e)=>{mouse.x=e.clientX;mouse.y=e.clientY;mouse.active=true;});
+  addEventListener("mouseleave",()=>mouse.active=false);
+
+  function init(){
+    resize(); particles.length=0;
+    for(let i=0;i<N;i++) particles.push({x:rand(0,innerWidth),y:rand(0,innerHeight),vx:rand(-0.35,0.35),vy:rand(-0.35,0.35),r:rand(1.1,2.0)});
+  }
+  function step(){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    for(const p of particles){
+      if(mouse.active){
+        const dx=mouse.x-p.x, dy=mouse.y-p.y;
+        const d2=dx*dx+dy*dy;
+        if(d2<220*220){p.vx+=dx*PULL/220;p.vy+=dy*PULL/220;}
+      }
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<-20)p.x=innerWidth+20; if(p.x>innerWidth+20)p.x=-20;
+      if(p.y<-20)p.y=innerHeight+20; if(p.y>innerHeight+20)p.y=-20;
+      p.vx*=0.99; p.vy*=0.99;
+    }
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const a=particles[i],b=particles[j];
+        const d=Math.hypot(a.x-b.x,a.y-b.y);
+        if(d<LINK){
+          const t=1-d/LINK;
+          ctx.strokeStyle=`rgba(139,92,246,${0.06+0.12*t})`;
+          ctx.lineWidth=1;
+          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        }
+      }
+    }
+    for(const p of particles){
+      ctx.fillStyle="rgba(242,242,243,0.55)";
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+    }
+    requestAnimationFrame(step);
+  }
+  init(); step();
+</script>
 </body>
 </html>
+
