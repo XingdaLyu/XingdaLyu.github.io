@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>David Xingda Lyu</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --bg:#0a0a0a;
   --text:#f1f1f1;
   --muted:#cfcfcf;
-  --nav:#0a0a0a;
   --line:#222;
   --pill:#333;
-  --pillHover:#555;
-  --icon:#aaa;
+  --pillHover:#666;
+  --icon:#a8a8a8;
+  --iconHover:#eaeaea;
   --glow: rgba(139,92,246,.25);
 }
 
@@ -58,7 +58,7 @@ nav a{
   font-size:14px;
   transition: color .18s ease;
 }
-nav a:hover{color:#e6e6e6}
+nav a:hover{color:#f1f1f1}
 
 .hero{
   min-height:90vh;
@@ -68,8 +68,8 @@ nav a:hover{color:#e6e6e6}
 
 .heroGrid{
   display:grid;
-  grid-template-columns: 150px 1fr;
-  gap:26px;
+  grid-template-columns: 160px 1fr;
+  gap:28px;
   align-items:center;
 }
 
@@ -79,16 +79,18 @@ nav a:hover{color:#e6e6e6}
 }
 
 h1{
-  font-size:46px;
+  font-family:"Space Grotesk", Inter, system-ui;
+  font-size:52px;
   margin:0 0 14px;
   font-weight:500;
-  letter-spacing:-0.5px;
+  letter-spacing:-0.8px;
 }
 p{
   color:var(--muted);
   line-height:1.8;
   font-size:17px;
   margin:0;
+  max-width: 60ch;
 }
 
 .metaRow{
@@ -101,34 +103,38 @@ p{
 .pill{
   display:inline-flex;
   align-items:center;
-  gap:8px;
+  gap:9px;
   border:1px solid var(--pill);
-  padding:9px 12px;
-  border-radius:12px;
+  padding:10px 13px;
+  border-radius:14px;
   color:white;
   font-size:14px;
   font-family:JetBrains Mono;
   text-decoration:none;
+  background: rgba(255,255,255,0.02);
 
-  /* subtle PhD-style micro interaction */
   transition:
     transform .16s ease,
     border-color .16s ease,
     background .16s ease,
     box-shadow .16s ease;
-  background: rgba(255,255,255,0.02);
+}
+
+.pill .icon{
+  width:16px;height:16px;
+  stroke:var(--icon);
+  transition: stroke .16s ease, transform .16s ease;
 }
 
 .pill:hover{
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: var(--pillHover);
-  box-shadow: 0 10px 22px rgba(0,0,0,.35), 0 0 0 1px rgba(139,92,246,.10);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 14px 30px rgba(0,0,0,.45), 0 0 0 1px rgba(139,92,246,.12);
 }
-
-.icon{
-  width:16px;
-  height:16px;
-  stroke:var(--icon);
+.pill:hover .icon{
+  stroke: var(--iconHover);
+  transform: translateY(-.5px);
 }
 
 /* Avatar */
@@ -139,100 +145,13 @@ p{
 }
 
 .avatar{
-  width:140px;
-  height:140px;
+  width:150px;
+  height:150px;
   border-radius:50%;
   object-fit:cover;
-  border:1px solid rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.14);
   box-shadow:
-    0 18px 40px rgba(0,0,0,.45),
-    0 0 0 6px rgba(139,92,246,.10),
-    0 0 40px var(--glow);
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-
-.avatar:hover{
-  transform: translateY(-2px);
-  box-shadow:
-    0 22px 50px rgba(0,0,0,.55),
-    0 0 0 6px rgba(139,92,246,.14),
-    0 0 55px rgba(139,92,246,.28);
-}
-</style>
-
-</head>
-
-<body>
-
-<nav>
-  <div class="inner">
-    <b>David Xingda Lyu</b>
-    <div>
-      <a href="projects.html">Projects</a>
-      <a href="publications.html">Publications</a>
-      <a href="experience.html">Experience</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://github.com/XingdaLyu" target="_blank" rel="noreferrer">GitHub</a>
-    </div>
-  </div>
-</nav>
-
-<div class="wrap hero">
-  <div class="heroGrid">
-
-    <!-- Upload profile.jpg to repo root -->
-    <div class="avatarWrap">
-      <img class="avatar" src="profile.jpg" alt="David Xingda Lyu">
-    </div>
-
-    <div>
-      <h1>Hi, I'm David Xingda Lyu.</h1>
-      <p>
-        I am an undergraduate student at the University of Washington pursuing double degrees in Informatics and Statistics (Data Science).
-        My work focuses on generative AI agents, retrieval-augmented generation, and human-centered decision support under epistemic uncertainty.
-        I’m mentored by PhD researcher Kirandeep Kaur and advised by Prof. Chirag Shah.
-      </p>
-
-      <div class="metaRow" aria-label="Quick links">
-        <a class="pill" href="mailto:xlyu18@uw.edu">
-          <svg class="icon" fill="none" viewBox="0 0 24 24">
-            <path d="M4 6h16v12H4z"/><path d="M4 6l8 6 8-6"/>
-          </svg>
-          xlyu18@uw.edu
-        </a>
-
-        <a class="pill" href="https://www.linkedin.com/in/david-xingda-lyu-573ab4300/" target="_blank" rel="noreferrer">
-          <svg class="icon" fill="none" viewBox="0 0 24 24">
-            <path d="M16 8a6 6 0 016 6v6h-4v-6a2 2 0 00-4 0v6h-4V9h4v2"/>
-            <rect x="2" y="9" width="4" height="12"/>
-            <circle cx="4" cy="4" r="2"/>
-          </svg>
-          LinkedIn
-        </a>
-
-        <span class="pill" aria-label="School">
-          <svg class="icon" fill="none" viewBox="0 0 24 24">
-            <path d="M12 3l9 4-9 4-9-4 9-4z"/><path d="M3 11v5c0 2 4 4 9 4s9-2 9-4v-5"/>
-          </svg>
-          University of Washington
-        </span>
-
-        <!-- keep Seattle line -->
-        <span class="pill" aria-label="Location">
-          <svg class="icon" fill="none" viewBox="0 0 24 24">
-            <path d="M12 21s8-7 8-11a8 8 0 10-16 0c0 4 8 11 8 11z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-          Seattle, WA
-        </span>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-</body>
-</html>
+    0 18px
 
 
 
