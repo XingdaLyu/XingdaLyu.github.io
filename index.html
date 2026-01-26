@@ -5,10 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>David Xingda Lyu</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 body{
 margin:0;
-font-family: system-ui, -apple-system;
+font-family:Inter, system-ui, -apple-system;
 background:#0a0a0a;
 color:#f1f1f1;
 }
@@ -30,19 +32,40 @@ justify-content:space-between;
 padding:14px 24px;
 }
 
-nav a{color:#bbb;text-decoration:none;margin-left:14px}
+nav a{color:#bbb;text-decoration:none;margin-left:14px;font-size:14px}
 
-h1{font-size:46px;margin-bottom:14px;font-weight:500}
+h1{font-size:46px;margin-bottom:14px;font-weight:500;letter-spacing:-0.5px}
 p{color:#cfcfcf;line-height:1.8;font-size:17px}
 
 .pill{
+display:inline-flex;
+align-items:center;
+gap:8px;
 border:1px solid #333;
 padding:9px 12px;
-border-radius:10px;
+border-radius:12px;
 color:white;
+font-size:14px;
+font-family:JetBrains Mono;
 }
 
 .hero{min-height:90vh;display:flex;align-items:center}
+
+.metaRow{
+margin-top:22px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.icon{
+width:16px;
+height:16px;
+stroke:#aaa;
+}
+
+a.pill{text-decoration:none}
+a.pill:hover{border-color:#555}
 </style>
 
 </head>
@@ -71,18 +94,20 @@ color:white;
       I’m mentored by PhD researcher Kirandeep Kaur and advised by Prof. Chirag Shah.
     </p>
 
-    
-    <div class="metaRow" aria-label="Quick links">
-      <a class="pill" href="mailto:xlyu18@uw.edu">✉️ xlyu18@uw.edu</a>
-      <a class="pill" href="https://www.linkedin.com/in/david-xingda-lyu-573ab4300/" target="_blank" rel="noreferrer">LinkedIn</a>
-      <span class="pill" aria-label="School">🎓 University of Washington</span>
-      <span class="pill" aria-label="Location">📍 Seattle, WA</span>
+    <div class="metaRow">
 
-    </div>
-  </div>
-</div>
+      <a class="pill" href="mailto:xlyu18@uw.edu">
+        <svg class="icon" fill="none" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 6l8 6 8-6"/></svg>
+        xlyu18@uw.edu
+      </a>
 
-</body>
-</html>
+      <a class="pill" href="https://www.linkedin.com/in/david-xingda-lyu-573ab4300/" target="_blank">
+        <svg class="icon" fill="none" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v6h-4v-6a2 2 0 00-4 0v6h-4V9h4v2"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+
+      <span class="pill">
+        <svg class="icon" fill="none" view
+
 
 
