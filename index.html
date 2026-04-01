@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>David Xingda Lyu</title>
+
+<style>
+  :root{
+    --blue:#1a73e8;
+    --text:#111;
+    --muted:#666;
+
+    --leftW: 320px;
+    --pageW: 1060px;
+    --navH: 58px;
+    --rightMax: 740px;
+
+    --bg: #f7f7f8;
+    --base: 17px;
+  }
+
+  *{ box-sizing:border-box; }
+  html, body{ height:100%; }
+
+  body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.58;
+    font-size: var(--base);
+  }
+
+  a{ color:var(--blue); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+
+  .page{
+    width: min(var(--pageW), 100%);
+    margin: 0 auto;
+    height: 100vh;
+    position: relative;
+    background: var(--bg);
+  }
+
+  .header{
+    position: sticky;
+    top:0;
+    z-index:30;
+    height: var(--navH);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 0 18px;
+    background: rgba(247,247,248,.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 0;
+  }
+
+  .header .name{
+    font-size: 31px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    margin:0;
+    white-space:nowrap;
+    padding-left: 4px;
+    color: var(--text);
+  }
+
+  .header .nav{
+    display:flex;
+    gap:22px;
+    font-size: 21px;
+    color:var(--muted);
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    padding-right: 4px;
+  }
+  .header .nav a{ color:var(--muted); }
+  .header .nav a:hover{ color:var(--text); text-decoration:none; }
+
+  .main{
+    height: calc(100vh - var(--navH));
+    display:grid;
+    grid-template-columns: var(--leftW) 1fr;
+  }
+
+  .left{
+    padding: 22px 14px 22px 18px;
+    overflow: auto;
+    background: var(--bg);
+    border-right: 0;
+  }
+
+  .photoWrap{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top: 18px;
+    margin-bottom: 12px;
+    transform: translateX(-4px);
+  }
+
+  .photo{
+    width: 232px;
+    height: 232px;
+    border-radius: 50%;
+    object-fit: cover;
+    display:block;
+    background:#fff;
+    border: 0;
+    transform: translateX(-8px);
+  }
+
+  .leftmeta{
+    margin-top: 8px;
+    font-size: var(--base);
+    padding-left: 8px;
+  }
+
+  .leftmeta .title{
+    margin-top: 8px;
+    font-weight:500;
+    font-size: calc(var(--base) - 2px);
+    line-height: 1.35;
+  }
+
+  .email{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top: 8px;
+    font-size: calc(var(--base) - 2px);
+  }
+  .email svg{ width:20px; height:20px; flex:0 0 auto; }
+
+  .iconrow{
+    display:flex;
+    gap:12px;
+    margin-top: 12px;
+    align-items:center;
+  }
+  .iconbtn{
+    width:32px; height:32px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    border: 0;
+    background: rgba(255,255,255,.9);
+  }
+  .iconbtn svg{ width:16px; height:16px; fill:#111; }
+  .iconbtn:hover{ background:#fff; text-decoration:none; }
+
+  .agentWrap{
+    width: 216px;
+    margin-top: 12px;
+    overflow: hidden;
+    background:#fff;
+    border:0;
+  }
+  .agentImg{
+    width: 216px;
+    max-width: 100%;
+    height: auto;
+    display:block;
+    border:0;
+    background:#fff;
+  }
+
+  .right{
+    overflow-y:auto;
+    background: var(--bg);
+    min-width: 0;
+  }
+  .content{
+    max-width: var(--rightMax);
+    padding: 20px 26px 60px;
+  }
+
+  h2,
+  .sectionTitle{
+    font-size: 31px;
+    font-weight: 400;
+    letter-spacing: -0.45px;
+    margin: 18px 0 10px;
+    color: var(--text);
+  }
+
+  .para{
+    margin: 0 0 16px;
+    font-size: var(--base);
+    color:#222;
+  }
+
+  .groupTitle{
+    margin: 14px 0 8px;
+    font-size: var(--base);
+    font-weight: 600;
+  }
+
+  .entry{
+    margin: 0 0 14px;
+    font-size: var(--base);
+  }
+
+  .entry .t{
+    font-weight:600;
+    font-size: var(--base);
+    margin:0;
+  }
+
+  .entry .m{
+    margin: 4px 0 0;
+    color:#333;
+    font-size: var(--base);
+  }
+
+  .meta{
+    color:#555;
+    font-weight:400;
+  }
+
+  .exp-sep{
+    border-top: 1px solid rgba(0,0,0,0.08);
+    margin: 14px 0 16px;
+  }
+
+  .footer{
+    margin-top: 24px;
+    padding-top: 12px;
+    border-top: 0;
+    color:#777;
+    font-size: calc(var(--base) - 3px);
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+
+  /* ✅ Mobile: one single page scroll + hide the square agent image */
+  @media (max-width: 900px){
+    :root{ --pageW: 100%; --leftW: 1fr; }
+
+    /* allow full document scroll */
+    .page{ height: auto; min-height: 100vh; }
+    .main{ height: auto; grid-template-columns: 1fr; }
+
+    /* disable split scrolling */
+    .left, .right{ overflow: visible; }
+
+    /* header: tighter and wraps nicely */
+    .header{
+      padding: 0 14px;
+      height: auto;
+      min-height: var(--navH);
+      align-items: flex-start;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .header .name{
+      font-size: 24px;
+      line-height: 1.15;
+      padding-left: 0;
+      white-space: normal;
+    }
+    .header .nav{
+      font-size: 16px;
+      gap: 14px;
+      padding-right: 0;
+      margin-top: 6px;
+      justify-content: flex-start;
+    }
+
+    .content{ padding: 14px 16px 46px; }
+    .left{ padding: 16px 16px 18px; }
+
+    /* true center on mobile */
+    .photoWrap{ transform: none; margin-top: 10px; }
+    .photo{
+      width: 200px;
+      height: 200px;
+      transform: none;
+      border-radius: 50%;
+    }
+
+    h2, .sectionTitle{ font-size: 26px; }
+    .leftmeta{ padding-left: 0; }
+    .leftmeta .title{ font-size: 15px; }
+
+    /* ✅ hide the square agent image on mobile */
+    .agentWrap{ display:none; }
+  }
+</style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="name">David Xingda Lyu</div>
+      <nav class="nav">
+        <a href="#publications">Publications</a>
+        <a href="#research-experience">Research</a>
+        <a href="#industry-experience">Industry</a>
+        <a href="https://drive.google.com/file/d/1-BRR_4SfeOjWczO5KCxnL75HfSAkiq4c/view" target="_blank" rel="noreferrer">CV</a>
+      </nav>
+    </header>
+
+    <div class="main">
+      <aside class="left">
+        <div class="photoWrap">
+          <img class="photo" src="profile.jpg" alt="David Xingda Lyu">
+        </div>
+
+        <div class="leftmeta">
+          <div class="title">Junior @ University of Washington</div>
+
+          <div class="email">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#111" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/>
+            </svg>
+            <span>xlyu18 [at] uw [dot] edu</span>
+          </div>
+
+          <div class="iconrow" aria-label="Links">
+  
+            <a class="iconbtn" href="https://scholar.google.com/citations?hl=en&user=85X6CKIAAAAJ" target="_blank" rel="noreferrer" aria-label="Google Scholar">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm0 13L4.5 11.9 12 8l7.5 3.9L12 16zm-7 2.5V14l7 3.8 7-3.8v4.5c0 1.7-3.1 3-7 3s-7-1.3-7-3z"/>
+              </svg>
+            </a>
+
+            <a class="iconbtn" href="https://www.linkedin.com/in/david-xingda-lyu-573ab4300/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 23.5h4V7.5h-4v16zM8.5 7.5h3.8v2.2h.1c.5-1 1.9-2.2 4-2.2 4.3 0 5.1 2.8 5.1 6.4v9.6h-4v-8.5c0-2-.04-4.5-2.8-4.5-2.8 0-3.2 2.1-3.2 4.4v8.6h-4V7.5z"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="agentWrap">
+            <img class="agentImg" src="Agent.jpg" alt="AI agent icon">
+          </div>
+        </div>
+      </aside>
+
+      <main class="right">
+        <div class="content">
+          <h2>About me</h2>
+          <p class="para">
+            I’m a Junior at the <a href="https://www.washington.edu/" target="_blank" rel="noreferrer">University of Washington</a>
+            pursuing double degrees in Statistics and Informatics: Data Science. I work on proactive and generative AI agents
+            and human-centered decision support under epistemic uncertainty. I’m supervised by
+            <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Prof. Chirag Shah</a>
+            and <a href="https://i-kiran.github.io/publications/" target="_blank" rel="noreferrer">Kirandeep Kaur</a> at UW,
+            and advised by <a href="https://daqiangzhang.weebly.com/" target="_blank" rel="noreferrer">Prof. Daqiang Zhang</a>
+            at Tongji University.
+          </p>
+
+          <div class="sectionTitle">Ongoing Work</div>
+          <p class="para" style="margin-bottom:0;">
+            <b>Epistemically-grounded proactive agents</b>, designing systems that identify latent knowledge gaps and provide calibrated assistance during human–AI collaborative problem solving under uncertainty.
+            <br>
+            <b>PosterEdit: Constraint-preserving editing agents for structured visual documents</b>, enabling safe, iterative editing through layout-aware execution, deterministic verification, and minimal structural repair.
+            <br>
+            Manuscript: PosterEdit: A Constraint-Preserving Editing Agent for Scientific Posters.
+          </p>
+
+          <div class="sectionTitle" id="publications">Publications</div>
+
+          <div class="groupTitle">Proactive Agents</div>
+
+          <div class="entry">
+            <div class="t">Position: Knowing Isn’t Understanding: Re-grounding Generative Proactivity with Epistemic and Behavioral Insight</div>
+            <div class="m">Kaur, Kirandeep, Lyu, Xingda, &amp; Shah, Chirag. 2026. Under review.</div>
+          </div>
+          <div class="exp-sep"></div>
+
+          <div class="entry">
+            <div class="t">Decision-Making Under Unknown Unknowns in Proactive Agentic Systems</div>
+            <div class="m">Lyu, Xingda. 2026. ACM CHIIR’26 Workshop on Human-Centered Proactive &amp; Personalized Agents for Interactive Information Access. Accepted.</div>
+          </div>
+          <div class="exp-sep"></div>
+
+          <div class="groupTitle">Retrieval-Augmented Generation</div>
+
+          <div class="entry">
+            <div class="t">P-RAG: Prompt-Enhanced Parametric RAG with LoRA and Selective CoT for Biomedical and Multi-Hop QA</div>
+            <div class="m">Lyu, Xingda, Lyu, Gongfu, Yan, Zitai, &amp; Jiang, Yuxin. 2025. Proceedings of International Conference on Computing and Data Science.</div>
+          </div>
+
+          <div class="sectionTitle" id="research-experience">Research Experience</div>
+
+          <div class="entry">
+            <div class="t">Undergraduate Researcher, InfoSeeking Lab, University of Washington <span class="meta">| Nov 2025 – Present</span></div>
+            <div class="m">
+              Supervisor: <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Prof. Chirag Shah</a>;
+              PhD Mentor: <a href="https://i-kiran.github.io/publications/" target="_blank" rel="noreferrer">Kirandeep Kaur</a>.
+              Work on proactive and generative agents for human-centered decision support under epistemic uncertainty,
+              with emphasis on evidence-seeking and uncertainty-aware interaction.
+            </div>
+          </div>
+
+          <div class="exp-sep"></div>
+
+          <!-- ADDED: Tongji PosterEdit research experience (only change) -->
+          <div class="entry">
+            <div class="t">Project Lead, PosterEdit — Tongji University Collaboration <span class="meta">| Sep 2025 – Present</span></div>
+            <div class="m">
+              Principal Investigator:
+              <a href="https://daqiangzhang.weebly.com/" target="_blank" rel="noreferrer">Prof. Daqiang Zhang</a>.
+              Designed and implemented PosterEdit, a constraint-preserving editing agent for structured visual documents,
+              enabling layout-valid iterative editing through structure-aware execution, deterministic verification,
+              and minimal structural repair. Manuscript in preparation.
+            </div>
+          </div>
+
+          <div class="exp-sep"></div>
+
+          <div class="entry">
+            <div class="t">Project &amp; Team Lead, Retrieval-Augmented Generation Research, Carnegie Mellon University <span class="meta">| Nov 2024 – May 2025</span></div>
+            <div class="m">
+              Supervisor: <a href="https://www.cs.cmu.edu/~dwoodruf/" target="_blank" rel="noreferrer">Prof. David P. Woodruff</a>.
+              Proposed and led P-RAG, combining retrieval, LoRA adaptation, and selective CoT for biomedical and multi-hop QA.
+            </div>
+          </div>
+
+          
+
+          <div class="sectionTitle" id="industry-experience">Industry Experience</div>
+
+          <div class="entry">
+            <div class="t">Data Analyst Intern, <a href="https://www.amazon.com/ref=nav_logo" target="_blank" rel="noreferrer">Amazon.com, Inc.</a>, Amazon Transportation Services, Seattle, WA <span class="meta">| Jun 2025 – Aug 2025</span></div>
+            <div class="m">
+              Built automated data-quality pipelines over 300K+ records (Python/SQL), increasing usable completeness by 26%.
+              Designed and deployed routing optimization models projecting $5M+ in annual savings and a 23% utilization increase,
+              alongside anomaly detection systems adopted by senior operations teams.
+            </div>
+          </div>
+
+          <div class="exp-sep"></div>
+
+          <div class="entry">
+            <div class="t">Data Analyst Intern, <a href="https://www.baynovation.com/" target="_blank" rel="noreferrer">Baynovation, LLC</a> (Fintech), San Jose, CA <span class="meta">| Jul 2024 – Sep 2024</span></div>
+            <div class="m">
+              Built refinance break-even decision tool with rate scraping/API integration; shipped interactive scenario dashboard.
+              Developed delinquency risk models (GLM/RF/XGBoost) with validated feature pipeline for risk scoring.
+            </div>
+          </div>
+
+          <div class="footer">
+            <span>© <span id="y"></span> David Xingda Lyu</span>
+            <span id="stamp"></span>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+  document.getElementById("stamp").textContent =
+    "Last updated: " + new Date().toLocaleDateString(undefined, {year:"numeric", month:"short", day:"2-digit"});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
