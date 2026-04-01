@@ -288,12 +288,13 @@
   @media (max-width: 1100px){
     .main{
       grid-template-columns: 1fr;
-      row-gap:26px;
+      row-gap:22px;
       width:min(860px, calc(100% - 40px));
       margin:34px auto 56px;
     }
 
     .sidebar{
+      order:-1;
       width:100%;
       padding-top:0;
       display:flex;
@@ -303,6 +304,7 @@
 
     .photoWrap{
       justify-content:flex-start;
+      margin-bottom:10px;
     }
 
     .photo{
@@ -380,8 +382,8 @@
         <p class="para">
           Hello and welcome! I’m a junior at the
           <a href="https://www.washington.edu/" target="_blank" rel="noreferrer">University of Washington</a>,
-          pursuing double degrees in Statistics and Informatics: Data Science Track. My work is broadly focused on proactive AI agents,
-          human-centered AI, information retrieval, and natural language processing.
+          pursuing double degrees in Statistics and Informatics: Data Science. My work is broadly focused on proactive AI agents,
+          human-AI collaboration under epistemic incompleteness, information retrieval, and natural language processing.
         </p>
 
         <p class="para">
@@ -423,13 +425,14 @@
           </div>
         </div>
 
+        <div class="sectionTitle" id="publications">publications &amp; manuscripts</div>
+
         <div class="entry">
-          <div class="m">Manuscript in preparation: <span class="meta">PROS: A Proactive Optimization Agent for Scientific Posters with Multimodal Diagnosis.</span></div>
+          <div class="t">PROS: A Proactive Optimization Agent for Scientific Posters with Multimodal Diagnosis</div>
+          <div class="m">Lyu, Xingda, et al. 2026. Manuscript in preparation.</div>
         </div>
 
-        <div class="sectionTitle" id="publications">publications</div>
-
-        <div class="groupTitle">proactive agents</div>
+        <div class="exp-sep"></div>
 
         <div class="entry">
           <div class="t">Position: Knowing Isn’t Understanding: Re-grounding Generative Proactivity with Epistemic and Behavioral Insight</div>
@@ -439,26 +442,15 @@
         <div class="exp-sep"></div>
 
         <div class="entry">
-          <div class="t">Decision-Making Under Unknown Unknowns in Proactive Agentic Systems</div>
-          <div class="m">Lyu, Xingda. 2026. Extended abstract accepted; poster and talk presentation. ACM CHIIR Workshop on Human-Centered Proactive &amp; Personalized Agents.</div>
-        </div>
-
-        <div class="exp-sep"></div>
-
-        <div class="groupTitle">scientific poster optimization</div>
-
-        <div class="entry">
-          <div class="t">PROS: A Proactive Optimization Agent for Scientific Posters with Multimodal Diagnosis</div>
-          <div class="m">Lyu, Xingda, et al. 2026. Manuscript in preparation.</div>
-        </div>
-
-        <div class="exp-sep"></div>
-
-        <div class="groupTitle">retrieval-augmented generation</div>
-
-        <div class="entry">
           <div class="t">P-RAG: Prompt-Enhanced Parametric RAG with LoRA and Selective CoT for Biomedical and Multi-Hop QA</div>
           <div class="m">Lyu, Xingda; Lyu, Gongfu; Yan, Zitai; and Jiang, Yuxin. 2025. In proceedings of International Conference on Computing and Data Science.</div>
+        </div>
+
+        <div class="sectionTitle">selected presentations</div>
+
+        <div class="entry">
+          <div class="t">Decision-Making Under Unknown Unknowns in Proactive Agentic Systems</div>
+          <div class="m">Lyu, Xingda. 2026. Extended abstract accepted; poster and talk presentation. ACM CHIIR Workshop on Human-Centered Proactive &amp; Personalized Agents.</div>
         </div>
 
         <div class="sectionTitle" id="research-experience">research</div>
