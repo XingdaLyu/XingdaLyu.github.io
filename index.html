@@ -9,9 +9,9 @@
   :root{
     --blue:#2ea8ff;
 
-    --pageW: 1240px;
+    --pageW: 1200px;
     --leftW: 315px;
-    --rightMax: 760px;
+    --rightMax: 720px;
     --navH: 60px;
 
     --bg:#1c1c1d;
@@ -23,11 +23,11 @@
     --navBg:rgba(28,28,29,.82);
     --iconHover:rgba(255,255,255,.08);
 
-    --titleSize:52px;
-    --h2Size:31px;
-    --bodySize:18px;
-    --metaSize:17px;
-    --smallSize:15px;
+    --titleSize:48px;
+    --h2Size:28px;
+    --bodySize:17px;
+    --metaSize:16px;
+    --smallSize:14px;
   }
 
   html[data-theme="light"]{
@@ -142,10 +142,10 @@
 
   .main{
     display:grid;
-    grid-template-columns: 1fr 280px;
-    column-gap:72px;
-    width:min(1080px, calc(100% - 72px));
-    margin:48px auto 64px;
+    grid-template-columns: 1fr 255px;
+    column-gap:60px;
+    width:min(1020px, calc(100% - 72px));
+    margin:42px auto 58px;
     align-items:start;
   }
 
@@ -154,7 +154,7 @@
   }
 
   h1{
-    margin:0 0 18px 0;
+    margin:0 0 16px 0;
     font-size:var(--titleSize);
     line-height:1.05;
     font-weight:300;
@@ -163,9 +163,9 @@
   }
 
   .intro-meta{
-    margin:0 0 34px 0;
-    font-size:18px;
-    line-height:1.48;
+    margin:0 0 30px 0;
+    font-size:17px;
+    line-height:1.46;
     color:var(--text);
     font-weight:500;
   }
@@ -175,7 +175,7 @@
   }
 
   .para{
-    margin:0 0 24px 0;
+    margin:0 0 22px 0;
     font-size:var(--bodySize);
     line-height:1.56;
     color:var(--text);
@@ -184,7 +184,7 @@
 
   h2,
   .sectionTitle{
-    margin:42px 0 18px 0;
+    margin:38px 0 16px 0;
     font-size:var(--h2Size);
     line-height:1.15;
     font-weight:300;
@@ -194,27 +194,27 @@
   }
 
   .groupTitle{
-    margin:22px 0 12px 0;
-    font-size:20px;
+    margin:20px 0 10px 0;
+    font-size:18px;
     font-weight:500;
     color:var(--text);
   }
 
   .entry{
-    margin:0 0 18px 0;
+    margin:0 0 16px 0;
   }
 
   .entry .t{
-    margin:0 0 6px 0;
-    font-size:19px;
-    line-height:1.45;
+    margin:0 0 5px 0;
+    font-size:18px;
+    line-height:1.42;
     font-weight:500;
     color:var(--text);
   }
 
   .entry .m{
     margin:0;
-    font-size:18px;
+    font-size:17px;
     line-height:1.5;
     color:var(--muted);
     font-weight:400;
@@ -226,7 +226,7 @@
   }
 
   .exp-sep{
-    margin:18px 0 18px 0;
+    margin:16px 0 16px 0;
     border-top:1px solid rgba(255,255,255,.08);
   }
 
@@ -235,19 +235,19 @@
   }
 
   .sidebar{
-    width:280px;
-    padding-top:64px;
+    width:255px;
+    padding-top:58px;
   }
 
   .photoWrap{
     width:100%;
     display:flex;
     justify-content:center;
-    margin-bottom:14px;
+    margin-bottom:12px;
   }
 
   .photo{
-    width:280px;
+    width:255px;
     max-width:100%;
     height:auto;
     display:block;
@@ -257,24 +257,24 @@
 
   .sideText{
     text-align:center;
-    font-size:16px;
-    line-height:1.45;
+    font-size:15px;
+    line-height:1.42;
     color:var(--text);
-    letter-spacing:.06em;
+    letter-spacing:.05em;
   }
 
   .cvline{
-    margin:0 0 18px 0;
-    font-size:19px;
+    margin:0 0 16px 0;
+    font-size:18px;
     color:var(--text);
   }
 
   .footer{
-    margin-top:34px;
-    padding-top:16px;
+    margin-top:30px;
+    padding-top:14px;
     border-top:1px solid rgba(255,255,255,.08);
     color:var(--soft);
-    font-size:15px;
+    font-size:14px;
     display:flex;
     justify-content:space-between;
     gap:12px;
@@ -288,7 +288,7 @@
   @media (max-width: 1100px){
     .main{
       grid-template-columns: 1fr;
-      row-gap:28px;
+      row-gap:26px;
       width:min(860px, calc(100% - 40px));
       margin:34px auto 56px;
     }
@@ -306,7 +306,7 @@
     }
 
     .photo{
-      width:240px;
+      width:225px;
     }
 
     .sideText{
@@ -317,11 +317,11 @@
 
   @media (max-width: 720px){
     :root{
-      --titleSize:42px;
-      --h2Size:29px;
-      --bodySize:18px;
-      --metaSize:17px;
-      --smallSize:15px;
+      --titleSize:40px;
+      --h2Size:26px;
+      --bodySize:17px;
+      --metaSize:16px;
+      --smallSize:14px;
     }
 
     .header{
@@ -342,13 +342,13 @@
     }
 
     .intro-meta{
-      font-size:17px;
+      font-size:16px;
     }
 
     .entry .t,
     .entry .m,
     .cvline{
-      font-size:18px;
+      font-size:17px;
     }
   }
 </style>
@@ -375,15 +375,13 @@
         <div class="intro-meta">
           <div>Junior, University of Washington</div>
           <div>Double Degree in Honors Informatics and Statistics</div>
-          <div>Research in Proactive AI Agents, Information Retrieval, and Natural Language Processing           
         </div>
 
         <p class="para">
           Hello and welcome! I’m a junior at the
           <a href="https://www.washington.edu/" target="_blank" rel="noreferrer">University of Washington</a>,
-          pursuing double degrees in Statistics and Informatics: Data Science. My work focuses on proactive AI agents,
-          human-AI decision support under epistemic incompleteness, retrieval-augmented generation, and multimodal systems
-          for scientific poster optimization.
+          pursuing double degrees in Statistics and Informatics: Data Science. My work is broadly focused on proactive AI agents,
+          human-AI collaboration under epistemic incompleteness, information retrieval, and natural language processing.
         </p>
 
         <p class="para">
@@ -415,6 +413,13 @@
           <div class="t">PROS: scientific poster optimization with multimodal diagnosis</div>
           <div class="m">
             Leading a multimodal project for optimizing scientific poster drafts in editable PPTX format through structured representation, LLM-based content diagnosis, VLM-based visual diagnosis, and constraint-aware editing.
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="t">Applications and NLP papers built on the framework</div>
+          <div class="m">
+            Extending the proactive-agent framework into concrete applications and ongoing NLP work, focusing on how epistemically grounded assistance can be operationalized in real systems and evaluated through actual use cases.
           </div>
         </div>
 
@@ -474,7 +479,7 @@
           <div class="m">
             Principal Investigator:
             <a href="https://daqiangzhang.weebly.com/" target="_blank" rel="noreferrer">Prof. Daqiang Zhang</a>;
-            Tongji University. Initiated and led PROS, a multimodal research project for optimizing scientific poster drafts in editable PPTX format. Built a poster-optimization pipeline combining structured PPTX representation, LLM-based content diagnosis, VLM-based visual diagnosis, and constraint-aware editing, designed execution and repair modules to preserve layout validity while improving content quality, visual hierarchy, and readability, and defined benchmark criteria for poster-specific deficiencies and optimization-oriented evaluation.
+            Tongji University. Initiated and led PROS, a multimodal research project for optimizing scientific poster drafts in editable PPTX format. Built a poster-optimization pipeline combining structured PPTX representation, LLM-based content diagnosis, VLM-based visual diagnosis, and constraint-aware editing, designed execution and repair modules to preserve layout validity while improving content quality, visual hierarchy, and poster readability, and defined benchmark criteria for poster-specific deficiencies and optimization-oriented evaluation.
           </div>
         </div>
 
@@ -485,7 +490,7 @@
           <div class="m">
             Supervisor:
             <a href="https://www.cs.cmu.edu/~dwoodruf/" target="_blank" rel="noreferrer">Prof. David P. Woodruff</a>;
-            Carnegie Mellon University. Initiated and led P-RAG, a research project on retrieval-augmented biomedical and multi-hop question answering; co-developed the method by integrating retrieval, LoRA-based parametric adaptation, selective chain-of-thought prompting, and data augmentation; designed and ran experiments on PubMedQA and 2WikiMultihopQA; and co-first-authored the resulting peer-reviewed conference paper.
+            Carnegie Mellon University. Initiated and led P-RAG, a research project on retrieval-augmented biomedical and multi-hop question answering; co-developed the method by integrating retrieval, LoRA-based parametric adaptation, selective chain-of-thought prompting, and data augmentation; designed and ran experiments on PubMedQA and 2WikiMultihopQA, achieving 93.33% F1 on PubMedQA and improving total score on 2WikiMultihopQA from 17.83 to 33.44; and co-first-authored the resulting peer-reviewed conference paper.
           </div>
         </div>
 
