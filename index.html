@@ -363,7 +363,6 @@
         <a href="#publications">Publications</a>
         <a href="#research-experience">Research</a>
         <a href="#industry-experience">Industry</a>
-        <a href="#honors-service">Honors</a>
         <a href="https://drive.google.com/file/d/1-BRR_4SfeOjWczO5KCxnL75HfSAkiq4c/view" target="_blank" rel="noreferrer">CV</a>
         <button id="themeToggle" class="themeToggle" type="button" aria-label="Toggle light and dark mode">
           <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg>
@@ -409,7 +408,7 @@
           <div class="t">Position: Knowing Isn’t Understanding: Re-grounding Generative Proactivity with Epistemic and Behavioral Insight</div>
           <div class="m">
             Kaur, Kirandeep; Lyu, Xingda; and Shah, Chirag. 2026. <br>
-            Accepted to the ICML 2026 Position Paper Track.
+            Accepted at the International Conference on Machine Learning (ICML 2026).
           </div>
         </div>
 
@@ -454,10 +453,10 @@
             PhD Mentor:
             <a href="https://i-kiran.github.io/publications/" target="_blank" rel="noreferrer">Kirandeep Kaur</a>;
             University of Washington. <br>
-            I work on proactive agents under epistemic incompleteness, focusing on when AI systems should
-            act, defer, downshift, or abstain. I co-authored a position paper developing an epistemic-behavioral
-            framework that links an agent’s legitimacy to intervene with its behavioral commitments in proactive
-            decision-making.
+            I study proactive agents under epistemic incompleteness, focusing on when AI systems should act,
+            defer, downshift, or abstain. My current work develops an epistemic-behavioral framing for proactive
+            decision-making and examines how agents can intervene responsibly when users’ needs or knowledge gaps
+            are not fully articulated.
           </div>
         </div>
 
@@ -467,12 +466,11 @@
           <div class="t">Undergraduate Researcher <span class="meta">| Sep 2025 – Present</span></div>
           <div class="m">
             Project Lead; University of Washington. <br>
-            I initiated and lead PROS, a self-directed research project on proactive multimodal refinement for
-            scientific poster optimization over editable PPTX states. The project builds a source-grounded
-            poster-editing pipeline combining structured PPTX representations, LLM-based content diagnosis,
-            VLM-based visual diagnosis, and constraint-aware editing. I developed an executable taxonomy of
-            poster deficiencies and a staged repair framework spanning structural validity, layout reallocation,
-            and content-level communication repair.
+            I initiated and lead PROS, a research project on proactive multimodal refinement for scientific
+            posters. The project treats poster improvement as a source-grounded visual editing problem over
+            editable PPTX states, combining structured slide representations, language-based content diagnosis,
+            vision-language visual diagnosis, and constraint-aware repair to improve layout validity, visual
+            hierarchy, and paper-grounded communication.
           </div>
         </div>
 
@@ -485,9 +483,9 @@
             <a href="https://www.cs.cmu.edu/~dwoodruf/" target="_blank" rel="noreferrer">Prof. David P. Woodruff</a>;
             Project Lead; Carnegie Mellon University. <br>
             I initiated and led P-RAG, a research project on retrieval-augmented biomedical and multi-hop question
-            answering. I co-developed the method by integrating retrieval, LoRA-based parametric adaptation,
-            selective chain-of-thought prompting, and data augmentation; designed and ran experiments on PubMedQA
-            and 2WikiMultihopQA; and co-first-authored the resulting peer-reviewed conference paper.
+            answering. The work combined retrieval, LoRA-based parametric adaptation, selective chain-of-thought
+            prompting, and data augmentation, with experiments on PubMedQA and 2WikiMultihopQA that led to a
+            peer-reviewed conference paper.
           </div>
         </div>
 
@@ -496,10 +494,7 @@
         <div class="entry">
           <div class="t">Data Science Intern, Amazon <span class="meta">| Jun 2025 – Aug 2025</span></div>
           <div class="m">
-            Seattle, WA. Built automated data-quality pipelines over 300K+ transportation records using Python
-            and SQL, designed routing optimization models projecting $5M+ in annual savings and 23% route
-            utilization improvement, and built anomaly-detection analyses to identify refund gaps and
-            underperforming carriers.
+            Seattle, WA. Built automated data-quality pipelines over 300K+ transportation records using Python and SQL, designed routing optimization models projecting $5M+ in annual savings and 23% route utilization improvement, and built anomaly-detection analyses to identify refund gaps and underperforming carriers.
           </div>
         </div>
 
@@ -508,33 +503,7 @@
         <div class="entry">
           <div class="t">Data Science Intern, Baynovation <span class="meta">| Jul 2024 – Sep 2024</span></div>
           <div class="m">
-            San Jose, CA. Built a refinance decision tool using real-time mortgage rate data, built an interactive
-            dashboard for mortgage scenario analysis and savings visualization, and created delinquency risk models
-            using GLM, Random Forest, and XGBoost.
-          </div>
-        </div>
-
-        <div class="sectionTitle" id="honors-service">Honors &amp; service</div>
-
-        <div class="entry">
-          <div class="t">UW iSchool Conference Travel Funding Award</div>
-          <div class="m">Awarded to present at ICML 2026.</div>
-        </div>
-
-        <div class="exp-sep"></div>
-
-        <div class="entry">
-          <div class="t">Student Volunteer, International Conference on Machine Learning (ICML) 2026</div>
-          <div class="m">Student volunteer for ICML 2026.</div>
-        </div>
-
-        <div class="exp-sep"></div>
-
-        <div class="entry">
-          <div class="t">Patents</div>
-          <div class="m">
-            Co-inventor on three CNIPA-granted utility patents for automated veterinary pharmaceutical production
-            systems and one Chinese invention patent for a microbial agent for preventing wheat powdery mildew.
+            San Jose, CA. Built a refinance decision tool using real-time mortgage rate data, built an interactive dashboard for mortgage scenario analysis and savings visualization, and created delinquency risk models using GLM, Random Forest, and XGBoost.
           </div>
         </div>
 
@@ -560,6 +529,7 @@
   const root = document.documentElement;
   const themeToggle = document.getElementById("themeToggle");
   const themeIcon = document.getElementById("themeIcon");
+  const THEME_KEY = "david-site-theme-v2";
 
   function sunIcon() {
     return `
@@ -583,13 +553,13 @@
 
   function applyTheme(theme){
     root.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
+    localStorage.setItem(THEME_KEY, theme);
     themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
     themeIcon.innerHTML = theme === "dark" ? sunIcon() : moonIcon();
   }
 
-  const savedTheme = localStorage.getItem("theme");
-  applyTheme(savedTheme || "light");
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  applyTheme(savedTheme === "dark" || savedTheme === "light" ? savedTheme : "light");
 
   themeToggle.addEventListener("click", function(){
     const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
