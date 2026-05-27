@@ -9,9 +9,9 @@
   :root{
     --blue:#0077cc;
 
-    --pageW: 1200px;
-    --leftW: 315px;
-    --rightMax: 720px;
+    --pageW: 1120px;
+    --sideW: 255px;
+    --rightMax: 680px;
     --navH: 60px;
 
     --bg:#f7f7f5;
@@ -142,15 +142,16 @@
 
   .main{
     display:grid;
-    grid-template-columns: 1fr 255px;
-    column-gap:60px;
-    width:min(1020px, calc(100% - 72px));
+    grid-template-columns: minmax(0, var(--rightMax)) var(--sideW);
+    column-gap:52px;
+    width:min(calc(var(--rightMax) + var(--sideW) + 52px), calc(100% - 72px));
     margin:42px auto 58px;
     align-items:start;
   }
 
   .content{
     max-width:var(--rightMax);
+    min-width:0;
   }
 
   h1{
@@ -163,6 +164,7 @@
   }
 
   .intro-meta{
+    max-width:660px;
     margin:0 0 28px 0;
     font-size:17px;
     line-height:1.46;
@@ -175,6 +177,7 @@
   }
 
   .para{
+    max-width:660px;
     margin:0 0 22px 0;
     font-size:var(--bodySize);
     line-height:1.56;
@@ -235,7 +238,7 @@
   }
 
   .sidebar{
-    width:255px;
+    width:var(--sideW);
     padding-top:58px;
   }
 
@@ -289,7 +292,7 @@
     .main{
       grid-template-columns: 1fr;
       row-gap:22px;
-      width:min(860px, calc(100% - 40px));
+      width:min(760px, calc(100% - 40px));
       margin:34px auto 56px;
     }
 
@@ -374,7 +377,7 @@
       <section class="content">
         <h1>David Xingda Lyu</h1>
 
-         <div class="intro-meta">
+        <div class="intro-meta">
           <div>University of Washington · Statistics &amp; Informatics</div>
           <div>Proactive AI Agents · Human-AI Interaction · Epistemic AI</div>
         </div>
@@ -382,15 +385,10 @@
         <p class="para">
           Hi! I’m a rising senior at the University of Washington pursuing dual B.S. degrees in
           Statistics and Informatics. My research focuses on proactive AI agents and human-AI
-          interaction, especially how AI assistants can reason about users’ evolving cognitive and
-          epistemic states to provide calibrated support beyond reactive query answering.
-        </p>
-        
-        <p class="para">
-          My work draws on ideas from philosophy of AI, cognitive modeling, and computational
-          epistemology, combined with statistical and computational methods for modeling and
-          evaluating language-agent behavior. I am interested in building AI systems that support
-          calibrated response policies under epistemic uncertainty.
+          interaction, with a broader interest in how AI systems can understand user needs, reason
+          about uncertainty, and provide context-aware support. My work draws on information
+          seeking, cognitive modeling, and computational perspectives on knowledge and
+          language-agent behavior.
         </p>
         
         <p class="para">
