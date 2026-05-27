@@ -9,10 +9,11 @@
   :root{
     --blue:#0077cc;
 
-    --pageW: 1120px;
+    --pageW: 1160px;
     --sideW: 255px;
-    --rightMax: 680px;
+    --rightMax: 700px;
     --navH: 60px;
+    --mainGap:58px;
 
     --bg:#f7f7f5;
     --bg-soft:#ffffff;
@@ -143,8 +144,8 @@
   .main{
     display:grid;
     grid-template-columns: minmax(0, var(--rightMax)) var(--sideW);
-    column-gap:52px;
-    width:min(calc(var(--rightMax) + var(--sideW) + 52px), calc(100% - 72px));
+    column-gap:var(--mainGap);
+    width:min(calc(var(--rightMax) + var(--sideW) + var(--mainGap)), calc(100% - 72px));
     margin:42px auto 58px;
     align-items:start;
   }
@@ -164,7 +165,7 @@
   }
 
   .intro-meta{
-    max-width:660px;
+    max-width:680px;
     margin:0 0 28px 0;
     font-size:17px;
     line-height:1.46;
@@ -177,7 +178,7 @@
   }
 
   .para{
-    max-width:660px;
+    max-width:680px;
     margin:0 0 22px 0;
     font-size:var(--bodySize);
     line-height:1.56;
@@ -292,7 +293,7 @@
     .main{
       grid-template-columns: 1fr;
       row-gap:22px;
-      width:min(760px, calc(100% - 40px));
+      width:min(780px, calc(100% - 40px));
       margin:34px auto 56px;
     }
 
