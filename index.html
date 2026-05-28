@@ -281,7 +281,7 @@
     color:var(--soft);
     font-size:14px;
     display:flex;
-    justify-content:space-between;
+    justify-content:flex-start;
     gap:12px;
     flex-wrap:wrap;
   }
@@ -559,7 +559,6 @@
 
     <div class="footer">
       <span>© <span id="y"></span> David Xingda Lyu</span>
-      <span id="stamp"></span>
     </div>
   </section>
 
@@ -619,12 +618,6 @@
   });
 
   document.getElementById("y").textContent = new Date().getFullYear();
-  document.getElementById("stamp").textContent =
-    "Last updated: " + new Date().toLocaleDateString(undefined, {
-      year: "numeric",
-      month: "long",
-      day: "numeric"
-    });
 </script>
 
 </body>
