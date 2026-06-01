@@ -268,6 +268,80 @@
     letter-spacing:.05em;
   }
 
+  .sideLinks{
+    margin-top:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    letter-spacing:0;
+  }
+
+  .sideIcon{
+    width:28px;
+    height:28px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--text);
+    opacity:.92;
+    line-height:1;
+    transition:color .15s ease, opacity .15s ease, transform .15s ease;
+  }
+
+  .sideIcon:hover{
+    color:var(--blue);
+    opacity:1;
+    transform:translateY(-1px);
+  }
+
+  .sideIcon svg{
+    width:28px;
+    height:28px;
+    display:block;
+    flex:0 0 auto;
+  }
+
+  .sideIcon .strokeIcon{
+    fill:none;
+    stroke:currentColor;
+    stroke-width:2.05;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+
+  .sideIcon .fillIcon{
+    fill:currentColor;
+    stroke:none;
+  }
+
+  .brandIcon{
+    width:28px;
+    height:28px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    color:currentColor;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:700;
+    letter-spacing:-0.03em;
+    line-height:1;
+  }
+
+  .linkedinIcon{
+    border-radius:5px;
+    background:currentColor;
+    position:relative;
+  }
+
+  .linkedinIcon::before{
+    content:"in";
+    color:var(--bg);
+    font-size:18px;
+    transform:translateY(1px);
+  }
+
   .cvline{
     margin:0 0 16px 0;
     font-size:18px;
@@ -319,6 +393,10 @@
     .sideText{
       text-align:left;
       letter-spacing:.02em;
+    }
+
+    .sideLinks{
+      justify-content:flex-start;
     }
   }
 
@@ -484,7 +562,7 @@
 <div class="groupTitle">Research Experience</div>
 
 <div class="entry">
-  <div class="t">InfoSeeking Lab</a> <span class="meta">| Nov 2025 – Present</span></div>
+  <div class="t">InfoSeeking Lab <span class="meta">| Nov 2025 – Present</span></div>
   <div class="m">
     Supervisor:
     <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Prof. Chirag Shah</a>;
@@ -554,6 +632,32 @@
     <div class="sideText">
       Seattle, WA<br>
       University of Washington
+
+      <div class="sideLinks" aria-label="Profile links">
+        <a class="sideIcon" href="mailto:xlyu18@uw.edu" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect class="strokeIcon" x="3.5" y="5.5" width="17" height="13" rx="2"></rect>
+            <path class="strokeIcon" d="M4.2 7 12 13.2 19.8 7"></path>
+          </svg>
+        </a>
+
+        <a class="sideIcon" href="https://scholar.google.com/citations?user=85X6CKIAAAAJ&amp;hl=en" target="_blank" rel="noreferrer" aria-label="Google Scholar">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="fillIcon" d="M12 3 2.6 8.2 12 13.4l9.4-5.2L12 3z"></path>
+            <path class="strokeIcon" d="M6.3 11.2v4.1c0 1.8 2.6 3.4 5.7 3.4s5.7-1.6 5.7-3.4v-4.1"></path>
+          </svg>
+        </a>
+
+        <a class="sideIcon" href="https://www.linkedin.com/in/david-xingda-lyu-573ab4300/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <span class="brandIcon linkedinIcon" aria-hidden="true"></span>
+        </a>
+
+        <a class="sideIcon" href="https://x.com/XingdaLyu" target="_blank" rel="noreferrer" aria-label="X / Twitter">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="fillIcon" d="M23.95 4.57a9.9 9.9 0 0 1-2.83.78 4.93 4.93 0 0 0 2.16-2.72 9.86 9.86 0 0 1-3.13 1.2 4.92 4.92 0 0 0-8.39 4.48A13.98 13.98 0 0 1 1.64 3.16a4.92 4.92 0 0 0 1.52 6.57 4.9 4.9 0 0 1-2.23-.62v.06a4.92 4.92 0 0 0 3.95 4.83 4.94 4.94 0 0 1-2.22.08 4.93 4.93 0 0 0 4.6 3.42A9.88 9.88 0 0 1 0 19.54a13.94 13.94 0 0 0 7.55 2.21c9.06 0 14.01-7.5 14.01-14.01v-.64a10.02 10.02 0 0 0 2.39-2.53z"></path>
+          </svg>
+        </a>
+      </div>
     </div>
   </aside>
 </main>
