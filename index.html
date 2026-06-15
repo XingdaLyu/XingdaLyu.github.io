@@ -1,719 +1,92 @@
-<!doctype html>
+from pathlib import Path
 
-<html lang="en" data-theme="light">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>David Xingda Lyu</title>
+source_path = Path("/mnt/data/粘贴的文本 (1)(243).txt")
+output_path = Path("/mnt/data/index_updated.html")
 
-<style>
-  :root{
-    --blue:#0077cc;
+html = source_path.read_text(encoding="utf-8")
 
-    --pageW: 1160px;
-    --sideW: 255px;
-    --rightMax: 700px;
-    --navH: 60px;
-    --mainGap:58px;
-
-    --bg:#f7f7f5;
-    --bg-soft:#ffffff;
-    --text:#1a1a1a;
-    --muted:#444;
-    --soft:#666;
-    --line:rgba(0,0,0,.12);
-    --navBg:rgba(247,247,245,.86);
-    --iconHover:rgba(0,0,0,.06);
-    --iconColor:#333333;
-
-    --titleSize:48px;
-    --h2Size:28px;
-    --bodySize:17px;
-    --metaSize:16px;
-    --smallSize:14px;
-  }
-
-  html[data-theme="dark"]{
-    --bg:#1c1c1d;
-    --bg-soft:#202123;
-    --text:#e8e8e8;
-    --muted:#c8c8c8;
-    --soft:#a8a8a8;
-    --line:rgba(255,255,255,.16);
-    --navBg:rgba(28,28,29,.82);
-    --iconHover:rgba(255,255,255,.08);
-    --blue:#2ea8ff;
-    --iconColor:#d8d8d8;
-  }
-
-  html, body{
-    margin:0;
-    padding:0;
-    min-height:100%;
-  }
-
-  *{
-    box-sizing:border-box;
-  }
-
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size:var(--bodySize);
-    line-height:1.52;
-    font-weight:400;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
-  }
-
-  a{
-    color:var(--blue);
-    text-decoration:none;
-  }
-
-  a:hover{
-    text-decoration:none;
-    opacity:.92;
-  }
-
-  .page{
-    width:min(var(--pageW), 100%);
-    margin:0 auto;
-  }
-
-  .header{
-    position:sticky;
-    top:0;
-    z-index:50;
-    height:var(--navH);
-    display:flex;
-    align-items:center;
-    justify-content:flex-end;
-    padding:0 28px;
-    background:var(--navBg);
-    backdrop-filter:blur(7px);
-    -webkit-backdrop-filter:blur(7px);
-    border-bottom:1px solid var(--line);
-  }
-
-  .nav{
-    display:flex;
-    align-items:center;
-    gap:28px;
-    flex-wrap:wrap;
-    font-size:17px;
-    font-weight:400;
-  }
-
-  .nav a{
-    color:var(--muted);
-  }
-
-  .nav a:hover{
-    color:var(--text);
-  }
-
-  .themeToggle{
-    width:24px;
-    height:24px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    background:none;
-    border:0;
-    padding:0;
-    margin-left:2px;
-    color:var(--muted);
-    cursor:pointer;
-  }
-
-  .themeToggle:hover{
-    color:var(--text);
-    background:none;
-  }
-
-  .themeToggle svg{
-    width:20px;
-    height:20px;
-    display:block;
-    stroke:currentColor;
-    fill:none;
-    stroke-width:1.8;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-  }
-
-  .main{
-    display:grid;
-    grid-template-columns: minmax(0, var(--rightMax)) var(--sideW);
-    column-gap:var(--mainGap);
-    width:min(calc(var(--rightMax) + var(--sideW) + var(--mainGap)), calc(100% - 72px));
-    margin:42px auto 58px;
-    align-items:start;
-  }
-
-  .content{
-    max-width:var(--rightMax);
-    min-width:0;
-  }
-
-  h1{
-    margin:0 0 16px 0;
-    font-size:var(--titleSize);
-    line-height:1.05;
-    font-weight:300;
-    letter-spacing:-0.02em;
-    color:var(--text);
-  }
-
-  .intro-meta{
-    max-width:680px;
-    margin:0 0 28px 0;
-    font-size:17px;
-    line-height:1.46;
-    color:var(--text);
-    font-weight:500;
-  }
-
-  .intro-meta div{
-    margin:0;
-  }
-
-  .para{
-    max-width:680px;
-    margin:0 0 22px 0;
-    font-size:var(--bodySize);
-    line-height:1.56;
-    color:var(--text);
-    font-weight:400;
-  }
-
-  h2,
-  .sectionTitle{
-    margin:38px 0 16px 0;
-    font-size:var(--h2Size);
-    line-height:1.15;
-    font-weight:300;
-    letter-spacing:-0.015em;
-    color:var(--text);
-    text-transform:none;
-  }
-
-  .groupTitle{
-    margin:20px 0 10px 0;
-    font-size:18px;
-    font-weight:500;
-    color:var(--text);
-  }
-
-  .entry{
-    margin:0 0 16px 0;
-  }
-
-  .entry .t{
-    margin:0 0 5px 0;
-    font-size:18px;
-    line-height:1.42;
-    font-weight:500;
-    color:var(--text);
-  }
-
-  .entry .m{
-    margin:0;
-    font-size:17px;
-    line-height:1.5;
-    color:var(--muted);
-    font-weight:400;
-  }
-
-  .meta{
-    color:var(--soft);
-    font-weight:400;
-  }
-
-  .exp-sep{
-    margin:16px 0 16px 0;
-    border-top:1px solid rgba(0,0,0,.08);
-  }
-
-  html[data-theme="dark"] .exp-sep{
-    border-top:1px solid rgba(255,255,255,.08);
-  }
-
-  .sidebar{
-    width:var(--sideW);
-    padding-top:58px;
-  }
-
-  .photoWrap{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    margin-bottom:12px;
-  }
-
-  .photo{
-    width:255px;
-    max-width:100%;
-    height:auto;
-    display:block;
-    object-fit:cover;
-    border-radius:2px;
-  }
-
-  .sideText{
-    text-align:center;
-    font-size:16px;
-    line-height:1.42;
-    color:var(--text);
-    letter-spacing:.05em;
-  }
-
-  .sideLinks{
-    margin-top:11px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:11px;
-    flex-wrap:wrap;
-    letter-spacing:0;
-  }
-
-  .sideIcon{
-    width:22px;
-    height:22px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--iconColor);
-    opacity:1;
-    line-height:1;
-    transition:color .15s ease, opacity .15s ease, transform .15s ease;
-  }
-
-  .sideIcon:hover{
-    color:var(--blue);
-    opacity:1;
-    transform:translateY(-1px);
-  }
-
-  .sideIcon svg{
-    width:22px;
-    height:22px;
-    display:block;
-    flex:0 0 auto;
-  }
-
-  .sideIcon .strokeIcon{
-    fill:none;
-    stroke:currentColor;
-    stroke-width:1.82;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-  }
-
-  .sideIcon .fillIcon{
-    fill:currentColor;
-    stroke:none;
-  }
-
-  .brandIcon{
-    width:18px;
-    height:18px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    color:currentColor;
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight:700;
-    letter-spacing:-0.03em;
-    line-height:1;
-  }
-
-  .linkedinIcon{
-    border-radius:3.3px;
-    background:currentColor;
-    position:relative;
-  }
-
-  .linkedinIcon::before{
-    content:"in";
-    color:var(--bg);
-    font-size:11.8px;
-    transform:translateY(.35px);
-  }
-
-  .twitterIcon{
-    width:20px !important;
-    height:20px !important;
-  }
-
-  .cvline{
-    margin:0 0 16px 0;
-    font-size:18px;
-    color:var(--text);
-  }
-
-  .footer{
-    margin-top:30px;
-    padding-top:14px;
-    border-top:1px solid rgba(0,0,0,.08);
-    color:var(--soft);
-    font-size:14px;
-    display:flex;
-    justify-content:flex-start;
-    gap:12px;
-    flex-wrap:wrap;
-  }
-
-  html[data-theme="dark"] .footer{
-    border-top:1px solid rgba(255,255,255,.08);
-  }
-
-  @media (max-width: 1100px){
-    .main{
-      grid-template-columns: 1fr;
-      row-gap:22px;
-      width:min(780px, calc(100% - 40px));
-      margin:34px auto 56px;
-    }
-
-    .sidebar{
-      order:-1;
-      width:100%;
-      padding-top:0;
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-    }
-
-    .photoWrap{
-      justify-content:flex-start;
-      margin-bottom:10px;
-    }
-
-    .photo{
-      width:225px;
-    }
-
-    .sideText{
-      text-align:left;
-      letter-spacing:.02em;
-    }
-
-    .sideLinks{
-      justify-content:flex-start;
-    }
-  }
-
-  @media (max-width: 720px){
-    :root{
-      --titleSize:40px;
-      --h2Size:26px;
-      --bodySize:17px;
-      --metaSize:16px;
-      --smallSize:14px;
-    }
-
-    .header{
-      justify-content:flex-start;
-      padding:10px 16px;
-      height:auto;
-      min-height:var(--navH);
-    }
-
-    .nav{
-      gap:16px;
-      font-size:15px;
-    }
-
-    .main{
-      width:calc(100% - 28px);
-      margin:26px auto 48px;
-    }
-
-    .intro-meta{
-      font-size:16px;
-    }
-
-    .entry .t,
-    .entry .m,
-    .cvline{
-      font-size:17px;
-    }
-  }
-</style>
-
-</head>
-
-<body>
-  <div class="page">
-    <header class="header">
-      <nav class="nav">
-        <a href="#publications">Publications</a>
-        <a href="#research-experience">Research</a>
-        <a href="#industry-experience">Industry</a>
-        <a href="CV_Xingda_Lyu.pdf" target="_blank" rel="noreferrer">CV</a>
-        <button id="themeToggle" class="themeToggle" type="button" aria-label="Toggle light and dark mode">
-          <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg>
-        </button>
-      </nav>
-    </header>
-
-<main class="main">
-  <section class="content">
-    <h1>David Xingda Lyu</h1>
-
-<div class="intro-meta">
+old_intro_meta = """<div class="intro-meta">
   <div>University of Washington · Statistics &amp; Honors Informatics</div>
   <div>Proactive AI Agents · Human-AI Interaction · Epistemic AI</div>
-</div>
+</div>"""
 
-<p class="para">
+new_intro_meta = """<div class="intro-meta">
+  <div>University of Washington · Statistics, Informatics &amp; Philosophy</div>
+  <div>Proactive AI Agents · Human-AI Interaction · AI for Science</div>
+</div>"""
+
+old_intro_paragraph = """<p class="para">
   Hi! I’m a rising senior at the University of Washington pursuing dual B.S. degrees in
   Statistics and Informatics. My research focuses on proactive AI agents and human-AI
   interaction, with a broader interest in how AI systems can understand users, reason under
   uncertainty, and provide calibrated, context-aware support.
-</p>
+</p>"""
 
-<p class="para">
+new_intro_paragraph = """<p class="para">
+  Hi! I’m a rising senior at the University of Washington pursuing undergraduate studies in
+  Statistics, Informatics, and Philosophy. My research focuses on proactive AI agents,
+  human-AI interaction, and AI for Science, with a broader interest in how AI systems can
+  understand users, reason under uncertainty, and provide calibrated, context-aware support.
+</p>"""
+
+old_affiliation_paragraph = """<p class="para">
   I work with
   <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Prof. Chirag Shah</a>
   and
   <a href="https://i-kiran.github.io/publications/" target="_blank" rel="noreferrer">Kirandeep Kaur</a>
   at the University of Washington
   <a href="https://infoseeking.org/" target="_blank" rel="noreferrer">InfoSeeking Lab</a>.
-</p>
+</p>"""
 
-<div class="sectionTitle" id="publications">Publications</div>
+new_affiliation_paragraph = """<p class="para">
+  I work with
+  <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Prof. Chirag Shah</a>
+  at the University of Washington
+  <a href="https://infoseeking.org/" target="_blank" rel="noreferrer">InfoSeeking Lab</a>
+  and
+  <a href="https://hanj.cs.illinois.edu/" target="_blank" rel="noreferrer">Prof. Jiawei Han</a>
+  at the University of Illinois Urbana-Champaign Data Mining Group.
+</p>"""
+
+research_anchor = """<div class="groupTitle">Research Experience</div>
 
 <div class="entry">
-  <div class="t">Position: Knowing Isn’t Understanding: Re-grounding Generative Proactivity with Epistemic and Behavioral Insight</div>
+  <div class="t">InfoSeeking Lab <span class="meta">| Nov 2025 – Present</span></div>"""
+
+research_replacement = """<div class="groupTitle">Research Experience</div>
+
+<div class="entry">
+  <div class="t">Data Mining Group <span class="meta">| Summer 2026</span></div>
   <div class="m">
-    Kaur, Kirandeep; Lyu, Xingda; and Shah, Chirag. 2026. <br>
-    Accepted at the International Conference on Machine Learning (ICML 2026).
-    <a href="https://arxiv.org/abs/2602.15259" target="_blank" rel="noreferrer">[paper]</a>
+    Research Intern; Supervisor:
+    <a href="https://hanj.cs.illinois.edu/" target="_blank" rel="noreferrer">Prof. Jiawei Han</a>;
+    PhD Mentor: Joey Chan;
+    University of Illinois Urbana-Champaign. <br>
+    I conduct research on retrieval-augmented generation, search agents, reinforcement learning for LLMs,
+    and trustworthy AI systems, with a broader focus on machine learning, information retrieval, and AI agents.
   </div>
 </div>
 
 <div class="exp-sep"></div>
 
 <div class="entry">
-  <div class="t">PROS: A Proactive Multimodal Refinement Agent for Scientific Posters</div>
-  <div class="m">
-    Lyu, Xingda; Luo, Xinye; Lu, Honglin; and Yang, Shiqi. 2026. <br>
-    Accepted at the Workshop on Human-Interactive Generation and Editing (HiGen), CVPR 2026.
-  </div>
-</div>
+  <div class="t">InfoSeeking Lab <span class="meta">| Nov 2025 – Present</span></div>"""
 
-<div class="exp-sep"></div>
+replacements = [
+    (old_intro_meta, new_intro_meta, "intro metadata"),
+    (old_intro_paragraph, new_intro_paragraph, "intro paragraph"),
+    (old_affiliation_paragraph, new_affiliation_paragraph, "affiliation paragraph"),
+    (research_anchor, research_replacement, "Data Mining Group entry"),
+]
 
-<div class="entry">
-  <div class="t">P-RAG: Prompt-Enhanced Parametric RAG with LoRA and Selective CoT for Biomedical and Multi-Hop QA</div>
-  <div class="m">
-    Lyu, Xingda; Lyu, Gongfu; Yan, Zitai; and Jiang, Yuxin. 2025. <br>
-    In Proceedings of the International Conference on Computing and Data Science.
-    <a href="https://ace.ewapub.com/article/view/28253" target="_blank" rel="noreferrer">[paper]</a>
-  </div>
-</div>
+for old, new, label in replacements:
+    count = html.count(old)
+    if count != 1:
+        raise ValueError(f"Expected exactly one match for {label}, found {count}.")
+    html = html.replace(old, new, 1)
 
-<div class="sectionTitle">Selected Presentations</div>
+output_path.write_text(html, encoding="utf-8")
 
-<div class="entry">
-  <div class="t">Decision-Making Under Unknown Unknowns in Proactive Agentic Systems</div>
-  <div class="m">
-    Lyu, Xingda. 2026. <br>
-    Lightning talk and poster presentation, ACM CHIIR Workshop on Human-Centered Proactive &amp; Personalized Agents.
-    <a href="https://proactive-chiir.github.io/pages/accepted-paper.html" target="_blank" rel="noreferrer">[accepted papers]</a>
-  </div>
-</div>
-
-<div class="exp-sep"></div>
-
-<div class="entry">
-  <div class="t">Proactive Agents for Knowledge Gap Navigation</div>
-  <div class="m">
-    Kaur, Kirandeep; Gupta, Vinayak; Lyu, Xingda; Gupta, Aditya; and Shah, Chirag. 2026. <br>
-    Poster presentation, Amazon Research Day 2026, AI Co-Scientist.
-    <a href="ARD_Poster.pdf" target="_blank" rel="noreferrer">[poster]</a>
-  </div>
-</div>
-
-<div class="sectionTitle" id="research-experience">Research</div>
-
-<div class="groupTitle">Ongoing Work</div>
-
-<div class="entry">
-  <div class="t">Proactive agents for user understanding under uncertainty</div>
-  <div class="m">
-    I am developing empirical work on proactive agents that better understand user needs and context
-    under uncertainty. This work builds on my ICML 2026 position paper and studies how agents can
-    provide useful support while remaining calibrated in when and how they intervene.
-  </div>
-</div>
-
-<div class="exp-sep"></div>
-
-<div class="entry">
-  <div class="t">Calibrated proactive and personalized assistance</div>
-  <div class="m">
-    In collaboration with
-    <a href="https://stellalisy.com/" target="_blank" rel="noreferrer">Stella Li</a>,
-    I am working on a project about calibration challenges in proactive and personalized LLM assistants.
-    The project studies how assistants can provide helpful support while accounting for both user requests
-    and broader interaction context.
-  </div>
-</div>
-    
-<div class="groupTitle">Research Experience</div>
-
-<div class="entry">
-  <div class="t">InfoSeeking Lab <span class="meta">| Nov 2025 – Present</span></div>
-  <div class="m">
-    Supervisor:
-    <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Prof. Chirag Shah</a>;
-    PhD Mentor:
-    <a href="https://i-kiran.github.io/publications/" target="_blank" rel="noreferrer">Kirandeep Kaur</a>;
-    University of Washington. <br>
-    I conduct research on proactive AI agents and human-AI interaction under uncertainty. My work involves
-    problem formulation, literature synthesis, benchmark design, model evaluation, and analysis of how AI
-    systems can support users when task contexts or information needs are incomplete.
-  </div>
-</div>
-
-<div class="exp-sep"></div>
-
-<div class="entry">
-  <div class="t">Research Project Lead, PROS <span class="meta">| Sep 2025 – Present</span></div>
-  <div class="m">
-    Project Lead; University of Washington. <br>
-    I lead PROS, a research project on proactive multimodal refinement of scientific posters
-    using editable document representations. My work includes project direction, system design,
-    LLM/VLM-based diagnosis, evaluation design, team coordination, and writing.
-  </div>
-</div>
-
-<div class="exp-sep"></div>
-
-<div class="entry">
-  <div class="t">Research Project Lead, P-RAG <span class="meta">| Nov 2024 – May 2025</span></div>
-  <div class="m">
-    Supervisor:
-    <a href="https://www.cs.cmu.edu/~dwoodruf/" target="_blank" rel="noreferrer">Prof. David P. Woodruff</a>;
-    Project Lead; Carnegie Mellon University. <br>
-    I led P-RAG, a research project on biomedical and multi-hop question answering. My work
-    included retrieval and model-adaptation pipeline design, experiment planning, evaluation, error analysis,
-    and writing.
-  </div>
-</div>
-
-<div class="sectionTitle" id="industry-experience">Industry</div>
-
-<div class="entry">
-  <div class="t">Data Science Intern, Amazon <span class="meta">| Jun 2025 – Aug 2025</span></div>
-  <div class="m">
-    Seattle, WA. Built automated data-quality pipelines over 300K+ transportation records using Python and SQL, designed routing optimization models projecting $5M+ in annual savings and 23% route utilization improvement, and built anomaly-detection analyses to identify refund gaps and underperforming carriers.
-  </div>
-</div>
-
-<div class="exp-sep"></div>
-
-<div class="entry">
-  <div class="t">Data Science Intern, Baynovation <span class="meta">| Jul 2024 – Sep 2024</span></div>
-  <div class="m">
-    San Jose, CA. Built a refinance decision tool using real-time mortgage rate data, built an interactive dashboard for mortgage scenario analysis and savings visualization, and created delinquency risk models using GLM, Random Forest, and XGBoost.
-  </div>
-</div>
-
-<div class="footer">
-  <span>© <span id="y"></span> David Xingda Lyu</span>
-</div>
-
-  </section>
-
-  <aside class="sidebar">
-    <div class="photoWrap">
-      <img class="photo" src="Profile.JPG" alt="David Xingda Lyu">
-    </div>
-    <div class="sideText">
-      Seattle, WA<br>
-      University of Washington
-
-      <div class="sideLinks" aria-label="Profile links">
-        <a class="sideIcon" href="mailto:xlyu18@uw.edu" aria-label="Email">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect class="strokeIcon" x="3.5" y="5.5" width="17" height="13" rx="2"></rect>
-            <path class="strokeIcon" d="M4.2 7 12 13.2 19.8 7"></path>
-          </svg>
-        </a>
-
-        <a class="sideIcon" href="https://scholar.google.com/citations?user=85X6CKIAAAAJ&amp;hl=en" target="_blank" rel="noreferrer" aria-label="Google Scholar">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path class="fillIcon" d="M12 3.4 3.1 8.3 12 13.2l8.9-4.9L12 3.4z"></path>
-            <path class="strokeIcon" d="M6.6 11.1v4c0 1.7 2.5 3.2 5.4 3.2s5.4-1.5 5.4-3.2v-4"></path>
-          </svg>
-        </a>
-
-        <a class="sideIcon" href="https://www.linkedin.com/in/david-xingda-lyu-573ab4300" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-          <span class="brandIcon linkedinIcon" aria-hidden="true"></span>
-        </a>
-
-        <a class="sideIcon" href="https://x.com/XingdaLyu" target="_blank" rel="noreferrer" aria-label="X / Twitter">
-          <svg class="twitterIcon" viewBox="0 0 24 24" aria-hidden="true">
-            <path class="fillIcon" d="M23.95 4.57a9.9 9.9 0 0 1-2.83.78 4.93 4.93 0 0 0 2.16-2.72 9.86 9.86 0 0 1-3.13 1.2 4.92 4.92 0 0 0-8.39 4.48A13.98 13.98 0 0 1 1.64 3.16a4.92 4.92 0 0 0 1.52 6.57 4.9 4.9 0 0 1-2.23-.62v.06a4.92 4.92 0 0 0 3.95 4.83 4.94 4.94 0 0 1-2.22.08 4.93 4.93 0 0 0 4.6 3.42A9.88 9.88 0 0 1 0 19.54a13.94 13.94 0 0 0 7.55 2.21c9.06 0 14.01-7.5 14.01-14.01v-.64a10.02 10.02 0 0 0 2.39-2.53z"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </aside>
-</main>
-
-  </div>
-
-<script>
-  const root = document.documentElement;
-  const themeToggle = document.getElementById("themeToggle");
-  const themeIcon = document.getElementById("themeIcon");
-  const THEME_KEY = "david-site-theme-v2";
-
-  function sunIcon() {
-    return `
-      <circle cx="12" cy="12" r="4.2"></circle>
-      <path d="M12 2.5v2.2"></path>
-      <path d="M12 19.3v2.2"></path>
-      <path d="M2.5 12h2.2"></path>
-      <path d="M19.3 12h2.2"></path>
-      <path d="M5.3 5.3l1.6 1.6"></path>
-      <path d="M17.1 17.1l1.6 1.6"></path>
-      <path d="M18.7 5.3l-1.6 1.6"></path>
-      <path d="M6.9 17.1l-1.6 1.6"></path>
-    `;
-  }
-
-  function moonIcon() {
-    return `
-      <path d="M20 14.2A7.8 7.8 0 1 1 9.8 4a6.7 6.7 0 0 0 10.2 10.2z"></path>
-    `;
-  }
-
-  function applyTheme(theme){
-    root.setAttribute("data-theme", theme);
-    localStorage.setItem(THEME_KEY, theme);
-    themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
-    themeIcon.innerHTML = theme === "dark" ? sunIcon() : moonIcon();
-  }
-
-  const savedTheme = localStorage.getItem(THEME_KEY);
-  applyTheme(savedTheme === "dark" || savedTheme === "light" ? savedTheme : "light");
-
-  themeToggle.addEventListener("click", function(){
-    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    applyTheme(next);
-  });
-
-  document.getElementById("y").textContent = new Date().getFullYear();
-</script>
-
-</body>
-</html>
+print(f"Created: {output_path}")
+print(f"Characters: {len(html):,}")
+print("All four targeted replacements were applied exactly once.")
