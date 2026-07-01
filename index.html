@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="Xingda Lyu - University of Washington student researching proactive AI agents, human-AI interaction, and AI for science." />
+<title>Xingda Lyu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#ffffff;
+    --surface:#ffffff;
+    --surface2:#f0f5fb;
+    --text:#171717;
+    --muted:#4f5965;
+    --soft:#7a8490;
+    --line:#e5e0d8;
+    --line2:#ececec;
+    --accent:#35135f;
+    --accent2:#42166f;
+    --accent3:#7a4a10;
+    --progress:#bca5d8;
+    --venue:#35135f;
+    --venueShadow:0 9px 18px rgba(53,19,95,.2);
+    --shadow:0 20px 50px rgba(34, 39, 46, .08);
+    --navBg:rgba(255,255,255,.96);
+    --pageW:980px;
+    --radius:8px;
+  }
+
+  html[data-theme="dark"]{
+    --bg:#151719;
+    --surface:#1d2023;
+    --surface2:#202830;
+    --text:#f2f2ef;
+    --muted:#c8ced5;
+    --soft:#9fa8b2;
+    --line:#34383d;
+    --line2:#2a2f34;
+    --accent:#c6a8ff;
+    --accent2:#b893ff;
+    --accent3:#edb86f;
+    --progress:#7d5bb0;
+    --venue:#7f55bd;
+    --venueShadow:0 7px 18px rgba(0,0,0,.25);
+    --shadow:0 20px 50px rgba(0,0,0,.28);
+    --navBg:rgba(21,23,25,.94);
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+    margin:0;
+    min-height:100%;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Roboto", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-size:15px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  a{
+    color:var(--accent);
+    text-decoration:none;
+    text-underline-offset:3px;
+  }
+
+  a:hover{
+    text-decoration:underline;
+  }
+
+  .page a:not(.iconLink):not(.miniBtn){
+    font-weight:700;
+  }
+
+  .page{
+    width:min(var(--pageW), calc(100% - 40px));
+    margin:0 auto;
+  }
+
+  .topbar{
+    position:sticky;
+    top:0;
+    z-index:20;
+    border-bottom:1px solid var(--line);
+    background:var(--navBg);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+  }
+
+  .scrollProgress{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-1px;
+    height:2px;
+    overflow:hidden;
+    pointer-events:none;
+  }
+
+  .scrollProgressBar{
+    display:block;
+    width:100%;
+    height:100%;
+    background:var(--progress);
+    transform:scaleX(0);
+    transform-origin:left center;
+    transition:transform .08s linear;
+  }
+
+  .nav{
+    width:min(var(--pageW), calc(100% - 40px));
+    min-height:58px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:20px;
+  }
+
+  .brand{
+    color:var(--text);
+    font-family:"Roboto Slab", Georgia, "Times New Roman", serif;
+    font-size:18px;
+    letter-spacing:.01em;
+    white-space:nowrap;
+  }
+
+  .brand:hover{
+    text-decoration:none;
+    color:var(--accent);
+  }
+
+  .navlinks{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:24px;
+    color:var(--muted);
+    font-size:14px;
+  }
+
+  .navlinks a{
+    color:var(--muted);
+  }
+
+  .navlinks a:hover{
+    color:var(--text);
+    text-decoration:none;
+  }
+
+  .themeToggle{
+    width:30px;
+    height:30px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--muted);
+    background:transparent;
+    border:0;
+    border-radius:999px;
+    cursor:pointer;
+  }
+
+  .themeToggle:hover{
+    color:var(--text);
+    background:rgba(127,127,127,.1);
+  }
+
+  .themeToggle:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+
+  .themeToggle svg{
+    width:19px;
+    height:19px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.9;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+
+  .hero{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 215px;
+    gap:46px;
+    align-items:start;
+    padding:52px 0 36px;
+    scroll-margin-top:78px;
+  }
+
+  .eyebrow{
+    margin:0 0 14px;
+    color:var(--accent2);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+
+  h1{
+    margin:0;
+    font-family:"Roboto Slab", Georgia, "Times New Roman", serif;
+    font-size:46px;
+    line-height:1.05;
+    font-weight:300;
+    letter-spacing:0;
+  }
+
+  .given{
+    font-weight:700;
+  }
+
+  .lede{
+    margin:22px 0 0;
+    max-width:660px;
+    color:var(--text);
+    font-size:16px;
+  }
+
+  .researchFocus{
+    max-width:660px;
+    margin:22px 0 0;
+    padding:0;
+    list-style:none;
+  }
+
+  .researchFocus li{
+    position:relative;
+    margin:8px 0;
+    padding-left:18px;
+    color:var(--muted);
+    font-size:15px;
+    line-height:1.5;
+  }
+
+  .researchFocus li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:.67em;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--accent);
+  }
+
+  .profileCard{
+    position:sticky;
+    top:82px;
+    padding:0;
+    margin-top:36px;
+    justify-self:center;
+  }
+
+  .photo{
+    width:210px;
+    max-width:100%;
+    aspect-ratio:1 / 1.16;
+    display:block;
+    margin:0 auto;
+    object-fit:cover;
+    object-position:center top;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    border:1px solid var(--line);
+    background:var(--surface);
+  }
+
+  .sideLinks{
+    margin-top:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+  }
+
+  .iconLink{
+    width:34px;
+    height:34px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    color:#111111;
+    border-radius:999px;
+  }
+
+  .iconLink:hover{
+    color:var(--accent);
+    background:rgba(127,127,127,.1);
+    text-decoration:none;
+  }
+
+  .iconLink svg{
+    width:26px;
+    height:26px;
+    display:block;
+  }
+
+  .strokeIcon{
+    fill:none;
+    stroke:currentColor;
+    stroke-width:1.75;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+
+  .fillIcon{
+    fill:currentColor;
+  }
+
+  .linkedinIcon{
+    width:24px;
+    height:24px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:3px;
+    background:currentColor;
+    color:currentColor;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:800;
+  }
+
+  .linkedinIcon::before{
+    content:"in";
+    color:var(--surface);
+    font-size:14px;
+    line-height:1;
+  }
+
+  .section{
+    padding:34px 0 12px;
+    border-top:1px solid var(--line);
+    scroll-margin-top:78px;
+  }
+
+  .sectionHead{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:18px;
+    margin-bottom:18px;
+  }
+
+  .sectionTitleWrap{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .sectionIcon{
+    width:28px;
+    height:28px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--venue);
+    transform:translateY(1px);
+  }
+
+  .sectionIcon svg{
+    width:26px;
+    height:26px;
+    fill:none;
+    stroke:currentColor;
+    stroke-width:2.4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+
+  h2{
+    margin:0;
+    font-family:"Roboto Slab", Georgia, "Times New Roman", serif;
+    font-size:31px;
+    line-height:1.2;
+    font-weight:500;
+    letter-spacing:0;
+  }
+
+  .sectionNote{
+    color:var(--soft);
+    font-size:13px;
+    white-space:nowrap;
+  }
+
+  .pubList{
+    display:grid;
+    gap:16px;
+  }
+
+  .pub{
+    display:grid;
+    grid-template-columns:92px minmax(0,1fr);
+    gap:20px;
+    align-items:start;
+    padding:17px 0;
+    border-bottom:1px solid var(--line2);
+  }
+
+  .pub.withPreview{
+    grid-template-columns:158px minmax(0,1fr);
+    gap:24px;
+  }
+
+  .pubMedia{
+    display:grid;
+    gap:7px;
+  }
+
+  .pubVenueTag{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    justify-self:start;
+    min-width:82px;
+    min-height:26px;
+    padding:3px 10px;
+    border-radius:3px;
+    background:var(--venue);
+    color:#ffffff;
+    box-shadow:var(--venueShadow);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    text-align:center;
+  }
+
+  html[data-theme="dark"] .pubVenueTag{
+    background:var(--venue);
+    color:#ffffff;
+  }
+
+  .pubPreview{
+    display:block;
+    width:100%;
+    aspect-ratio:2.15 / 1;
+    object-fit:contain;
+    object-position:center;
+    border:1px solid var(--line);
+    border-radius:6px;
+    background:var(--surface);
+    box-shadow:0 7px 18px rgba(34,39,46,.055);
+  }
+
+  .badge{
+    display:inline-flex;
+    justify-content:center;
+    min-width:68px;
+    min-height:26px;
+    padding:3px 10px;
+    border-radius:3px;
+    background:var(--venue);
+    color:#ffffff;
+    box-shadow:var(--venueShadow);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    text-align:center;
+  }
+
+  html[data-theme="dark"] .badge{
+    background:var(--venue);
+    color:#ffffff;
+  }
+
+  .badge.green{
+    background:var(--venue);
+    color:#ffffff;
+  }
+
+  html[data-theme="dark"] .badge.green{
+    background:var(--venue);
+    color:#ffffff;
+  }
+
+  .badge.gold{
+    background:var(--venue);
+    color:#ffffff;
+  }
+
+  html[data-theme="dark"] .badge.gold{
+    background:var(--venue);
+    color:#ffffff;
+  }
+
+  .pubTitle{
+    margin:2px 0 4px;
+    color:var(--text);
+    font-size:16.5px;
+    line-height:1.38;
+    font-weight:750;
+  }
+
+  .pubMeta{
+    margin:0;
+    color:var(--muted);
+    font-size:14.5px;
+    line-height:1.45;
+  }
+
+  .me{
+    color:var(--accent);
+    font-weight:800;
+    text-decoration-line:underline;
+    text-decoration-style:solid;
+    text-decoration-thickness:1.5px;
+    text-underline-offset:3px;
+    text-decoration-color:var(--accent);
+  }
+
+  .pubVenueLine{
+    margin:3px 0 0;
+    color:var(--text);
+    font-size:14.5px;
+    line-height:1.45;
+    font-style:italic;
+  }
+
+  .pubLinks{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
+  }
+
+  .miniBtn{
+    display:inline-flex;
+    align-items:center;
+    min-height:28px;
+    padding:4px 12px;
+    border:1.25px solid #111111;
+    border-radius:3px;
+    color:#111111;
+    background:var(--surface);
+    font-size:12.5px;
+    font-weight:700;
+  }
+
+  .miniBtn:hover{
+    color:var(--accent);
+    border-color:color-mix(in srgb, var(--accent) 40%, var(--line));
+    text-decoration:none;
+  }
+
+  .twoCol{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+
+  .workBlock{
+    padding-bottom:16px;
+    border-bottom:1px solid var(--line2);
+  }
+
+  .workBlock h3{
+    margin:0 0 6px;
+    color:var(--text);
+    font-size:16px;
+    line-height:1.35;
+  }
+
+  .workBlock p{
+    margin:0;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.55;
+  }
+
+  .role{
+    color:var(--soft);
+    font-weight:600;
+  }
+
+  .footer{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+    margin:38px 0 44px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    color:var(--soft);
+    font-size:13px;
+  }
+
+  .footer a{
+    color:var(--soft);
+  }
+
+  @media (max-width: 900px){
+    .hero{
+      grid-template-columns:1fr;
+      gap:28px;
+      padding-top:38px;
+    }
+
+    .profileCard{
+      position:static;
+      width:min(265px, 100%);
+      order:-1;
+    }
+
+    .sideLinks{
+      text-align:left;
+      justify-content:flex-start;
+    }
+
+    .twoCol{
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+  }
+
+  @media (max-width: 680px){
+    .page,
+    .nav{
+      width:calc(100% - 28px);
+    }
+
+    .nav{
+      min-height:auto;
+      padding:12px 0;
+      align-items:flex-start;
+    }
+
+    .brand{
+      font-size:17px;
+      padding-top:2px;
+    }
+
+    .navlinks{
+      gap:13px;
+      flex-wrap:wrap;
+      font-size:14px;
+    }
+
+    h1{
+      font-size:39px;
+    }
+
+    .sectionHead{
+      display:block;
+    }
+
+    .sectionNote{
+      display:block;
+      margin-top:3px;
+      white-space:normal;
+    }
+
+    .pub{
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+
+    .pub.withPreview{
+      grid-template-columns:1fr;
+    }
+
+    .pubPreview{
+      max-width:300px;
+    }
+
+    .pubVenueTag{
+      max-width:300px;
+    }
+
+    .badge{
+      width:max-content;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="navlinks">
+        <a href="#publications">publications</a>
+        <a href="#presentations">presentations</a>
+        <a href="#research">research</a>
+        <a href="#industry">industry</a>
+        <a href="CV_Xingda_Lyu.pdf" target="_blank" rel="noreferrer">CV</a>
+        <button id="themeToggle" class="themeToggle" type="button" aria-label="Toggle light and dark mode">
+          <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="scrollProgress" aria-hidden="true">
+      <span id="scrollProgressBar" class="scrollProgressBar"></span>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero" id="about">
+      <div>
+        <p class="eyebrow">University of Washington</p>
+        <h1><span class="given">Xingda</span> Lyu</h1>
+
+        <p class="lede">
+          Hi! I am a rising senior at the University of Washington studying statistics,
+          informatics, and human-centered AI. My research focuses on proactive AI agents,
+          human-AI interaction, and AI for scientific exploration, with a broader interest
+          in systems that understand users, reason under uncertainty, and provide calibrated,
+          context-aware support.
+        </p>
+
+        <p class="lede">
+          I am advised by Professor
+          <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Chirag Shah</a>
+          at the UW InfoSeeking Lab, and work with Professor
+          <a href="https://hanj.cs.illinois.edu/" target="_blank" rel="noreferrer">Jiawei Han</a>
+          at the UIUC CS Data Mining Group.
+        </p>
+
+        <ul class="researchFocus" aria-label="Research focus areas">
+          <li><strong>Proactive agents</strong> that infer user needs and decide when to intervene.</li>
+          <li><strong>Human-AI interaction</strong> for calibrated, context-aware assistance.</li>
+          <li><strong>AI for scientific exploration</strong>, including retrieval and reasoning over complex evidence.</li>
+        </ul>
+      </div>
+
+      <aside class="profileCard" aria-label="Profile">
+        <img class="photo" src="Profile.JPG" alt="Xingda Lyu">
+        <div class="sideLinks" aria-label="Profile links">
+          <a class="iconLink" href="mailto:xlyu18@uw.edu" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="strokeIcon" x="3.5" y="5.5" width="17" height="13" rx="2"></rect>
+              <path class="strokeIcon" d="M4.2 7 12 13.2 19.8 7"></path>
+            </svg>
+          </a>
+
+          <a class="iconLink" href="https://scholar.google.com/citations?user=85X6CKIAAAAJ&amp;hl=en" target="_blank" rel="noreferrer" aria-label="Google Scholar">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path class="fillIcon" d="M12 3.4 3.1 8.3 12 13.2l8.9-4.9L12 3.4z"></path>
+              <path class="strokeIcon" d="M6.6 11.1v4c0 1.7 2.5 3.2 5.4 3.2s5.4-1.5 5.4-3.2v-4"></path>
+            </svg>
+          </a>
+
+          <a class="iconLink" href="https://www.linkedin.com/in/david-xingda-lyu-573ab4300" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <span class="linkedinIcon" aria-hidden="true"></span>
+          </a>
+
+          <a class="iconLink" href="https://x.com/XingdaLyu" target="_blank" rel="noreferrer" aria-label="X / Twitter">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path class="fillIcon" d="M18.9 2.9h3.3l-7.2 8.2 8.4 10.9h-6.6l-5.1-6.7-5.9 6.7H2.5l7.7-8.8-8-10.3H9l4.6 6.1 5.3-6.1zm-1.2 17.2h1.8L8 4.7H6.1l11.6 15.4z"></path>
+            </svg>
+          </a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="sectionHead">
+        <h2 class="sectionTitleWrap">
+          <span class="sectionIcon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M6.5 3.5h8L19 8v12.5H6.5z"></path>
+              <path d="M14.5 3.5V8H19"></path>
+              <path d="M9.5 11.5h6"></path>
+              <path d="M9.5 15h6"></path>
+              <path d="M9.5 18.5h4"></path>
+            </svg>
+          </span>
+          <span>Publications</span>
+        </h2>
+      </div>
+
+      <div class="pubList">
+        <article class="pub withPreview">
+          <div class="pubMedia">
+            <span class="pubVenueTag">ICML</span>
+            <img class="pubPreview" src="assets/img/ICML26.png" alt="Conceptual preview for the ICML 2026 paper">
+          </div>
+          <div>
+            <h3 class="pubTitle">Position: Knowing Isn't Understanding: Re-grounding Generative Proactivity with Epistemic and Behavioral Insight</h3>
+            <p class="pubMeta">
+              Kirandeep Kaur, <span class="me">Xingda Lyu</span>, and Chirag Shah.
+            </p>
+            <p class="pubVenueLine">In Proceedings of the International Conference on Machine Learning (ICML), 2026.</p>
+            <div class="pubLinks">
+              <a class="miniBtn" href="https://arxiv.org/abs/2602.15259" target="_blank" rel="noreferrer">PDF</a>
+              <a class="miniBtn" href="https://arxiv.org/abs/2602.15259" target="_blank" rel="noreferrer">arXiv</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub withPreview">
+          <div class="pubMedia">
+            <span class="pubVenueTag">CVPR W</span>
+            <img class="pubPreview" src="assets/img/PROS.png" alt="Overview preview for the PROS paper">
+          </div>
+          <div>
+            <h3 class="pubTitle">PROS: A Proactive Multimodal Refinement Agent for Scientific Posters</h3>
+            <p class="pubMeta">
+              <span class="me">Xingda Lyu</span>, Xinye Luo, Honglin Lu, and Shiqi Yang.
+            </p>
+            <p class="pubVenueLine">Workshop on Human-Interactive Generation and Editing (HiGen), CVPR, 2026.</p>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div><span class="badge gold">CDS</span></div>
+          <div>
+            <h3 class="pubTitle">P-RAG: Prompt-Enhanced Parametric RAG with LoRA and Selective CoT for Biomedical and Multi-Hop QA</h3>
+            <p class="pubMeta">
+              <span class="me">Xingda Lyu</span>, Gongfu Lyu, Zitai Yan, and Yuxin Jiang.
+            </p>
+            <p class="pubVenueLine">In Proceedings of the International Conference on Computing and Data Science (CDS), 2025.</p>
+            <div class="pubLinks">
+              <a class="miniBtn" href="https://ace.ewapub.com/article/view/28253" target="_blank" rel="noreferrer">Paper</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="presentations">
+      <div class="sectionHead">
+        <h2>Selected Presentations</h2>
+      </div>
+
+      <div class="pubList">
+        <article class="pub">
+          <div><span class="badge green">CHIIR</span></div>
+          <div>
+            <h3 class="pubTitle">Decision-Making Under Unknown Unknowns in Proactive Agentic Systems</h3>
+            <p class="pubMeta">
+              <span class="me">Xingda Lyu</span>. Lightning talk and poster presentation, ACM CHIIR Workshop on Human-Centered Proactive &amp; Personalized Agents.
+            </p>
+            <div class="pubLinks">
+              <a class="miniBtn" href="https://proactive-chiir.github.io/pages/accepted-paper.html" target="_blank" rel="noreferrer">Accepted papers</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div><span class="badge gold">ARD</span></div>
+          <div>
+            <h3 class="pubTitle">Proactive Agents for Knowledge Gap Navigation</h3>
+            <p class="pubMeta">
+              Kirandeep Kaur, Vinayak Gupta, <span class="me">Xingda Lyu</span>, Aditya Gupta, and Chirag Shah. Poster presentation, Amazon Research Day, AI Co-Scientist.
+            </p>
+            <div class="pubLinks">
+              <a class="miniBtn" href="ARD_Poster.pdf" target="_blank" rel="noreferrer">Poster</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="sectionHead">
+        <h2>Research</h2>
+        <span class="sectionNote">current directions and experience</span>
+      </div>
+
+      <div class="twoCol">
+        <div class="workBlock">
+          <h3>Proactive agents for user understanding under uncertainty</h3>
+          <p>I am developing empirical work on proactive agents that better understand user needs and context under uncertainty. This work builds on my ICML 2026 position paper and studies how agents can provide useful support while remaining calibrated in when and how they intervene.</p>
+        </div>
+
+        <div class="workBlock">
+          <h3>Calibrated proactive and personalized assistance</h3>
+          <p>In collaboration with <a href="https://stellalisy.com/" target="_blank" rel="noreferrer">Stella Li</a>, I am working on calibration challenges in proactive and personalized LLM assistants, studying support that accounts for both user requests and broader interaction context.</p>
+        </div>
+
+        <div class="workBlock">
+          <h3>UIUC CS Data Mining Group <span class="role">| Summer 2026</span></h3>
+          <p>Research Intern with <a href="https://hanj.cs.illinois.edu/" target="_blank" rel="noreferrer">Prof. Jiawei Han</a>. I conduct research on retrieval-augmented generation and AI for chemistry, including applications to retrosynthesis.</p>
+        </div>
+
+        <div class="workBlock">
+          <h3>InfoSeeking Lab <span class="role">| Nov 2025-present</span></h3>
+          <p>Research with <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Prof. Chirag Shah</a> and PhD mentor <a href="https://i-kiran.github.io/publications/" target="_blank" rel="noreferrer">Kirandeep Kaur</a> on proactive AI agents and human-AI interaction under uncertainty.</p>
+        </div>
+
+        <div class="workBlock">
+          <h3>Research Project Lead, PROS <span class="role">| Sep 2025-present</span></h3>
+          <p>I lead PROS, a project on proactive multimodal refinement of scientific posters using editable document representations, including system design, LLM/VLM-based diagnosis, evaluation design, team coordination, and writing.</p>
+        </div>
+
+        <div class="workBlock">
+          <h3>Research Project Lead, P-RAG <span class="role">| Nov 2024-May 2025</span></h3>
+          <p>I led a biomedical and multi-hop QA project supervised by <a href="https://www.cs.cmu.edu/~dwoodruf/" target="_blank" rel="noreferrer">Prof. David P. Woodruff</a>, covering retrieval and model-adaptation pipeline design, evaluation, error analysis, and writing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="industry">
+      <div class="sectionHead">
+        <h2>Industry</h2>
+      </div>
+
+      <div class="twoCol">
+        <div class="workBlock">
+          <h3>Data Science Intern, Amazon <span class="role">| Jun 2025-Aug 2025</span></h3>
+          <p>Seattle, WA. Built automated data-quality pipelines over 300K+ transportation records using Python and SQL, designed routing optimization models projecting $5M+ in annual savings and 23% route utilization improvement, and built anomaly-detection analyses.</p>
+        </div>
+
+        <div class="workBlock">
+          <h3>Data Science Intern, Baynovation <span class="role">| Jul 2024-Sep 2024</span></h3>
+          <p>San Jose, CA. Built a refinance decision tool using real-time mortgage rate data, an interactive dashboard for mortgage scenario analysis, and delinquency risk models using GLM, Random Forest, and XGBoost.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="y"></span> Xingda Lyu</span>
+      <span>Inspired by clean academic portfolio systems; implemented as a lightweight static page.</span>
+    </footer>
+  </main>
+
+<script>
+  const root = document.documentElement;
+  const themeToggle = document.getElementById("themeToggle");
+  const themeIcon = document.getElementById("themeIcon");
+  const scrollProgressBar = document.getElementById("scrollProgressBar");
+  const THEME_KEY = "david-site-theme-v3";
+
+  function sunIcon() {
+    return `
+      <circle cx="12" cy="12" r="4.2"></circle>
+      <path d="M12 2.5v2.2"></path>
+      <path d="M12 19.3v2.2"></path>
+      <path d="M2.5 12h2.2"></path>
+      <path d="M19.3 12h2.2"></path>
+      <path d="M5.3 5.3l1.6 1.6"></path>
+      <path d="M17.1 17.1l1.6 1.6"></path>
+      <path d="M18.7 5.3l-1.6 1.6"></path>
+      <path d="M6.9 17.1l-1.6 1.6"></path>
+    `;
+  }
+
+  function moonIcon() {
+    return `<path d="M20 14.2A7.8 7.8 0 1 1 9.8 4a6.7 6.7 0 0 0 10.2 10.2z"></path>`;
+  }
+
+  function applyTheme(theme){
+    root.setAttribute("data-theme", theme);
+    localStorage.setItem(THEME_KEY, theme);
+    themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+    themeIcon.innerHTML = theme === "dark" ? sunIcon() : moonIcon();
+  }
+
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  applyTheme(savedTheme === "dark" || savedTheme === "light" ? savedTheme : "light");
+
+  themeToggle.addEventListener("click", function(){
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    applyTheme(next);
+  });
+
+  function updateScrollProgress(){
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
+    scrollProgressBar.style.transform = "scaleX(" + progress + ")";
+  }
+
+  window.addEventListener("scroll", updateScrollProgress, { passive: true });
+  window.addEventListener("resize", updateScrollProgress);
+  updateScrollProgress();
+
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
