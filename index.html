@@ -29,7 +29,7 @@
     --venueShadow:0 2px 7px rgba(53,19,95,.24);
     --shadow:0 20px 50px rgba(34, 39, 46, .08);
     --navBg:rgba(255,255,255,.96);
-    --pageW:930px;
+    --pageW:950px;
     --radius:8px;
   }
 
@@ -64,8 +64,8 @@
     background:var(--bg);
     color:var(--text);
     font-family:"Roboto", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    font-size:14.5px;
-    line-height:1.52;
+    font-size:15.4px;
+    line-height:1.53;
     -webkit-font-smoothing:antialiased;
     text-rendering:optimizeLegibility;
   }
@@ -148,7 +148,7 @@
     justify-content:flex-end;
     gap:20px;
     color:var(--muted);
-    font-size:14.5px;
+    font-size:15px;
   }
 
   .navlinks a{
@@ -181,7 +181,7 @@
   h1{
     margin:0;
     font-family:"Roboto Slab", Georgia, "Times New Roman", serif;
-    font-size:40px;
+    font-size:42px;
     line-height:1.05;
     font-weight:300;
     letter-spacing:0;
@@ -196,7 +196,7 @@
     margin-left:10px;
     color:#5f6670;
     font-family:"Roboto", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    font-size:13px;
+    font-size:13.5px;
     font-weight:500;
     line-height:1;
     vertical-align:baseline;
@@ -207,7 +207,7 @@
     margin:12px 0 0;
     max-width:660px;
     color:var(--text);
-    font-size:14.5px;
+    font-size:15.4px;
   }
 
   .page .lede a.contextLink{
@@ -239,8 +239,8 @@
     margin:5px 0;
     padding-left:16px;
     color:var(--muted);
-    font-size:14.5px;
-    line-height:1.42;
+    font-size:15.4px;
+    line-height:1.44;
   }
 
   .researchFocus li::before{
@@ -264,21 +264,20 @@
   }
 
   .profileCard{
-    position:sticky;
-    top:66px;
+    position:static;
     padding:0;
     margin-top:30px;
     justify-self:center;
   }
 
   .photo{
-    width:194px;
+    width:192px;
     max-width:100%;
-    aspect-ratio:1 / 1.16;
+    aspect-ratio:1 / 1.24;
     display:block;
     margin:0 auto;
     object-fit:cover;
-    object-position:center top;
+    object-position:center 58%;
     border-radius:var(--radius);
     box-shadow:var(--shadow);
     border:1px solid var(--line);
@@ -373,7 +372,7 @@
   h2{
     margin:0;
     font-family:"Roboto Slab", Georgia, "Times New Roman", serif;
-    font-size:25px;
+    font-size:27px;
     line-height:1.2;
     font-weight:500;
     letter-spacing:0;
@@ -423,7 +422,7 @@
     align-items:baseline;
     gap:6px;
     padding:1px 0;
-    font-size:14.5px;
+    font-size:15.4px;
     line-height:1.4;
   }
 
@@ -434,7 +433,7 @@
   .newsDate{
     display:inline;
     color:var(--muted);
-    font-size:14.5px;
+    font-size:15.4px;
     font-weight:700;
     font-style:italic;
     letter-spacing:0;
@@ -445,7 +444,7 @@
     display:inline;
     margin:0;
     color:var(--muted);
-    font-size:14.5px;
+    font-size:15.4px;
     line-height:inherit;
   }
 
@@ -579,7 +578,7 @@
   .pubTitle{
     margin:0 0 3px;
     color:var(--text);
-    font-size:15px;
+    font-size:16px;
     line-height:1.3;
     font-weight:800;
   }
@@ -587,7 +586,7 @@
   .pubMeta{
     margin:0;
     color:var(--muted);
-    font-size:14.5px;
+    font-size:15px;
     line-height:1.36;
   }
 
@@ -614,7 +613,7 @@
   .pubVenueLine{
     margin:2px 0 0;
     color:var(--text);
-    font-size:14.5px;
+    font-size:15px;
     line-height:1.36;
     font-style:italic;
   }
@@ -635,7 +634,7 @@
     border-radius:3px;
     color:#111111;
     background:var(--surface);
-    font-size:12.5px;
+    font-size:13px;
     font-weight:700;
   }
 
@@ -645,75 +644,116 @@
     text-decoration:none;
   }
 
-  .twoCol{
+  .researchList{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:28px;
+    gap:14px;
   }
 
-  .workBlock{
-    padding-bottom:16px;
+  .researchEntry{
+    display:grid;
+    grid-template-columns:128px minmax(0, 1fr);
+    gap:20px;
+    padding-bottom:14px;
     border-bottom:1px solid var(--line2);
   }
 
-  .workBlock h3,
-  .industryBlock h3{
+  .researchEntry:last-child{
+    padding-bottom:0;
+    border-bottom:0;
+  }
+
+  .researchDate{
+    padding-top:2px;
+    color:var(--soft);
+    font-size:14px;
+    font-weight:700;
+    line-height:1.35;
+    text-align:right;
+    white-space:nowrap;
+  }
+
+  .researchEntry h3{
     margin:0 0 6px;
     color:var(--text);
-    font-size:16px;
+    font-size:16.5px;
     line-height:1.35;
   }
 
-  .workBlock p,
-  .industryBlock p{
+  .researchEntry p{
     margin:0;
     color:var(--muted);
-    font-size:14px;
+    font-size:14.7px;
     line-height:1.55;
   }
 
-  .industryGrid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:28px;
+  .researchEntry .researchMeta{
+    margin-top:5px;
+    color:var(--soft);
   }
 
-  .industryBlock{
-    padding-bottom:18px;
+  .experienceList{
+    display:grid;
+    gap:20px;
+  }
+
+  .experienceItem{
+    display:grid;
+    grid-template-columns:190px minmax(0, 1fr);
+    gap:34px;
+    align-items:center;
+    padding:16px 0;
     border-bottom:1px solid var(--line2);
   }
 
-  .logoPanel{
-    height:72px;
-    margin-bottom:14px;
+  .experienceItem:last-child{
+    border-bottom:0;
+  }
+
+  .experienceLogo{
+    min-height:70px;
     display:flex;
     align-items:center;
     justify-content:center;
-    border:1px solid var(--line2);
-    border-radius:6px;
-    background:#fbfbfb;
+    background:transparent;
   }
 
-  .logoPanel.dark{
-    background:#050505;
-    border-color:#050505;
+  .experienceBody h3{
+    margin:0 0 6px;
+    color:var(--text);
+    font-size:19px;
+    line-height:1.25;
+    font-weight:700;
+  }
+
+  .experienceRole{
+    margin:0 0 12px;
+    color:var(--text);
+    font-size:15.6px;
+    line-height:1.35;
+  }
+
+  .experienceMeta{
+    margin:0;
+    color:var(--text);
+    font-size:15.2px;
+    line-height:1.35;
   }
 
   .companyLogo{
     display:block;
-    max-width:78%;
-    max-height:42px;
+    max-width:150px;
+    max-height:58px;
     object-fit:contain;
   }
 
   .companyLogo.amazonMark{
-    max-width:70%;
-    max-height:36px;
+    max-width:145px;
+    max-height:44px;
   }
 
   .companyLogo.baynovationMark{
-    max-width:72%;
-    max-height:54px;
+    max-width:136px;
+    max-height:62px;
   }
 
   .role{
@@ -731,12 +771,11 @@
     text-align:center;
   }
 
-  .outsideText{
+  .personalNote{
     max-width:760px;
-    margin:0;
-    color:var(--muted);
-    font-size:14.5px;
-    line-height:1.5;
+    color:var(--soft);
+    font-size:14.3px;
+    line-height:1.48;
   }
 
   @media (max-width: 900px){
@@ -758,14 +797,39 @@
       justify-content:flex-start;
     }
 
-    .twoCol{
+    .researchEntry{
       grid-template-columns:1fr;
-      gap:16px;
+      gap:4px;
     }
 
-    .industryGrid{
+    .researchDate{
+      text-align:left;
+    }
+
+    .experienceItem{
       grid-template-columns:1fr;
-      gap:16px;
+      gap:8px;
+      align-items:start;
+    }
+
+    .experienceLogo{
+      justify-content:flex-start;
+      min-height:46px;
+    }
+
+    .companyLogo{
+      max-width:132px;
+      max-height:50px;
+    }
+
+    .companyLogo.amazonMark{
+      max-width:132px;
+      max-height:40px;
+    }
+
+    .companyLogo.baynovationMark{
+      max-width:122px;
+      max-height:56px;
     }
 
     .newsPanel{
@@ -844,9 +908,8 @@
       <div class="navlinks">
         <a href="#news">news</a>
         <a href="#publications">publications</a>
-        <a href="#presentations">presentations</a>
         <a href="#research">research</a>
-        <a href="#industry">industry</a>
+        <a href="#experience">experience</a>
         <a href="CV_Xingda_Lyu.pdf?v=20260703" target="_blank" rel="noreferrer">CV</a>
       </div>
     </nav>
@@ -861,27 +924,32 @@
         <h1><span class="given">Xingda</span> Lyu <span class="callMe">(David)</span></h1>
 
         <p class="lede">
-          Hey! I am Xingda Lyu, a rising senior at the University of Washington pursuing
-          a double degree in statistics and informatics, and conducting research with the 
-          <a class="contextLink" href="https://nlp.washington.edu/" target="_blank" rel="noreferrer">UWNLP group.
+          Hi! I am Xingda Lyu, a rising senior at the University of Washington pursuing
+          dual B.S. degrees in Statistics and Informatics, where I conduct research with the
+          <a class="contextLink" href="https://nlp.washington.edu/" target="_blank" rel="noreferrer">UW NLP Group</a>.
         </p>
 
         <p class="lede">
-          I'm advised by Prof.
+          I am advised by Prof.
           <a class="advisorLink" href="https://chiragshah.org/" target="_blank" rel="noreferrer">Chirag Shah</a>
           at the UW <a class="contextLink" href="https://infoseeking.org/" target="_blank" rel="noreferrer">InfoSeeking Lab</a>.
-          I'm currently a summer research intern at the
+          I am currently a summer research intern at the
           UIUC CS
           <a class="contextLink" href="http://dm1.cs.uiuc.edu/" target="_blank" rel="noreferrer">Data Mining Group</a>,
           advised by Prof.
           <a class="advisorLink" href="https://hanj.cs.illinois.edu/" target="_blank" rel="noreferrer">Jiawei Han</a>.
         </p>
 
-        <p class="lede focusLead">My research is organized around two connected directions:</p>
+        <p class="lede focusLead">My current research focuses on three connected directions:</p>
         <ul class="researchFocus">
-          <li><span class="focusTitle">Human-AI collaboration for exploration and discovery:</span> developing proactive agents that understand users’ epistemic states and ground their actions in that understanding, enabling them to serve as effective partners in discovery across diverse domains.</li></li>
-          <li><span class="focusTitle">AI for scientific exploration and discovery:</span> building systems with dynamic agentic memory and retrieval augmentation that can reason, search, and plan in complex scientific domains, including evidence-aware reasoning under incomplete information.</li>
+          <li><span class="focusTitle">Human-AI collaboration:</span> designing proactive, personalized agents that support and collaborate with people in open-ended exploratory tasks.</li>
+          <li><span class="focusTitle">Epistemic AI:</span> building agents that surface unknown unknowns, track evolving knowledge, and regulate initiative in long-horizon partnerships.</li>
+          <li><span class="focusTitle">AI for scientific discovery:</span> building retrieval-augmented systems with dynamic agentic memory for scientific reasoning and evidence-aware decision support.</li>
         </ul>
+
+        <p class="lede personalNote">
+          Outside of research, I play competitive badminton and speak English, Mandarin, and French, with English and Mandarin as my native languages.
+        </p>
       </div>
 
       <aside class="profileCard" aria-label="Profile">
@@ -929,17 +997,17 @@
           <div class="newsItem">
             <span class="newsIcon" aria-hidden="true">✈</span>
             <span class="newsDate">2026.07:</span>
-            <span class="newsText">Traveling to <a href="https://icml.cc/Conferences/2026" target="_blank" rel="noreferrer">ICML 2026</a> main conference in Seoul.</span>
+            <span class="newsText">Attended the <a href="https://icml.cc/Conferences/2026" target="_blank" rel="noreferrer">ICML 2026</a> main conference in Seoul.</span>
           </div>
           <div class="newsItem">
             <span class="newsIcon" aria-hidden="true">✈</span>
             <span class="newsDate">2026.06:</span>
-            <span class="newsText">Attended <a href="https://cvpr.thecvf.com/Conferences/2026" target="_blank" rel="noreferrer">CVPR 2026</a> main conference in Denver, Colorado.</span>
+            <span class="newsText">Attended the <a href="https://cvpr.thecvf.com/Conferences/2026" target="_blank" rel="noreferrer">CVPR 2026</a> main conference in Denver, Colorado.</span>
           </div>
           <div class="newsItem">
             <span class="newsIcon" aria-hidden="true">◆</span>
             <span class="newsDate">2026.06:</span>
-            <span class="newsText">Started as a summer research intern at the UIUC CS <a href="http://dm1.cs.uiuc.edu/" target="_blank" rel="noreferrer">Data Mining Group</a>, advised by Prof. <a href="https://hanj.cs.illinois.edu/" target="_blank" rel="noreferrer">Jiawei Han</a>.</span>
+            <span class="newsText">Started as a summer research intern at the UIUC <a href="http://dm1.cs.uiuc.edu/" target="_blank" rel="noreferrer">Data Mining Group</a>, advised by Prof. <a href="https://hanj.cs.illinois.edu/" target="_blank" rel="noreferrer">Jiawei Han</a>.</span>
           </div>
           <div class="newsItem">
             <span class="newsIcon" aria-hidden="true">★</span>
@@ -996,24 +1064,6 @@
 
         <article class="pub withPreview">
           <div class="pubMedia">
-            <span class="pubVenueTag">CVPR ’26</span>
-            <img class="pubPreview" src="assets/img/PROS.png" alt="Overview preview for the PROS paper">
-          </div>
-          <div>
-            <h3 class="pubTitle">PROS: A Proactive Multimodal Refinement Agent for Scientific Posters</h3>
-            <p class="pubMeta">
-              <span class="author me">Xingda Lyu</span>, <span class="author">Xinye Luo</span>, <span class="author">Honglin Lu</span>, and <span class="author">Shiqi Yang</span>.
-            </p>
-            <p class="pubVenueLine">Workshop on Human-Interactive Generation and Editing (HiGen), CVPR, 2026.</p>
-            <div class="pubLinks">
-              <a class="miniBtn" href="PROS_Paper.pdf" target="_blank" rel="noreferrer">Paper</a>
-              <a class="miniBtn" href="PROS_Poster.pdf" target="_blank" rel="noreferrer">Poster</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub withPreview">
-          <div class="pubMedia">
             <span class="pubVenueTag">CDS ’25</span>
             <img class="pubPreview" src="assets/img/PRAG.png?v=20260703-title" alt="Preview for the P-RAG paper">
           </div>
@@ -1032,7 +1082,7 @@
       </div>
     </section>
 
-    <section class="section" id="presentations">
+    <section class="section" id="workshops">
       <div class="sectionHead">
         <h2 class="sectionTitleWrap">
           <span class="sectionIcon" aria-hidden="true">
@@ -1044,11 +1094,25 @@
               <path d="M8 12h5.5"></path>
             </svg>
           </span>
-          <span>Selected Presentations</span>
+          <span>Workshops</span>
         </h2>
       </div>
 
       <div class="pubList">
+        <article class="pub withPreview">
+          <div class="pubMedia">
+            <span class="pubVenueTag">CVPR ’26</span>
+            <img class="pubPreview" src="assets/img/PROS.png" alt="Overview preview for the PROS paper">
+          </div>
+          <div>
+            <h3 class="pubTitle">PROS: A Proactive Multimodal Refinement Agent for Scientific Posters</h3>
+            <p class="pubMeta">
+              <span class="author me">Xingda Lyu</span>, <span class="author">Xinye Luo</span>, <span class="author">Honglin Lu</span>, and <span class="author">Shiqi Yang</span>.
+            </p>
+            <p class="pubVenueLine">CVPR Workshop on Human-Interactive Generation and Editing (HiGen), 2026.</p>
+          </div>
+        </article>
+
         <article class="pub withPreview">
           <div class="pubMedia">
             <span class="pubVenueTag">CHIIR ’26</span>
@@ -1059,10 +1123,7 @@
             <p class="pubMeta">
               <span class="author me">Xingda Lyu</span>.
             </p>
-            <p class="pubVenueLine">Lightning talk and poster presentation, ACM CHIIR Workshop on Human-Centered Proactive &amp; Personalized Agents.</p>
-            <div class="pubLinks">
-              <a class="miniBtn" href="https://proactive-chiir.github.io/pages/accepted-paper.html" target="_blank" rel="noreferrer">Accepted papers</a>
-            </div>
+            <p class="pubVenueLine">ACM CHIIR Workshop on Human-Centered Proactive &amp; Personalized Agents, 2026.</p>
           </div>
         </article>
 
@@ -1076,10 +1137,7 @@
             <p class="pubMeta">
               <span class="author">Kirandeep Kaur</span>, <span class="author">Vinayak Gupta</span>, <span class="author me">Xingda Lyu</span>, <span class="author">Aditya Gupta</span>, and <span class="author">Chirag Shah</span>.
             </p>
-            <p class="pubVenueLine">Poster presentation, Amazon Research Day, AI Co-Scientist.</p>
-            <div class="pubLinks">
-              <a class="miniBtn" href="ARD_Poster.pdf" target="_blank" rel="noreferrer">Poster</a>
-            </div>
+            <p class="pubVenueLine">Amazon Research Day, AI Co-Scientist, 2026.</p>
           </div>
         </article>
       </div>
@@ -1102,40 +1160,37 @@
         </h2>
       </div>
 
-      <div class="twoCol">
-        <div class="workBlock">
-          <h3>UIUC CS Data Mining Group <span class="role">| Jun 2026-present</span></h3>
-          <p>Research Intern with <a href="https://hanj.cs.illinois.edu/" target="_blank" rel="noreferrer">Prof. Jiawei Han</a>. I conduct research on retrieval-augmented generation and AI for chemistry, including applications to retrosynthesis.</p>
-        </div>
+      <div class="researchList">
+        <article class="researchEntry">
+          <div class="researchDate">Jun 2026-present</div>
+          <div>
+            <h3>Research Intern, UIUC <a href="http://dm1.cs.uiuc.edu/" target="_blank" rel="noreferrer">Data Mining Group</a></h3>
+            <p>I work on AI for science, focusing on retrieval-augmented generation for retrosynthesis and drug discovery. I build and evaluate LLM/retrieval workflows for chemical reasoning and scientific decision support.</p>
+            <p class="researchMeta">Advised by Prof. <a href="https://hanj.cs.illinois.edu/" target="_blank" rel="noreferrer">Jiawei Han</a>.</p>
+          </div>
+        </article>
 
-        <div class="workBlock">
-          <h3>InfoSeeking Lab <span class="role">| Nov 2025-present</span></h3>
-          <p>Research with <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Prof. Chirag Shah</a> and PhD mentor <a href="https://i-kiran.github.io/publications/" target="_blank" rel="noreferrer">Kirandeep Kaur</a> on proactive AI agents and human-AI interaction under uncertainty.</p>
-        </div>
+        <article class="researchEntry">
+          <div class="researchDate">Nov 2025-present</div>
+          <div>
+            <h3>Research Assistant, UW <a href="https://infoseeking.org/" target="_blank" rel="noreferrer">InfoSeeking Lab</a></h3>
+            <p>I study epistemic AI agents for information seeking and human-AI collaboration. My work focuses on agents that model users' structural ignorance, navigate knowledge gaps, and build stronger epistemic partnerships under uncertainty.</p>
+            <p class="researchMeta">Advised by Prof. <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Chirag Shah</a>, with PhD mentor <a href="https://i-kiran.github.io/publications/" target="_blank" rel="noreferrer">Kirandeep Kaur</a>.</p>
+          </div>
+        </article>
 
-        <div class="workBlock">
-          <h3>Proactive agents for user understanding under uncertainty <span class="role">| Mar 2026-present</span></h3>
-          <p>I am developing empirical work on proactive agents that better understand user needs and context under uncertainty. This work builds on my ICML 2026 position paper and studies how agents can provide useful support while remaining calibrated in when and how they intervene.</p>
-        </div>
-
-        <div class="workBlock">
-          <h3>Calibrated proactive and personalized assistance <span class="role">| Apr 2026-present</span></h3>
-          <p>In collaboration with <a href="https://stellalisy.com/" target="_blank" rel="noreferrer">Stella Li</a>, I am working on calibration challenges in proactive and personalized LLM assistants, studying support that accounts for both user requests and broader interaction context.</p>
-        </div>
-
-        <div class="workBlock">
-          <h3>Research Project Lead, PROS <span class="role">| Sep 2025-present</span></h3>
-          <p>I lead PROS, a project on proactive multimodal refinement of scientific posters using editable document representations, including system design, LLM/VLM-based diagnosis, evaluation design, team coordination, and writing.</p>
-        </div>
-
-        <div class="workBlock">
-          <h3>Research Project Lead, P-RAG <span class="role">| Nov 2024-May 2025</span></h3>
-          <p>I led a biomedical and multi-hop QA project supervised by <a href="https://www.cs.cmu.edu/~dwoodruf/" target="_blank" rel="noreferrer">Prof. David P. Woodruff</a>, covering retrieval and model-adaptation pipeline design, evaluation, error analysis, and writing.</p>
-        </div>
+        <article class="researchEntry">
+          <div class="researchDate">Apr 2026-present</div>
+          <div>
+            <h3>Research Collaborator, <a href="https://nlp.washington.edu/" target="_blank" rel="noreferrer">UW NLP Group</a></h3>
+            <p>I collaborate on evaluating whether LLM assistants understand users' multidimensional and relational well-being in proactive, personalized interactions. This includes preference tradeoffs, long-term goals, and relational context beyond isolated requests.</p>
+            <p class="researchMeta">In collaboration with <a href="https://stellalisy.com/" target="_blank" rel="noreferrer">Stella Li</a>.</p>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="industry">
+    <section class="section" id="experience">
       <div class="sectionHead">
         <h2 class="sectionTitleWrap">
           <span class="sectionIcon" aria-hidden="true">
@@ -1146,46 +1201,33 @@
               <path d="M10 12.2v1.7h4v-1.7"></path>
             </svg>
           </span>
-          <span>Industry</span>
+          <span>Experience</span>
         </h2>
       </div>
 
-      <div class="industryGrid">
-        <div class="industryBlock">
-          <div class="logoPanel">
+      <div class="experienceList">
+        <article class="experienceItem">
+          <div class="experienceLogo">
             <img class="companyLogo amazonMark" src="assets/img/amazon.png" alt="Amazon logo">
           </div>
-          <h3>Data Analyst Intern, Amazon <span class="role">| Jun 2025-Aug 2025</span></h3>
-          <p>Seattle, WA. Built automated data-quality pipelines over 300K+ transportation records using Python and SQL, designed routing optimization models projecting $5M+ in annual savings and 23% route utilization improvement, and built anomaly-detection analyses.</p>
-        </div>
+          <div class="experienceBody">
+            <h3>Amazon</h3>
+            <p class="experienceRole">Data Science Intern</p>
+            <p class="experienceMeta">2025.06 - 2025.08 | Seattle, WA</p>
+          </div>
+        </article>
 
-        <div class="industryBlock">
-          <div class="logoPanel">
+        <article class="experienceItem">
+          <div class="experienceLogo">
             <img class="companyLogo baynovationMark" src="assets/img/baynovation.png" alt="Baynovation logo">
           </div>
-          <h3>Data Analyst Intern, Baynovation <span class="role">| Jul 2024-Sep 2024</span></h3>
-          <p>San Jose, CA. Built a refinance decision tool using real-time mortgage rate data, an interactive dashboard for mortgage scenario analysis, and delinquency risk models using GLM, Random Forest, and XGBoost.</p>
-        </div>
+          <div class="experienceBody">
+            <h3>Baynovation</h3>
+            <p class="experienceRole">Data Science Intern</p>
+            <p class="experienceMeta">2024.07 - 2024.09 | San Jose, CA</p>
+          </div>
+        </article>
       </div>
-    </section>
-
-    <section class="section" id="outside">
-      <div class="sectionHead">
-        <h2 class="sectionTitleWrap">
-          <span class="sectionIcon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M7.5 5.5 18.5 16.5"></path>
-              <path d="M5.5 7.5 16.5 18.5"></path>
-              <circle cx="6.5" cy="6.5" r="2.2"></circle>
-              <path d="M15.2 5.2c1.9 1 3.2 3 3.2 5.3"></path>
-              <path d="M12.6 5.2c2.6 1.5 4.2 4.2 4.2 7.2"></path>
-            </svg>
-          </span>
-          <span>Outside of Research</span>
-        </h2>
-      </div>
-
-      <p class="outsideText">I am a competitive badminton player and speak Mandarin Chinese, English, and French; Mandarin and English are my native languages.</p>
     </section>
 
   </main>
