@@ -531,6 +531,11 @@
     height:auto;
   }
 
+  .pubPreview.wideCrop{
+    object-fit:cover;
+    object-position:center 50%;
+  }
+
   .badge{
     display:flex;
     align-items:center;
@@ -1049,7 +1054,7 @@
         <article class="pub withPreview">
           <div class="pubMedia">
             <span class="pubVenueTag">Preprint</span>
-            <img class="pubPreview" src="assets/img/PROS_preprint.png" alt="Overview of source-grounded problem discovery and user-governed repair for scientific posters">
+            <img class="pubPreview wideCrop" src="assets/img/PROS_preprint.png" alt="Overview of source-grounded problem discovery and user-governed repair for scientific posters">
           </div>
           <div>
             <h3 class="pubTitle">Beyond Instruction-Driven Editing: Source-Grounded Problem Discovery with User-Governed Repair for Scientific Posters</h3>
