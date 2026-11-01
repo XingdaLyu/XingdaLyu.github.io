@@ -485,6 +485,12 @@
     width:100%;
   }
 
+  .pubMedia.balancedMedia{
+    width:min(100%, 220px);
+    justify-self:center;
+    align-self:center;
+  }
+
   .pubVenueTag{
     display:flex;
     align-items:center;
@@ -529,6 +535,11 @@
   .pubPreview.tablePreview,
   .pubPreview.naturalPreview{
     aspect-ratio:auto;
+    height:auto;
+  }
+
+  .balancedMedia .pubPreview{
+    aspect-ratio:22 / 15;
     height:auto;
   }
 
@@ -1055,7 +1066,7 @@
 
       <div class="pubList">
         <article class="pub withPreview">
-          <div class="pubMedia">
+          <div class="pubMedia balancedMedia">
             <span class="pubVenueTag">Preprint</span>
             <a class="pubFigureLink" href="assets/img/PROS_qualitative.png" target="_blank" rel="noreferrer" aria-label="View full-size before-and-after poster refinement examples">
               <img class="pubPreview naturalPreview" src="assets/img/PROS_qualitative.png" alt="Before-and-after poster refinement examples showing accepted structural, scientific, and spatial repairs">
@@ -1069,15 +1080,16 @@
             <p class="pubVenueLine">CVPR HiGen Workshop, 2026.</p>
             <div class="pubLinks">
               <a class="miniBtn" href="https://arxiv.org/abs/2609.01813" target="_blank" rel="noreferrer">arXiv</a>
+              <a class="miniBtn" href="PROS_Poster.pdf" target="_blank" rel="noreferrer">Poster</a>
             </div>
           </div>
         </article>
 
         <article class="pub withPreview">
-          <div class="pubMedia">
+          <div class="pubMedia balancedMedia">
             <span class="pubVenueTag">ICML ’26</span>
-            <a class="pubFigureLink" href="assets/img/ICML26_epistemic.png" target="_blank" rel="noreferrer" aria-label="View full-size diagram of proactive agents surfacing epistemic gaps">
-              <img class="pubPreview" src="assets/img/ICML26_epistemic.png" alt="User and agent inquiry paths showing how proactive agents reveal missing relationships and expand scientific inquiry">
+            <a class="pubFigureLink" href="assets/img/ICML26_landscape.png" target="_blank" rel="noreferrer" aria-label="View full-size epistemic proactivity diagram">
+              <img class="pubPreview naturalPreview" src="assets/img/ICML26_landscape.png" alt="Layered epistemic landscape showing knowns, unknowns, and a proactive agent surfacing knowledge gaps">
             </a>
           </div>
           <div>
@@ -1087,8 +1099,8 @@
             </p>
             <p class="pubVenueLine">In Proceedings of the International Conference on Machine Learning (ICML), 2026.</p>
             <div class="pubLinks">
-              <a class="miniBtn" href="https://icml.cc/virtual/2026/poster/67164" target="_blank" rel="noreferrer">Paper</a>
               <a class="miniBtn" href="https://arxiv.org/abs/2602.15259" target="_blank" rel="noreferrer">arXiv</a>
+              <a class="miniBtn" href="https://icml.cc/virtual/2026/poster/67164" target="_blank" rel="noreferrer">Paper</a>
               <a class="miniBtn" href="https://icml.cc/media/PosterPDFs/ICML%202026/67164.png?t=1781589901.1900225" target="_blank" rel="noreferrer">Poster</a>
               <a class="miniBtn" href="https://icml.cc/media/icml-2026/Slides/67164_xo92i84.pdf" target="_blank" rel="noreferrer">Slides</a>
               <a class="miniBtn" href="https://promptedllc.com/research/when-agents-know-what-they-don-t-know" target="_blank" rel="noreferrer">Media</a>
@@ -1098,9 +1110,11 @@
         </article>
 
         <article class="pub withPreview">
-          <div class="pubMedia">
+          <div class="pubMedia balancedMedia">
             <span class="pubVenueTag">CDS ’25</span>
-            <img class="pubPreview" src="assets/img/PRAG.png?v=20260703-title" alt="Preview for the P-RAG paper">
+            <a class="pubFigureLink" href="assets/img/PRAG_cover.png" target="_blank" rel="noreferrer" aria-label="View full-size P-RAG first-page preview">
+              <img class="pubPreview naturalPreview" src="assets/img/PRAG_cover.png" alt="P-RAG paper first-page preview showing the title, authors, affiliations, and opening of the abstract">
+            </a>
           </div>
           <div>
             <h3 class="pubTitle">P-RAG: Prompt-Enhanced Parametric RAG with LoRA and Selective CoT for Biomedical and Multi-Hop QA</h3>
@@ -1109,8 +1123,8 @@
             </p>
             <p class="pubVenueLine">In Proceedings of the International Conference on Computing and Data Science (CDS), 2025.</p>
             <div class="pubLinks">
-              <a class="miniBtn" href="https://ace.ewapub.com/article/view/28253" target="_blank" rel="noreferrer">Paper</a>
               <a class="miniBtn" href="https://arxiv.org/abs/2602.15874" target="_blank" rel="noreferrer">arXiv</a>
+              <a class="miniBtn" href="https://ace.ewapub.com/article/view/28253" target="_blank" rel="noreferrer">Paper</a>
             </div>
           </div>
         </article>
