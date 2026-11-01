@@ -526,9 +526,14 @@
     box-shadow:0 10px 22px rgba(34,39,46,.18);
   }
 
-  .pubPreview.tablePreview{
+  .pubPreview.tablePreview,
+  .pubPreview.naturalPreview{
     aspect-ratio:auto;
     height:auto;
+  }
+
+  .pubFigureLink{
+    display:block;
   }
 
   .badge{
@@ -1052,7 +1057,9 @@
         <article class="pub withPreview">
           <div class="pubMedia">
             <span class="pubVenueTag">Preprint</span>
-            <img class="pubPreview" src="assets/img/PROS_preprint.png" alt="Overview of source-grounded problem discovery and user-governed repair for scientific posters">
+            <a class="pubFigureLink" href="assets/img/PROS_qualitative.png" target="_blank" rel="noreferrer" aria-label="View full-size before-and-after poster refinement examples">
+              <img class="pubPreview naturalPreview" src="assets/img/PROS_qualitative.png" alt="Before-and-after poster refinement examples showing accepted structural, scientific, and spatial repairs">
+            </a>
           </div>
           <div>
             <h3 class="pubTitle">Beyond Instruction-Driven Editing: Source-Grounded Problem Discovery with User-Governed Repair for Scientific Posters</h3>
@@ -1061,9 +1068,7 @@
             </p>
             <p class="pubVenueLine">Preprint, 2026</p>
             <p class="pubVenueLine">
-              <a href="https://higen-2025.github.io/" target="_blank" rel="noreferrer" title="Workshop on Human-Interactive Generation and Editing">CVPR HiGen Workshop</a>
-              ·
-              <a href="https://www.cmu.edu/ai-sdm/research/human-ai-workshop/2026_workshop/2026-programming/index.html" target="_blank" rel="noreferrer">Human-AI Complementarity Workshop (CMU AI-SDM)</a>, 2026.
+              <a href="https://higen-2025.github.io/" target="_blank" rel="noreferrer" title="Workshop on Human-Interactive Generation and Editing">CVPR HiGen Workshop</a>, 2026.
             </p>
             <div class="pubLinks">
               <a class="miniBtn" href="https://arxiv.org/abs/2609.01813" target="_blank" rel="noreferrer">arXiv</a>
@@ -1074,7 +1079,9 @@
         <article class="pub withPreview">
           <div class="pubMedia">
             <span class="pubVenueTag">ICML ’26</span>
-            <img class="pubPreview" src="assets/img/ICML26.png" alt="Conceptual preview for the ICML 2026 paper">
+            <a class="pubFigureLink" href="assets/img/ICML26_epistemic.png" target="_blank" rel="noreferrer" aria-label="View full-size diagram of proactive agents surfacing epistemic gaps">
+              <img class="pubPreview" src="assets/img/ICML26_epistemic.png" alt="User and agent inquiry paths showing how proactive agents reveal missing relationships and expand scientific inquiry">
+            </a>
           </div>
           <div>
             <h3 class="pubTitle">Position: Knowing Isn't Understanding: Re-grounding Generative Proactivity with Epistemic and Behavioral Insight</h3>
