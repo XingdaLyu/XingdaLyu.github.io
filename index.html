@@ -343,32 +343,6 @@
     margin-bottom:8px;
   }
 
-  .sectionTitleWrap{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-  }
-
-  .sectionIcon{
-    width:25px;
-    height:25px;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--venue);
-    transform:translateY(1px);
-  }
-
-  .sectionIcon svg{
-    width:23px;
-    height:23px;
-    fill:none;
-    stroke:currentColor;
-    stroke-width:2.4;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-  }
-
   h2{
     margin:0;
     font-family:"Roboto Slab", Georgia, "Times New Roman", serif;
@@ -658,8 +632,8 @@
 
   .researchTimeline{
     display:grid;
-    grid-template-columns:repeat(3, minmax(0, 1fr));
-    gap:28px;
+    grid-template-columns:minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, .8fr);
+    gap:52px;
     list-style:none;
     padding:4px 0 8px;
     margin:0;
@@ -671,7 +645,7 @@
     position:absolute;
     top:68px;
     left:40px;
-    width:calc(100% + 28px);
+    width:calc(100% + 52px);
     height:1px;
     background:color-mix(in srgb, var(--accent) 24%, var(--line));
     z-index:0;
@@ -707,7 +681,7 @@
   .researchStop h3 a{color:inherit;}
   .researchOrg{margin:0 0 7px; color:var(--muted);font-size:13.5px;line-height:1.4;}
   .researchRole{margin:0 0 3px;color:var(--text);font-size:14px;line-height:1.45;}
-  .researchAdvisor{margin:0;color:var(--muted);font-size:13.5px;line-height:1.45;}
+  .researchAdvisor{margin:0 0 3px;color:var(--muted);font-size:13.5px;line-height:1.45;}
 
   .experienceList{
     display:grid;
@@ -717,16 +691,16 @@
   }
   .experienceItem{
     display:grid;
-    grid-template-columns:80px minmax(0,1fr);
-    gap:18px;
+    grid-template-columns:120px minmax(0,1fr);
+    gap:22px;
     align-items:center;
-    padding:8px 0;
+    padding:14px 0;
   }
   .experienceLogo{display:flex;align-items:center;justify-content:center;}
-  .companyLogo{display:block;max-width:76px;max-height:44px;object-fit:contain;}
-  .experienceBody h3{margin:0 0 4px;font-size:16.5px;line-height:1.3;}
-  .experienceRole{margin:0 0 4px;font-size:14px;line-height:1.4;color:var(--muted);}
-  .experienceMeta{margin:0;font-size:12.5px;line-height:1.4;color:var(--soft);}
+  .companyLogo{display:block;max-width:116px;max-height:68px;object-fit:contain;}
+  .experienceBody h3{margin:0 0 5px;font-size:18px;line-height:1.3;}
+  .experienceRole{margin:0 0 5px;font-size:15px;line-height:1.4;color:var(--muted);}
+  .experienceMeta{margin:0;font-size:13.5px;line-height:1.4;color:var(--soft);}
 
   .role{
     color:var(--soft);
@@ -817,6 +791,9 @@
       white-space:normal;
     }
 
+    .experienceItem{grid-template-columns:96px minmax(0,1fr);gap:18px;}
+    .companyLogo{max-width:92px;max-height:60px;}
+
     .researchTimeline{display:block;padding-top:2px;}
     .researchStop{
       display:grid;
@@ -904,7 +881,7 @@
           Previously, I was advised by Prof.
           <a class="advisorLink" href="https://chiragshah.org/" target="_blank" rel="noreferrer">Chirag Shah</a>
           at the
-          <a class="contextLink" href="https://infoseeking.org/" target="_blank" rel="noreferrer">InfoSeeking Lab</a>.
+          <a class="contextLink" href="https://infoseeking.org/" target="_blank" rel="noreferrer">UW InfoSeeking Lab</a>.
         </p>
 
         <p class="lede focusLead">My research focuses on:</p>
@@ -945,16 +922,7 @@
 
     <section class="section newsSection" id="news">
       <div class="sectionHead">
-        <h2 class="sectionTitleWrap">
-          <span class="sectionIcon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M5 5.5h11.5v13H5z"></path>
-              <path d="M16.5 8.5H20v8.2c0 1-.8 1.8-1.8 1.8h-1.7"></path>
-              <path d="M8 9h5.5"></path>
-              <path d="M8 12h5.5"></path>
-              <path d="M8 15h4"></path>
-            </svg>
-          </span>
+        <h2>
           <span>News</span>
         </h2>
       </div>
@@ -997,17 +965,7 @@
 
     <section class="section" id="research">
       <div class="sectionHead">
-        <h2 class="sectionTitleWrap">
-          <span class="sectionIcon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <circle cx="7" cy="7" r="2.4"></circle>
-              <circle cx="17" cy="7" r="2.4"></circle>
-              <circle cx="12" cy="17" r="2.4"></circle>
-              <path d="M9.1 8.1 14.9 15.9"></path>
-              <path d="M14.9 8.1 9.1 15.9"></path>
-              <path d="M9.4 7h5.2"></path>
-            </svg>
-          </span>
+        <h2>
           <span>Research Experience</span>
         </h2>
       </div>
@@ -1021,8 +979,8 @@
           <div class="researchDetails">
             <h3><a href="https://compminds.uw.edu/" target="_blank" rel="noreferrer">Computational Minds and Machines Lab</a></h3>
             <p class="researchOrg">University of Washington</p>
-            <p class="researchRole">Undergraduate Researcher</p>
             <p class="researchAdvisor">Advisor: <a href="https://faculty.washington.edu/maxkw/" target="_blank" rel="noreferrer">Max Kleiman-Weiner</a></p>
+            <p class="researchAdvisor">PhD mentor: <a href="https://i-kiran.github.io/" target="_blank" rel="noreferrer">Kirandeep Kaur</a></p>
           </div>
         </li>
         <li class="researchStop">
@@ -1045,8 +1003,8 @@
           <div class="researchDetails">
             <h3><a href="https://infoseeking.org/" target="_blank" rel="noreferrer">InfoSeeking Lab</a></h3>
             <p class="researchOrg">University of Washington</p>
-            <p class="researchRole">Undergraduate Researcher</p>
             <p class="researchAdvisor">Advisor: <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Chirag Shah</a></p>
+            <p class="researchAdvisor">PhD mentor: <a href="https://i-kiran.github.io/" target="_blank" rel="noreferrer">Kirandeep Kaur</a></p>
           </div>
         </li>
       </ol>
@@ -1054,16 +1012,7 @@
 
     <section class="section" id="publications">
       <div class="sectionHead">
-        <h2 class="sectionTitleWrap">
-          <span class="sectionIcon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M6.5 3.5h8L19 8v12.5H6.5z"></path>
-              <path d="M14.5 3.5V8H19"></path>
-              <path d="M9.5 11.5h6"></path>
-              <path d="M9.5 15h6"></path>
-              <path d="M9.5 18.5h4"></path>
-            </svg>
-          </span>
+        <h2>
           <span>Selected Publications</span>
         </h2>
       </div>
@@ -1155,16 +1104,7 @@
 
     <section class="section" id="workshops">
       <div class="sectionHead">
-        <h2 class="sectionTitleWrap">
-          <span class="sectionIcon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <rect x="4" y="5" width="16" height="10.5" rx="1.7"></rect>
-              <path d="M9 19h6"></path>
-              <path d="M12 15.5V19"></path>
-              <path d="M8 9.2h8"></path>
-              <path d="M8 12h5.5"></path>
-            </svg>
-          </span>
+        <h2>
           <span>Posters &amp; Talks</span>
         </h2>
       </div>
@@ -1202,15 +1142,7 @@
 
     <section class="section" id="experience">
       <div class="sectionHead">
-        <h2 class="sectionTitleWrap">
-          <span class="sectionIcon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <rect x="4" y="7.5" width="16" height="11.5" rx="2"></rect>
-              <path d="M9.2 7.5V5.8c0-.9.7-1.6 1.6-1.6h2.4c.9 0 1.6.7 1.6 1.6v1.7"></path>
-              <path d="M4 12.2h16"></path>
-              <path d="M10 12.2v1.7h4v-1.7"></path>
-            </svg>
-          </span>
+        <h2>
           <span>Industry Experience</span>
         </h2>
       </div>
