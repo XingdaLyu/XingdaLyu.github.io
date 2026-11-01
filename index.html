@@ -656,117 +656,77 @@
     text-decoration:none;
   }
 
-  .researchList{
+  .researchTimeline{
     display:grid;
-    gap:14px;
-  }
-
-  .researchEntry{
-    display:grid;
-    grid-template-columns:128px minmax(0, 1fr);
-    gap:20px;
-    padding-bottom:14px;
-    border-bottom:1px solid var(--line2);
-  }
-
-  .researchEntry:last-child{
-    padding-bottom:0;
-    border-bottom:0;
-  }
-
-  .researchDate{
-    padding-top:2px;
-    color:var(--soft);
-    font-size:14px;
-    font-weight:700;
-    line-height:1.35;
-    text-align:right;
-    white-space:nowrap;
-  }
-
-  .researchEntry h3{
-    margin:0 0 6px;
-    color:var(--text);
-    font-size:16.5px;
-    line-height:1.35;
-  }
-
-  .researchEntry p{
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:28px;
+    list-style:none;
+    padding:4px 0 8px;
     margin:0;
-    color:var(--muted);
-    font-size:14.7px;
-    line-height:1.55;
   }
 
-  .researchEntry .researchMeta{
-    margin-top:5px;
+  .researchStop{ position:relative; min-width:0; }
+  .researchStop:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    top:68px;
+    left:40px;
+    width:calc(100% + 28px);
+    height:1px;
+    background:color-mix(in srgb, var(--accent) 24%, var(--line));
+    z-index:0;
+  }
+  .researchDate{
+    margin:0 0 10px;
     color:var(--soft);
+    font-size:12.5px;
+    line-height:18px;
+    font-variant-numeric:tabular-nums;
   }
-
-  .experienceList{
-    display:grid;
-    gap:20px;
-  }
-
-  .experienceItem{
-    display:grid;
-    grid-template-columns:190px minmax(0, 1fr);
-    gap:34px;
-    align-items:center;
-    padding:16px 0;
-    border-bottom:1px solid var(--line2);
-  }
-
-  .experienceItem:last-child{
-    border-bottom:0;
-  }
-
-  .experienceLogo{
-    min-height:70px;
+  .labMark{
+    position:relative;
+    z-index:1;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:transparent;
+    width:80px;
+    height:80px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    background:#fff;
   }
-
-  .experienceBody h3{
-    margin:0 0 6px;
+  .labMark img{display:block; width:66px; height:66px; object-fit:contain;}
+  .labMark .infoSeekingMark{width:70px; height:auto;}
+  .researchStop:first-child .labMark{border-color:color-mix(in srgb, var(--accent) 45%, var(--line));}
+  .researchStop h3{
+    margin:12px 0 7px;
+    font-size:16px;
+    line-height:1.32;
     color:var(--text);
-    font-size:19px;
-    line-height:1.25;
-    font-weight:700;
   }
+  .researchStop h3 a{color:inherit;}
+  .researchOrg{margin:0 0 7px; color:var(--muted);font-size:13.5px;line-height:1.4;}
+  .researchRole{margin:0 0 3px;color:var(--text);font-size:14px;line-height:1.45;}
+  .researchAdvisor{margin:0;color:var(--muted);font-size:13.5px;line-height:1.45;}
 
-  .experienceRole{
-    margin:0 0 12px;
-    color:var(--text);
-    font-size:15.6px;
-    line-height:1.35;
+  .experienceList{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:24px;
+    padding:4px 0;
   }
-
-  .experienceMeta{
-    margin:0;
-    color:var(--text);
-    font-size:15.2px;
-    line-height:1.35;
+  .experienceItem{
+    display:grid;
+    grid-template-columns:80px minmax(0,1fr);
+    gap:18px;
+    align-items:center;
+    padding:8px 0;
   }
-
-  .companyLogo{
-    display:block;
-    max-width:150px;
-    max-height:58px;
-    object-fit:contain;
-  }
-
-  .companyLogo.amazonMark{
-    max-width:145px;
-    max-height:44px;
-  }
-
-  .companyLogo.baynovationMark{
-    max-width:136px;
-    max-height:62px;
-  }
+  .experienceLogo{display:flex;align-items:center;justify-content:center;}
+  .companyLogo{display:block;max-width:76px;max-height:44px;object-fit:contain;}
+  .experienceBody h3{margin:0 0 4px;font-size:16.5px;line-height:1.3;}
+  .experienceRole{margin:0 0 4px;font-size:14px;line-height:1.4;color:var(--muted);}
+  .experienceMeta{margin:0;font-size:12.5px;line-height:1.4;color:var(--soft);}
 
   .role{
     color:var(--soft);
@@ -809,40 +769,11 @@
       justify-content:flex-start;
     }
 
-    .researchEntry{
-      grid-template-columns:1fr;
-      gap:4px;
-    }
-
-    .researchDate{
-      text-align:left;
-    }
-
-    .experienceItem{
-      grid-template-columns:1fr;
-      gap:8px;
-      align-items:start;
-    }
-
-    .experienceLogo{
-      justify-content:flex-start;
-      min-height:46px;
-    }
-
-    .companyLogo{
-      max-width:132px;
-      max-height:50px;
-    }
-
-    .companyLogo.amazonMark{
-      max-width:132px;
-      max-height:40px;
-    }
-
-    .companyLogo.baynovationMark{
-      max-width:122px;
-      max-height:56px;
-    }
+    .researchTimeline{gap:18px;}
+    .researchStop h3{min-height:43px;}
+    .researchOrg{min-height:38px;}
+    .researchStop:not(:last-child)::after{width:calc(100% + 18px);}
+    .experienceList{grid-template-columns:1fr;gap:6px;}
 
     .newsPanel{
       max-height:154px;
@@ -886,6 +817,26 @@
       white-space:normal;
     }
 
+    .researchTimeline{display:block;padding-top:2px;}
+    .researchStop{
+      display:grid;
+      grid-template-columns:72px minmax(0,1fr);
+      column-gap:18px;
+      padding:0 0 24px;
+    }
+    .researchStop:last-child{padding-bottom:4px;}
+    .researchDate{grid-column:2;margin:0 0 5px;font-size:12px;}
+    .labMark{grid-column:1;grid-row:1 / 3;width:72px;height:72px;}
+    .labMark img{width:60px;height:60px;}
+    .labMark .infoSeekingMark{width:62px;}
+    .researchStop:not(:last-child)::after{
+      top:36px;left:36px;width:1px;height:100%;
+    }
+    .researchStop h3{min-height:0;margin:0 0 4px;font-size:16px;}
+    .researchDetails{grid-column:2;}
+    .researchOrg{min-height:0;margin-bottom:5px;font-size:13px;}
+    .researchRole,.researchAdvisor{font-size:13px;}
+
     .pub{
       grid-template-columns:1fr;
       gap:10px;
@@ -919,8 +870,8 @@
     <nav class="nav" aria-label="Main navigation">
       <div class="navlinks">
         <a href="#news">news</a>
-        <a href="#publications">publications</a>
         <a href="#research">research</a>
+        <a href="#publications">publications</a>
         <a href="#experience">experience</a>
       </div>
     </nav>
@@ -1042,6 +993,63 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="sectionHead">
+        <h2 class="sectionTitleWrap">
+          <span class="sectionIcon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="7" cy="7" r="2.4"></circle>
+              <circle cx="17" cy="7" r="2.4"></circle>
+              <circle cx="12" cy="17" r="2.4"></circle>
+              <path d="M9.1 8.1 14.9 15.9"></path>
+              <path d="M14.9 8.1 9.1 15.9"></path>
+              <path d="M9.4 7h5.2"></path>
+            </svg>
+          </span>
+          <span>Research Experience</span>
+        </h2>
+      </div>
+
+      <ol class="researchTimeline" aria-label="Research experience, most recent first">
+        <li class="researchStop">
+          <p class="researchDate">Aug 2026 – Present</p>
+          <a class="labMark" href="https://compminds.uw.edu/" target="_blank" rel="noreferrer" aria-label="Computational Minds and Machines Lab website">
+            <img src="assets/img/cmm-logo.png" alt="Computational Minds and Machines Lab logo">
+          </a>
+          <div class="researchDetails">
+            <h3><a href="https://compminds.uw.edu/" target="_blank" rel="noreferrer">Computational Minds and Machines Lab</a></h3>
+            <p class="researchOrg">University of Washington</p>
+            <p class="researchRole">Undergraduate Researcher</p>
+            <p class="researchAdvisor">Advisor: <a href="https://faculty.washington.edu/maxkw/" target="_blank" rel="noreferrer">Max Kleiman-Weiner</a></p>
+          </div>
+        </li>
+        <li class="researchStop">
+          <p class="researchDate">Jun – Aug 2026</p>
+          <a class="labMark" href="http://dm1.cs.uiuc.edu/" target="_blank" rel="noreferrer" aria-label="UIUC Data Mining Group website">
+            <img src="assets/img/uiuc-dmg-logo.png" alt="UIUC Data Mining Group logo">
+          </a>
+          <div class="researchDetails">
+            <h3><a href="http://dm1.cs.uiuc.edu/" target="_blank" rel="noreferrer">Data Mining Group</a></h3>
+            <p class="researchOrg">University of Illinois Urbana-Champaign</p>
+            <p class="researchRole">Summer Research Intern</p>
+            <p class="researchAdvisor">Advisor: <a href="https://hanj.cs.illinois.edu/" target="_blank" rel="noreferrer">Jiawei Han</a></p>
+          </div>
+        </li>
+        <li class="researchStop">
+          <p class="researchDate">Nov 2025 – Aug 2026</p>
+          <a class="labMark" href="https://infoseeking.org/" target="_blank" rel="noreferrer" aria-label="InfoSeeking Lab website">
+            <img class="infoSeekingMark" src="assets/img/infoseeking-logo.png" alt="InfoSeeking Lab logo">
+          </a>
+          <div class="researchDetails">
+            <h3><a href="https://infoseeking.org/" target="_blank" rel="noreferrer">InfoSeeking Lab</a></h3>
+            <p class="researchOrg">University of Washington</p>
+            <p class="researchRole">Undergraduate Researcher</p>
+            <p class="researchAdvisor">Advisor: <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Chirag Shah</a></p>
+          </div>
+        </li>
+      </ol>
     </section>
 
     <section class="section" id="publications">
@@ -1192,61 +1200,6 @@
       </div>
     </section>
 
-    <section class="section" id="research">
-      <div class="sectionHead">
-        <h2 class="sectionTitleWrap">
-          <span class="sectionIcon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <circle cx="7" cy="7" r="2.4"></circle>
-              <circle cx="17" cy="7" r="2.4"></circle>
-              <circle cx="12" cy="17" r="2.4"></circle>
-              <path d="M9.1 8.1 14.9 15.9"></path>
-              <path d="M14.9 8.1 9.1 15.9"></path>
-              <path d="M9.4 7h5.2"></path>
-            </svg>
-          </span>
-          <span>Research</span>
-        </h2>
-      </div>
-
-      <div class="researchList">
-        <article class="researchEntry">
-          <div class="researchDate">Aug 2026-present</div>
-          <div>
-            <h3>Undergraduate Researcher, UW <a href="https://compminds.uw.edu/" target="_blank" rel="noreferrer">Computational Minds and Machines Lab</a></h3>
-            <p>I study computational models of users' beliefs, goals, and preferences, and how these models can support adaptive human-AI collaboration and alignment.</p>
-            <p class="researchMeta">Advised by Prof. <a href="https://faculty.washington.edu/maxkw/" target="_blank" rel="noreferrer">Max Kleiman-Weiner</a>.</p>
-          </div>
-        </article>
-
-        <article class="researchEntry">
-          <div class="researchDate">Jun-Aug 2026</div>
-          <div>
-            <h3>Summer Research Intern, UIUC <a href="http://dm1.cs.uiuc.edu/" target="_blank" rel="noreferrer">Data Mining Group</a></h3>
-            <p>I built and evaluated retrieval-augmented LLM workflows for retrosynthesis and drug discovery, focusing on chemical reasoning and scientific decision support.</p>
-            <p class="researchMeta">Advised by Prof. <a href="https://hanj.cs.illinois.edu/" target="_blank" rel="noreferrer">Jiawei Han</a>.</p>
-          </div>
-        </article>
-
-        <article class="researchEntry">
-          <div class="researchDate">Apr 2026-present</div>
-          <div>
-            <h3>Undergraduate Researcher, <a href="https://nlp.washington.edu/" target="_blank" rel="noreferrer">UW NLP Group</a></h3>
-            <p>I use controlled interventions to test which action-effect-goal relationships drive an LLM's advice on decisions with short- and long-term consequences. I examine whether recommendations follow those relationships or rely on simpler heuristics.</p>
-          </div>
-        </article>
-
-        <article class="researchEntry">
-          <div class="researchDate">Nov 2025-<br>Aug 2026</div>
-          <div>
-            <h3>Undergraduate Researcher, UW <a href="https://infoseeking.org/" target="_blank" rel="noreferrer">InfoSeeking Lab</a></h3>
-            <p>I studied agents that model users' structural ignorance and help them navigate knowledge gaps, focusing on information seeking and human-AI collaboration under uncertainty.</p>
-            <p class="researchMeta">Previously advised by Prof. <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Chirag Shah</a>.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
     <section class="section" id="experience">
       <div class="sectionHead">
         <h2 class="sectionTitleWrap">
@@ -1258,7 +1211,7 @@
               <path d="M10 12.2v1.7h4v-1.7"></path>
             </svg>
           </span>
-          <span>Experience</span>
+          <span>Industry Experience</span>
         </h2>
       </div>
 
