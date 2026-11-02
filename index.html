@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -15,53 +15,53 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
 
 <style>
   :root{
     color-scheme:light;
-    --buttonBorder:#91b1cc;
+    --buttonBorder:#a79ab5;
     --bg:#ffffff;
     --surface:#ffffff;
-    --surface2:#f0f5fb;
-    --text:#242a30;
-    --muted:#56616b;
-    --soft:#6d7883;
-    --line:#e4e9ee;
-    --line2:#edf2f6;
-    --accent:#1d75b9;
-    --accent2:#2288dd;
+    --surface2:#f5f2f8;
+    --text:#24232b;
+    --muted:#585761;
+    --soft:#706c78;
+    --line:#e8e6eb;
+    --line2:#efedf1;
+    --accent:#50376b;
+    --accent2:#644880;
     --accent3:#7a4a10;
-    --progress:#6ca6d2;
-    --venue:#246b9e;
-    --venueShadow:0 1px 3px rgba(30,67,98,.10);
-    --shadow:0 5px 16px rgba(30,50,70,.06);
+    --progress:#b4a3c4;
+    --venue:#49325f;
+    --venueShadow:0 1px 3px rgba(49,35,66,.10);
+    --shadow:0 5px 16px rgba(35,30,45,.06);
     --navBg:rgba(255,255,255,.96);
-    --pageW:950px;
+    --pageW:1000px;
     --radius:8px;
   }
 
   html[data-theme="dark"]{
     color-scheme:dark;
-    --buttonBorder:#4b6b85;
-    --bg:#14171b;
-    --surface:#1d232a;
-    --surface2:#222c36;
-    --text:#e8edf2;
-    --muted:#b8c3cd;
-    --soft:#9daab7;
-    --line:#303b45;
-    --line2:#26313b;
-    --accent:#8fc5ed;
-    --accent2:#b8dcf7;
+    --buttonBorder:#62586f;
+    --bg:#141417;
+    --surface:#1d1d22;
+    --surface2:#222229;
+    --text:#e9e8ed;
+    --muted:#bcb9c4;
+    --soft:#a29eac;
+    --line:#303037;
+    --line2:#27272e;
+    --accent:#c5afdf;
+    --accent2:#d5c2eb;
     --accent3:#dfb777;
-    --progress:#689fc8;
-    --venue:#285f88;
+    --progress:#9b80b6;
+    --venue:#644b7c;
     --venueShadow:0 1px 4px rgba(0,0,0,.18);
     --shadow:0 4px 16px rgba(0,0,0,.18);
-    --navBg:rgba(20,23,27,.96);
+    --navBg:rgba(20,20,23,.96);
   }
 
   *{ box-sizing:border-box; }
@@ -75,7 +75,7 @@
     min-height:100%;
     background:var(--bg);
     color:var(--text);
-    font-family:"Roboto", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-family:"Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     font-size:15.4px;
     line-height:1.53;
     -webkit-font-smoothing:antialiased;
@@ -167,7 +167,7 @@
 
   .brand{
     color:var(--text);
-    font-family:"Roboto Slab", Georgia, "Times New Roman", serif;
+    font-family:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size:18px;
     letter-spacing:.01em;
     white-space:nowrap;
@@ -216,7 +216,7 @@
 
   h1{
     margin:0;
-    font-family:"Roboto Slab", Georgia, "Times New Roman", serif;
+    font-family:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size:42px;
     line-height:1.05;
     font-weight:300;
@@ -231,7 +231,7 @@
     display:inline-block;
     margin-left:10px;
     color:var(--muted);
-    font-family:"Roboto", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-family:"Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     font-size:18px;
     font-weight:500;
     line-height:1;
@@ -241,7 +241,7 @@
 
   .lede{
     margin:12px 0 0;
-    max-width:660px;
+    max-width:710px;
     color:var(--text);
     font-size:16px;
     line-height:1.6;
@@ -250,7 +250,7 @@
   .page .lede a.contextLink{
     color:var(--text);
     font-weight:400;
-    border-bottom:1px solid rgba(29,117,185,.28);
+    border-bottom:1px solid rgba(80,55,107,.28);
     padding-bottom:1px;
   }
 
@@ -261,7 +261,7 @@
 
   html[data-theme="dark"] .page .lede a.contextLink{
     color:var(--text);
-    border-bottom-color:rgba(143,197,237,.34);
+    border-bottom-color:rgba(197,175,223,.34);
   }
 
   html[data-theme="dark"] .page .lede a.contextLink:hover{
@@ -350,7 +350,7 @@
 
   h2{
     margin:0;
-    font-family:"Roboto Slab", Georgia, "Times New Roman", serif;
+    font-family:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size:27px;
     line-height:1.2;
     font-weight:500;
@@ -500,7 +500,7 @@
     border:1px solid var(--line);
     border-radius:5px;
     background:var(--surface);
-    box-shadow:0 2px 7px rgba(30,50,70,.07);
+    box-shadow:0 2px 7px rgba(35,30,45,.07);
   }
 
   .pubPreview.tablePreview,
@@ -524,7 +524,7 @@
     overflow:hidden;
     border:1px solid var(--line);
     background:#fff;
-    box-shadow:0 2px 7px rgba(30,50,70,.07);
+    box-shadow:0 2px 7px rgba(35,30,45,.07);
   }
   .frameworkFigure .pubPreview{
     border:0;
@@ -582,7 +582,7 @@
     color:var(--text);
     font-size:16px;
     line-height:1.4;
-    font-weight:800;
+    font-weight:700;
   }
 
   .pubMeta{
@@ -603,7 +603,7 @@
 
   .me{
     color:var(--accent);
-    font-weight:800;
+    font-weight:700;
     border-bottom-color:transparent;
   }
 
@@ -642,10 +642,10 @@
   }
 
   html[data-theme="dark"] .miniBtn:hover{
-    background:#233546;
+    background:#302938;
     border-color:var(--accent);
   }
-  html[data-theme="dark"] ::selection{background:#315b7c;color:#fff;}
+  html[data-theme="dark"] ::selection{background:#58436e;color:#fff;}
 
   .researchTimeline{
     display:grid;
@@ -778,7 +778,7 @@
   .labPhotosSection{margin-top:14px;padding-bottom:0;scroll-margin-top:84px;}
   .labPhotosSection .sectionHead{margin-bottom:16px;}
   .photoGallery{
-    width:min(400px, 100%);
+    width:min(440px, 100%);
     margin:0;
   }
   .labPhotoThumbnail{width:100%;}
@@ -810,7 +810,7 @@
     color:var(--text);
     box-shadow:0 16px 60px rgba(0,0,0,.24);
   }
-  .photoDialog::backdrop{background:rgba(13,20,27,.65);}
+  .photoDialog::backdrop{background:rgba(20,17,25,.65);}
   .photoDialogHeader{display:flex;align-items:center;justify-content:space-between;margin:0 0 10px;gap:16px;}
   .photoDialogHeader h2{margin:0;font-family:inherit;font-size:16px;font-weight:500;}
   .photoClose{display:grid;place-items:center;width:32px;height:32px;padding:0;border:0;border-radius:50%;background:none;color:var(--muted);cursor:pointer;}
@@ -949,7 +949,7 @@
         <a href="#experience">experience</a>
         <a href="#photos">Lab Photos</a>
       </div>
-      <button class="themeToggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+      <button class="themeToggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
         <svg class="moonIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"></path></svg>
         <svg class="sunIcon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
       </button>
@@ -1077,7 +1077,9 @@
           <div class="researchDetails">
             <h3><a href="https://compminds.uw.edu/" target="_blank" rel="noreferrer">Computational Minds and Machines Lab</a></h3>
             <p class="researchOrg">University of Washington</p>
+            <p class="researchRole">Research Assistant</p>
             <p class="researchAdvisor">Advisor: <a href="https://faculty.washington.edu/maxkw/" target="_blank" rel="noreferrer">Max Kleiman-Weiner</a></p>
+            <p class="researchAdvisor">PhD mentor: <a href="https://i-kiran.github.io/" target="_blank" rel="noreferrer">Kirandeep Kaur</a></p>
           </div>
         </li>
         <li class="researchStop">
@@ -1090,6 +1092,7 @@
             <p class="researchOrg">University of Illinois Urbana-Champaign</p>
             <p class="researchRole">Summer Research Intern</p>
             <p class="researchAdvisor">Advisor: <a href="https://hanj.cs.illinois.edu/" target="_blank" rel="noreferrer">Jiawei Han</a></p>
+            <p class="researchAdvisor">PhD mentor: <a href="https://siebelschool.illinois.edu/academics/graduate/phd-program/amazon-ai-phd-fellows/Joey-Chan" target="_blank" rel="noreferrer">Joey Chan</a></p>
           </div>
         </li>
         <li class="researchStop">
@@ -1100,7 +1103,9 @@
           <div class="researchDetails">
             <h3><a href="https://infoseeking.org/" target="_blank" rel="noreferrer">InfoSeeking Lab</a></h3>
             <p class="researchOrg">University of Washington</p>
+            <p class="researchRole">Research Assistant</p>
             <p class="researchAdvisor">Advisor: <a href="https://chiragshah.org/" target="_blank" rel="noreferrer">Chirag Shah</a></p>
+            <p class="researchAdvisor">PhD mentor: <a href="https://i-kiran.github.io/" target="_blank" rel="noreferrer">Kirandeep Kaur</a></p>
           </div>
         </li>
       </ol>
