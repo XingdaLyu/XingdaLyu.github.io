@@ -435,15 +435,15 @@
 
   .pubList{
     display:grid;
-    gap:10px;
+    gap:14px;
   }
 
   .pub{
     display:grid;
     grid-template-columns:235px minmax(0,1fr);
     gap:24px;
-    align-items:start;
-    padding:10px 0 14px;
+    align-items:center;
+    padding:12px 0;
   }
 
   .pub.withPreview{
@@ -453,7 +453,7 @@
   .pubMedia{
     position:relative;
     display:block;
-    width:min(100%, 210px);
+    width:min(100%, 220px);
     justify-self:center;
     align-self:center;
   }
@@ -512,7 +512,9 @@
 
   .pubFigureLink{
     display:block;
+    border-radius:5px;
   }
+  .pubFigureLink:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
 
   .badge{
     display:flex;
@@ -1101,7 +1103,9 @@
         <article class="pub withPreview">
           <div class="pubMedia">
             <span class="pubVenueTag">CHIIR ’26</span>
-            <img class="pubPreview" src="assets/img/CHIIR.png" alt="Preview for the CHIIR proactive agent presentation">
+            <a class="pubFigureLink" href="assets/img/CHIIR.png" target="_blank" rel="noreferrer" aria-label="View full-size CHIIR proactive agent diagram">
+              <img class="pubPreview" src="assets/img/CHIIR.png" alt="Preview for the CHIIR proactive agent presentation">
+            </a>
           </div>
           <div>
             <h3 class="pubTitle">Decision-Making Under Unknown Unknowns in Proactive Agentic Systems</h3>
@@ -1115,7 +1119,9 @@
         <article class="pub withPreview">
           <div class="pubMedia">
             <span class="pubVenueTag">ARD ’26</span>
-            <img class="pubPreview" src="assets/img/Proper.png" alt="Preview for the PROPER framework presentation">
+            <a class="pubFigureLink" href="assets/img/ProPer_framework.png" target="_blank" rel="noreferrer" aria-label="View full-size ProPer framework diagram">
+              <img class="pubPreview" src="assets/img/ProPer_framework.png" alt="ProPer framework showing user queries, explicit and implicit dimensions, reranking, response generation, and feedback from successful interactions">
+            </a>
           </div>
           <div>
             <h3 class="pubTitle">ProPer: Proactivity-Driven Personalized Agents for Knowledge Gap Navigation</h3>
