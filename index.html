@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -45,23 +45,23 @@
 
   html[data-theme="dark"]{
     color-scheme:dark;
-    --buttonBorder:#756584;
-    --bg:#17161b;
-    --surface:#201e26;
-    --surface2:#202830;
-    --text:#eeebf2;
-    --muted:#c7c1ce;
-    --soft:#aaa2b3;
-    --line:#39333f;
-    --line2:#302b36;
-    --accent:#ccb2e7;
-    --accent2:#b893ff;
-    --accent3:#edb86f;
-    --progress:#7d5bb0;
-    --venue:#76509a;
-    --venueShadow:0 7px 18px rgba(0,0,0,.25);
-    --shadow:0 20px 50px rgba(0,0,0,.28);
-    --navBg:rgba(23,22,27,.96);
+    --buttonBorder:#62586f;
+    --bg:#141417;
+    --surface:#1d1d22;
+    --surface2:#222229;
+    --text:#e9e8ed;
+    --muted:#bcb9c4;
+    --soft:#a29eac;
+    --line:#303037;
+    --line2:#27272e;
+    --accent:#c5afdf;
+    --accent2:#d5c2eb;
+    --accent3:#dfb777;
+    --progress:#9b80b6;
+    --venue:#644b7c;
+    --venueShadow:0 1px 4px rgba(0,0,0,.18);
+    --shadow:0 4px 16px rgba(0,0,0,.18);
+    --navBg:rgba(20,20,23,.96);
   }
 
   *{ box-sizing:border-box; }
@@ -261,7 +261,11 @@
 
   html[data-theme="dark"] .page .lede a.contextLink{
     color:var(--text);
-    border-bottom-color:rgba(198,168,255,.46);
+    border-bottom-color:rgba(197,175,223,.34);
+  }
+
+  html[data-theme="dark"] .page .lede a.contextLink:hover{
+    border-bottom-color:var(--accent);
   }
 
   .profileCard{
@@ -637,6 +641,12 @@
     text-decoration:none;
   }
 
+  html[data-theme="dark"] .miniBtn:hover{
+    background:#2b2433;
+    border-color:var(--accent);
+  }
+  html[data-theme="dark"] ::selection{background:#544361;color:#fff;}
+
   .researchTimeline{
     display:grid;
     grid-template-columns:minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, .8fr);
@@ -932,7 +942,7 @@
         <a href="#experience">experience</a>
         <a href="#photos">Lab Photos</a>
       </div>
-      <button class="themeToggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+      <button class="themeToggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
         <svg class="moonIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"></path></svg>
         <svg class="sunIcon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
       </button>
@@ -1255,10 +1265,6 @@
       </div>
     </section>
 
-    <p class="lede personalNote">
-      Outside research, I play competitive badminton.
-    </p>
-
     <section class="section labPhotosSection" id="photos" aria-labelledby="labPhotosTitle">
       <div class="sectionHead">
         <h2 id="labPhotosTitle">Lab Photos</h2>
@@ -1277,6 +1283,10 @@
         </div>
       </div>
     </section>
+
+    <p class="lede personalNote">
+      Outside research, I play competitive badminton.
+    </p>
   </main>
 
   <footer class="page footer">
