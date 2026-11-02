@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="description" content="Xingda Lyu - University of Washington student researching proactive AI agents, human-AI interaction, and AI for science." />
 <title>Xingda Lyu</title>
+<script>
+  try {
+    const savedTheme = localStorage.getItem("xingda-theme");
+    if (savedTheme === "dark" || savedTheme === "light") {
+      document.documentElement.dataset.theme = savedTheme;
+    }
+  } catch (_) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -13,6 +21,8 @@
 
 <style>
   :root{
+    color-scheme:light;
+    --buttonBorder:#a79ab5;
     --bg:#ffffff;
     --surface:#ffffff;
     --surface2:#f0f5fb;
@@ -34,22 +44,24 @@
   }
 
   html[data-theme="dark"]{
-    --bg:#151719;
-    --surface:#1d2023;
+    color-scheme:dark;
+    --buttonBorder:#756584;
+    --bg:#17161b;
+    --surface:#201e26;
     --surface2:#202830;
-    --text:#f2f2ef;
-    --muted:#c8ced5;
-    --soft:#9fa8b2;
-    --line:#34383d;
-    --line2:#2a2f34;
-    --accent:#c6a8ff;
+    --text:#eeebf2;
+    --muted:#c7c1ce;
+    --soft:#aaa2b3;
+    --line:#39333f;
+    --line2:#302b36;
+    --accent:#ccb2e7;
     --accent2:#b893ff;
     --accent3:#edb86f;
     --progress:#7d5bb0;
-    --venue:#7f55bd;
+    --venue:#76509a;
     --venueShadow:0 7px 18px rgba(0,0,0,.25);
     --shadow:0 20px 50px rgba(0,0,0,.28);
-    --navBg:rgba(21,23,25,.94);
+    --navBg:rgba(23,22,27,.96);
   }
 
   *{ box-sizing:border-box; }
@@ -129,6 +141,30 @@
     gap:20px;
   }
 
+  .themeToggle{
+    display:inline-flex;
+    flex:0 0 34px;
+    width:34px;
+    height:34px;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    border:0;
+    border-radius:50%;
+    background:transparent;
+    color:var(--muted);
+    cursor:pointer;
+  }
+  .themeToggle:hover{color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,transparent);}
+  .themeToggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+  .themeToggle svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+  .themeToggle .sunIcon{display:none;}
+  html[data-theme="dark"] .themeToggle .moonIcon{display:none;}
+  html[data-theme="dark"] .themeToggle .sunIcon{display:block;}
+  html[data-theme="dark"] .pubPreview{background:#fff;}
+  html[data-theme="dark"] .experienceLogo{min-height:76px;background:#fff;border-radius:6px;padding:8px;}
+  html[data-theme="dark"] .companyLogo{max-width:100%;}
+
   .brand{
     color:var(--text);
     font-family:"Roboto Slab", Georgia, "Times New Roman", serif;
@@ -194,7 +230,7 @@
   .callMe{
     display:inline-block;
     margin-left:10px;
-    color:#5f6670;
+    color:var(--muted);
     font-family:"Roboto", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     font-size:16px;
     font-weight:500;
@@ -207,7 +243,8 @@
     margin:12px 0 0;
     max-width:660px;
     color:var(--text);
-    font-size:15.4px;
+    font-size:16px;
+    line-height:1.6;
   }
 
   .page .lede a.contextLink{
@@ -263,13 +300,13 @@
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    color:#202124;
+    color:var(--text);
     border-radius:0;
     font-size:21px;
   }
 
   .iconLink:hover{
-    color:#000000;
+    color:var(--accent);
     opacity:.72;
     text-decoration:none;
   }
@@ -327,26 +364,22 @@
     padding-bottom:10px;
   }
 
-  .newsPanel{
-    max-height:110px;
-    overflow-y:auto;
-    padding:0 8px 7px 0;
-    scrollbar-width:thin;
-    scrollbar-color:rgba(53,19,95,.32) transparent;
-  }
+  .newsPanel{padding:0 0 7px;}
 
-  .newsPanel::-webkit-scrollbar{
-    width:7px;
+  .newsMore{margin-top:7px;}
+  .newsMore summary{
+    width:fit-content;
+    color:var(--accent);
+    font-size:13.5px;
+    font-weight:500;
+    cursor:pointer;
   }
-
-  .newsPanel::-webkit-scrollbar-track{
-    background:transparent;
-  }
-
-  .newsPanel::-webkit-scrollbar-thumb{
-    background:rgba(53,19,95,.28);
-    border-radius:999px;
-  }
+  .newsMore summary:hover{text-decoration:underline;}
+  .newsMore summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;}
+  .newsMore .newsList{margin-top:7px;}
+  .newsMore .showLess{display:none;}
+  .newsMore[open] .showMore{display:none;}
+  .newsMore[open] .showLess{display:inline;}
 
   .newsList{
     margin:0;
@@ -529,7 +562,7 @@
     margin:0 0 3px;
     color:var(--text);
     font-size:16px;
-    line-height:1.3;
+    line-height:1.4;
     font-weight:800;
   }
 
@@ -537,7 +570,7 @@
     margin:0;
     color:var(--muted);
     font-size:15px;
-    line-height:1.36;
+    line-height:1.45;
   }
 
   .author{
@@ -547,11 +580,6 @@
     padding-bottom:2px;
     border-bottom:1.25px solid transparent;
     vertical-align:baseline;
-  }
-
-  html[data-theme="dark"] .author{
-    color:var(--muted);
-    border-bottom-color:rgba(200,206,213,.55);
   }
 
   .me{
@@ -564,7 +592,7 @@
     margin:2px 0 0;
     color:var(--text);
     font-size:15px;
-    line-height:1.36;
+    line-height:1.45;
     font-style:italic;
   }
 
@@ -580,7 +608,7 @@
     align-items:center;
     min-height:28px;
     padding:3px 13px;
-    border:1px solid #a79ab5;
+    border:1px solid var(--buttonBorder);
     border-radius:3px;
     color:var(--accent);
     background:var(--surface);
@@ -634,6 +662,7 @@
     background:#fff;
   }
   .labMark img{display:block; width:66px; height:66px; object-fit:contain;}
+  .labMark img:not(.infoSeekingMark){border-radius:50%;}
   .labMark .infoSeekingMark{width:70px; height:auto;}
   .researchStop:first-child .labMark{border-color:color-mix(in srgb, var(--accent) 45%, var(--line));}
   .researchStop h3{
@@ -703,8 +732,7 @@
     }
 
     .sideLinks{
-      text-align:left;
-      justify-content:flex-start;
+      justify-content:center;
     }
 
     .researchTimeline{gap:18px;}
@@ -713,9 +741,6 @@
     .researchStop:not(:last-child)::after{width:calc(100% + 18px);}
     .experienceList{grid-template-columns:1fr;gap:6px;}
 
-    .newsPanel{
-      max-height:154px;
-    }
   }
 
   @media (max-width: 680px){
@@ -727,7 +752,8 @@
     .nav{
       min-height:auto;
       padding:12px 0;
-      align-items:flex-start;
+      align-items:center;
+      gap:12px;
     }
 
     .brand{
@@ -815,6 +841,10 @@
         <a href="#publications">publications</a>
         <a href="#experience">experience</a>
       </div>
+      <button class="themeToggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <svg class="moonIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"></path></svg>
+        <svg class="sunIcon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+      </button>
     </nav>
     <div class="scrollProgress" aria-hidden="true">
       <span id="scrollProgressBar" class="scrollProgressBar"></span>
@@ -904,6 +934,10 @@
             <span class="newsDate">2026.06:</span>
             <span class="newsText">Started a summer research internship with Prof. <a href="https://hanj.cs.illinois.edu/" target="_blank" rel="noreferrer">Jiawei Han</a> at UIUC.</span>
           </div>
+        </div>
+        <details class="newsMore">
+          <summary><span class="showMore">Show more</span><span class="showLess">Show less</span></summary>
+          <div class="newsList">
           <div class="newsItem">
             <span class="newsIcon" aria-hidden="true">★</span>
             <span class="newsDate">2026.05:</span>
@@ -914,7 +948,8 @@
             <span class="newsDate">2026.04:</span>
             <span class="newsText">Our paper <em>PROS</em> was accepted to the <a href="https://cvpr.thecvf.com/" target="_blank" rel="noreferrer">CVPR</a> HiGen Workshop.</span>
           </div>
-        </div>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -1135,6 +1170,20 @@
   </footer>
 
 <script>
+  const themeToggle = document.getElementById("themeToggle");
+  function updateThemeButton(){
+    const label = document.documentElement.dataset.theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+    themeToggle.setAttribute("aria-label", label);
+    themeToggle.title = label;
+  }
+  themeToggle.addEventListener("click", () => {
+    const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = theme;
+    try { localStorage.setItem("xingda-theme", theme); } catch (_) {}
+    updateThemeButton();
+  });
+  updateThemeButton();
+
   const scrollProgressBar = document.getElementById("scrollProgressBar");
 
   function updateScrollProgress(){
