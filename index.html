@@ -247,7 +247,15 @@
     line-height:1.6;
   }
 
-  .page .lede.cvNote a{font-weight:700;}
+  .page .lede.cvNote a{
+    font-weight:400;
+    border-bottom:1px solid color-mix(in srgb,var(--accent) 30%,transparent);
+    padding-bottom:1px;
+  }
+  .page .lede.cvNote a:hover{
+    border-bottom-color:var(--accent);
+    text-decoration:none;
+  }
 
   .page .lede a.contextLink{
     color:var(--text);
